@@ -4,420 +4,490 @@ var objRoleRules = {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	},
 	"alertdialog": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded", "aria-modal"]
 	}, 
 	"application": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded"]
 	}, 
 	"article": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["main"],
 		"supported": ["aria-expanded"]
 	}, 
 	"aside": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded", "aria-pressed"]
 	}, 
 	"banner": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["main", "header", "footer"],
 		"supported": ["aria-expanded"]
 	}, 
 	"button": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded", "aria-pressed"]
 	}, 
 	"cell": {
 		"requiredParent": "row",
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-colspan", "aria-colindex", "aria-rowindex", "aria-rowspan"]
 	}, 
 	"checkbox": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-checked"],
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-readonly"]
 	}, 
 	"columnheader": {
 		"requiredParent": "row",
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-colspan", "aria-colindex", "aria-expanded", "aria-readonly", "aria-required", "aria-rowindex", "aria-rowspan", "aria-selected", "aria-sort"]
 	},
 	"combobox": {
 		"requiredParent": null,
 		"requiredChild": ["textbox", "listbox", "tree", "grid", "dialog"],
 		"requiredState": ["aria-expanded", "aria-controls"],
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-autocomplete", "aria-required", "aria-orientation"]
 	}, 
 	"complementary": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["main"],
 		"supported": ["aria-expanded"]
 	}, 
 	"contentinfo": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["main", "header", "footer"],
 		"supported": ["aria-expanded"]
 	}, 
 	"definition": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["phrasing"],
 		"supported": ["aria-expanded"]
 	}, 
 	"dialog": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded", "aria-modal"]
 	}, 
 	"directory": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	},
 	"document": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"feed": {
 		"requiredParent": null,
 		"requiredChild": ["article"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"figure": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"form": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"grid": {
 		"requiredParent": null,
 		"requiredChild": ["row", "rowgroup"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-colcount", "aria-expanded", "aria-level", "aria-multiselectable", "aria-readonly", "aria-rowcount"]
 	}, 
 	"gridcell": {
 		"requiredParent": ["row"],
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-colspan", "aria-colindex", "aria-expanded", "aria-readonly", "aria-required", "aria-rowindex", "aria-rowspan", "aria-selected"]
 	}, 
 	"group": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded"]
 	}, 
 	"heading": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-level"],
+		"descendantRestrictions": ["article", "aside", "blockquote", "body", "details", "dialog", "fieldset", "figure", "section", "h1", "h2", "h3", "h4", "h5", "h6", "hgroup", "nav", "td"],
 		"supported": ["aria-expanded"]
 	}, 
 	"img": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"link": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded"]
 	}, 
 	"list": {
 		"requiredParent": null,
 		"requiredChild": ["group", "listitem"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"listbox": {
 		"requiredParent": null,
 		"requiredChild": ["option"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-required", "aria-orientation"]
 	}, 
 	"listitem": {
 		"requiredParent": ["group", "list"],
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded", "aria-level", "aria-posinset", "aria-setsize"]
 	}, 
 	"log": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"main": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["main"],
 		"supported": ["aria-expanded"]
 	}, 
 	"marquee": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"math": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"menu": {
 		"requiredParent": null,
 		"requiredChild": ["group", "menuitem", "menuitemcheckbox", "menuitemradio"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded", "aria-orientation"]
 	}, 
 	"menubar": {
 		"requiredParent": null,
 		"requiredChild": ["group", "menuitem", "menuitemcheckbox", "menuitemradio"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded", "aria-orientation"]
 	}, 
 	"menuitem": {
 		"requiredParent": ["group", "menu", "menubar"],
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-posinset", "aria-setsize"]
 	}, 
 	"menuitemcheckbox": {
 		"requiredParent": ["menu", "menubar"],
 		"requiredChild": null,
 		"requiredState": ["aria-checked"],
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-posinset", "aria-setsize"]
 	}, 
 	"menuitemradio": {
 		"requiredParent": ["group", "menu", "menubar"],
 		"requiredChild": null,
 		"requiredState": ["aria-checked"],
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-posinset", "aria-setsize"]
 	}, 
 	"navigation": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["main"],
 		"supported": ["aria-expanded"]
 	}, 
 	"none": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": null
 	}, 
 	"note": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"option": {
 		"requiredParent": ["listbox"],
 		"requiredChild": null,
 		"requiredState": ["aria-selected"],
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-checked", "aria-posinset", "aria-selected", "aria-setsize"]
 	}, 
 	"presentation": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": null
 	}, 
 	"progressbar": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-valuemax", "aria-valuemin", "aria-valuenow", "aria-valuetext"]
 	}, 
 	"radio": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-checked"],
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-posinset", "aria-selected", "aria-setsize"]
 	}, 
 	"radiogroup": {
 		"requiredParent": null,
 		"requiredChild": "radio",
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded", "aria-orientation", "aria-required"]
 	}, 
 	"region": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"row": {
 		"requiredParent": ["grid", "rowgroup", "table", "treegrid"],
 		"requiredChild": ["cell", "columnheader", "gridcell", "rowheader"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-colindex", "aria-rowindex", "aria-selected", "aria-expanded", "aria-level","aria-posinset", "aria-setsize"]
 	}, 
 	"rowgroup": {
 		"requiredParent": ["grid", "table", "treegrid"],
 		"requiredChild": ["row"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": null
 	}, 
 	"rowheader": {
 		"requiredParent": ["row"],
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-colindex", "aria-colspan", "aria-expanded", "aria-readonly", "aria-required", "aria-rowindex", "aria-rowspan", "aria-selected", "aria-expanded"]
 	}, 
 	"scrollbar": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-controls", "aria-orientation", "aria-valuemax", "aria-valuemin", "aria-valuenow"],
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded", "aria-valuetext"]
 	}, 
 	"search": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"searchbox": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-activedescendant", "aria-autocomplete", "aria-multiline", "aria-placeholder", "aria-readonly", "aria-required"]
 	}, 
 	"separator": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-valuemax", "aria-valuemin", "aria-valuenow"],
+		"descendantRestrictions": null,
 		"supported": ["aria-orientation", "aria-valuetext"]
 	}, 
 	"slider": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-valuemax", "aria-valuemin", "aria-valuenow"],
+		"descendantRestrictions": null,
 		"supported": ["aria-orientation", "aria-valuetext"]
 	}, 
 	"spinbutton": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-valuemax", "aria-valuemin", "aria-valuenow"],
+		"descendantRestrictions": null,
 		"supported": ["aria-readonly", "aria-required", "aria-valuetext"]
 	}, 
 	"status": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"switch": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-checked"],
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-readonly"]
 	}, 
 	"tab": {
 		"requiredParent": ["tablist"],
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded", "aria-posinset", "aria-selected", "aria-setsize"]
 	}, 
 	"table": {
 		"requiredParent": null,
 		"requiredChild": ["row", "rowgroup"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-colcount", "aria-rowcount"]
 	}, 
 	"tablist": {
 		"requiredParent": null,
 		"requiredChild": ["tab"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-level", "aria-multiselectable", "aria-orientation"]
 	}, 
 	"tabpanel": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"term": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["phrasing"],
 		"supported": ["aria-expanded"]
 	}, 
 	"textbox": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-activedescendant", "aria-autocomplete", "aria-multiline", "aria-placeholder", "aria-readonly", "aria-required"]
 	}, 
 	"timer": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"toolbar": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded", "aria-orientation"]
 	}, 
 	"tooltip": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-expanded"]
 	}, 
 	"tree": {
 		"requiredParent": null,
 		"requiredChild": ["group", "treeitem"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-orientation", "aria-required"]
 	}, 
 	"treegrid": {
 		"requiredParent": null,
 		"requiredChild": ["row", "rowgroup"],
 		"requiredState": null,
+		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-colcount", "aria-expanded", "aria-level", "aria-multiselectable", "aria-orientation", "aria-readonly", "aria-required", "aria-rowcount"]
 	}, 
 	"treeitem": {
 		"requiredParent": ["group", "tree"],
 		"requiredChild": null,
 		"requiredState": ["aria-selected"],
+		"descendantRestrictions": null,
 		"supported": ["aria-checked", "aria-expanded", "aria-level", "aria-posinset", "aria-selected", "aria-setsize"]
 	}
  };
@@ -1110,6 +1180,8 @@ var objElementRules = {
 	}
 };
 
+var arPhrasing = ["a", "abbr", "area", "audio", "b", "bdi", "bdo", "br", "button", "canvas", "cite", "code", "data", "datalist", "del", "dfn", "emembed", "i", "iframe", "img", "input", "ins", "kbd", "label", "link", "map", "mark", "math", "meta", "meter", "noscript", "object", "output", "picture", "progress", "q", "ruby", "s", "samp", "script", "select", "slot", "small", "span", "strong", "sub", "sup", "svg", "template", "text", "area", "time", "u", "var", "video", "wbr"];
+var arInteractive = ["a", "audio", "button", "details", "embed", "iframe", "img", "input", "label", "object", "select", "textarea", "video"];
 var arValidRoles=[];
 var bDetails = false;
 var objWin;
@@ -1151,15 +1223,15 @@ function createResultsWindow() {
 	var objHeading = document.createElement("h1");
 	var objSubHeading = document.createElement("h2");
 	var objClose = document.createElement("button");
-	var objCSS = document.createElement('link');
-	var objTitle = document.createElement('title');
+	var objCSS = document.createElement("link");
+	var objTitle = document.createElement("title");
 
 	objWin = window.open("");
 	objCSS.setAttribute("rel", "stylesheet");  
 	objCSS.setAttribute("type", "text/css");  
 	objCSS.setAttribute("href", "https://juicystudio.com/tpg/ARC/aria-usage.css");
 	objTitle.appendChild(document.createTextNode("WAI-ARIA usage results"));
-	objWin.document.getElementsByTagName("HTML")[0].setAttribute('lang', 'en'); 
+	objWin.document.getElementsByTagName("HTML")[0].setAttribute("lang", "en"); 
 	objWin.document.getElementsByTagName("HEAD")[0].appendChild(objCSS); 
 	objWin.document.getElementsByTagName("HEAD")[0].appendChild(objTitle); 
 
@@ -1191,10 +1263,10 @@ function getDetails() {
 
 		iInstances = arValidRoles[i][1];
 		if (iInstances === 1) {
-			objListItem.appendChild(document.createTextNode('1 instance of '));
+			objListItem.appendChild(document.createTextNode("1 instance of "));
 		}
 		else {
-			objListItem.appendChild(document.createTextNode(iInstances + ' instances of '));
+			objListItem.appendChild(document.createTextNode(iInstances + " instances of "));
 		}
 
 		objCode.appendChild(document.createTextNode(arValidRoles[i][0]));
@@ -1261,6 +1333,9 @@ function displaySummary(objValidWAIAria) {
 			case "invalidproperty":
 				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " elements with invalid WAI-ARIA attributes."));
 				break;
+			case "invaliddesc":
+				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " elements with invalid descendants."));
+				break;
 			case "invalidref":
 				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " attribute values without corresponding targets."));
 				break;
@@ -1308,6 +1383,102 @@ function logResult(strMessage, strElement, strError, strRole, objCode, strMissin
 		objResultsWindow.appendChild(objPre);
 	}
 	bDetails = true;
+}
+
+function checkValidDescendant(objElement, strRole) {
+	var arCheckDescendant = objRoleRules[strRole].descendantRestrictions;
+	var strParentElement = objElement.tagName.toLowerCase();
+	var strParentRole = objElement.getAttribute("role");
+	var strElement;
+	var strChildRole;
+	var bValid;
+	var i;
+
+	if (strParentRole !== "") {
+		strParentElement = strParentElement + " role=" + strParentRole;
+	}
+	if (arCheckDescendant) {
+		switch (arCheckDescendant[0]) {
+			case "phrasing":
+				// For definition or term roles 
+				for (i=0; i<objElement.childNodes.length; i++) {
+					if (objElement.childNodes[i].nodeType === 1) {
+						strElement = objElement.childNodes[i].tagName.toLowerCase();
+						if (arPhrasing.indexOf(strElement) === -1) {
+							logResult("Invalid descendant: ", strParentElement, " with role " + strParentRole + " has child ", strElement, objElement, ".");
+							return false;
+						}
+					}
+				}
+				return true;
+			case "interactive":
+				for (i=0; i<objElement.childNodes.length; i++) {
+					if (objElement.childNodes[i].nodeType === 1) {
+						strElement = objElement.childNodes[i].tagName.toLowerCase();
+						strChildRole = objElement.childNodes[i].getAttribute("role");
+						if (arInteractive.indexOf(strElement) !== -1) {
+							// Some interactive elements have conditional requirements
+							bValid = true;
+							switch (strElement) {
+								case "a":
+									if (objElement.childNodes[i].hasAttribute("href")) {
+										bValid = false;
+									}
+									break;
+								case "audio":
+								case "video":
+									if (objElement.childNodes[i].hasAttribute("controls")) {
+										bValid = false;
+									}
+									break;
+								case "img":
+								case "object":
+									if (objElement.childNodes[i].hasAttribute("usemap")) {
+										bValid = false;
+									}
+									break;
+								case "input":
+									if (objElement.childNodes[i].getAttribute("type") !== "hidden") {
+										bValid = false;
+									}
+									break;
+								default: 
+									bValid = false;
+							}
+							if (!bValid) {
+								logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".");
+								return false;
+							}
+						}
+						else if (strChildRole !== "") {
+							if (arInteractive.indexOf(strChildRole) !== -1) {
+								strElement = strElement + " role=" + strChildRole;
+								logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".");
+								return false;
+							}
+						}
+					}
+				}
+				return true;
+			default:
+				// Specific children not allowed
+				for (i=0; i<objElement.childNodes.length; i++) {
+					if (objElement.childNodes[i].nodeType === 1) {
+						strElement = objElement.childNodes[i].tagName.toLowerCase();
+						strChildRole = objElement.childNodes[i].getAttribute("role");
+						if (arCheckDescendant.indexOf(strElement) !== -1) {
+							logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".");
+							return false;
+						}
+						else if (arCheckDescendant.indexOf(strChildRole) !== -1) {
+							logResult("Invalid descendant: ", strParentElement, " has child ", strChildRole, objElement, ".");
+							return false;
+						}
+					}
+				}
+		}
+	}
+	return true;
 }
 
 function addMessage(strMessage) {
@@ -1481,6 +1652,7 @@ function checkWAIAria() {
 		missingchild: 0,
 		missingstate: 0,
 		invalidproperty: 0,
+		invaliddesc: 0,
 		invalidref: 0
 	};
 	var objElements = document.getElementsByTagName("*");
@@ -1568,6 +1740,9 @@ function checkWAIAria() {
 				if (!checkValidProperties(objElements[i], strRole)) {
 					objValidWAIAria.invalidproperty++;
 				}
+				if (!checkValidDescendant(objElements[i], strRole)) {
+					objValidWAIAria.invaliddesc++;
+				}
 			}
 		}
 		else {
@@ -1582,7 +1757,7 @@ function checkWAIAria() {
 	}
 	displaySummary(objValidWAIAria);
 	if (!bDetails) {
-		addMessage('No details to display.');
+		addMessage("No details to display.");
 	}
 }
 checkWAIAria();
