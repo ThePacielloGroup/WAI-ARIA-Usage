@@ -1217,14 +1217,15 @@ function conditionalElement(objElement, strElement) {
 	return strElement;
 }
 
-function createResultsWindow() {
+function createResultsWindow(objValidWAIAria) {
 	var objResultsWindow = document.createElement("div");
-	var objSummaryContainer = document.createElement("div");
+	var objContainer = document.createElement("div");
 	var objHeading = document.createElement("h1");
 	var objSubHeading = document.createElement("h2");
 	var objClose = document.createElement("button");
 	var objCSS = document.createElement("link");
 	var objTitle = document.createElement("title");
+	var i;
 
 	objWin = window.open("");
 	objCSS.setAttribute("rel", "stylesheet");  
@@ -1239,13 +1240,22 @@ function createResultsWindow() {
 	objHeading.setAttribute("id", "__ARIA_validator_dlgtitle__");
 	objHeading.appendChild(document.createTextNode("WAI-ARIA usage results"));
 	objResultsWindow.appendChild(objHeading);
-	objSummaryContainer.setAttribute("id", "__ARIA_validator_summary__");
+	objContainer.setAttribute("id", "__ARIA_validator_summary__");
 	objSubHeading.appendChild(document.createTextNode("Summary"));
-	objSummaryContainer.appendChild(objSubHeading);
-	objResultsWindow.appendChild(objSummaryContainer);
+	objContainer.appendChild(objSubHeading);
+	objResultsWindow.appendChild(objContainer);
 	objSubHeading = document.createElement("h2");
 	objSubHeading.appendChild(document.createTextNode("Details"));
 	objResultsWindow.appendChild(objSubHeading);
+
+	// Set up containers for the groups
+	for (i in objValidWAIAria) {
+		if (i !== "valid") {
+			objContainer = document.createElement("div");
+			objContainer.setAttribute("id", i + "Container");
+			objResultsWindow.appendChild(objContainer);
+		}
+	}
 
 	objWin.document.body.appendChild(objResultsWindow);
 }
@@ -1291,15 +1301,19 @@ function getIndex(strRole) {
 function displaySummary(objValidWAIAria) {
 	var objList = document.createElement("ul");
 	var objListItem;
+	var objAnchor;
 	var objDetails = document.createElement("details");
 	var i;
 	var bAppend;
 	var objDetSum;
 	var objDetList;
+	var strPhrase;
 	var objSummary = objWin.document.getElementById("__ARIA_validator_summary__");
 
 	for(i in objValidWAIAria) {
 		objListItem = document.createElement("li");
+		objAnchor = document.createElement("a");
+		objAnchor.setAttribute("href", "#" + i + "Head");
 		bAppend = true;
 		switch (i) {
 			case "valid":
@@ -1316,33 +1330,40 @@ function displaySummary(objValidWAIAria) {
 				}
 				break;
 			case "unknown":
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " unknown elements."));
+				strPhrase = objValidWAIAria[i] + " unknown elements.";
 				break;
 			case "nonexistent":
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " non-existent roles."));
+				strPhrase = objValidWAIAria[i] + " non-existent roles.";
 				break;
 			case "missingparent":
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " missing parent roles."));
+				strPhrase = objValidWAIAria[i] + " missing parent roles.";
 				break;
 			case "missingchild":
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " missing child roles."));
+				strPhrase = objValidWAIAria[i] + " missing child roles.";
 				break;
 			case "missingstate":
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " roles without required states."));
+				strPhrase = objValidWAIAria[i] + " roles without required states.";
 				break;
 			case "invalidproperty":
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " elements with invalid WAI-ARIA attributes."));
+				strPhrase = objValidWAIAria[i] + " elements with invalid WAI-ARIA attributes.";
 				break;
 			case "invaliddesc":
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " elements with invalid descendants."));
+				strPhrase = objValidWAIAria[i] + " elements with invalid descendants.";
 				break;
 			case "invalidref":
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " attribute values without corresponding targets."));
+				strPhrase = objValidWAIAria[i] + " attribute values without corresponding targets.";
 				break;
 			default:
-				objListItem.appendChild(document.createTextNode(objValidWAIAria[i] + " " + i + " roles."));
+				strPhrase = objValidWAIAria[i] + objValidWAIAria[i] + " " + i + " roles.";
 		}
 		if (bAppend) {
+			if (objValidWAIAria[i] > 0) {
+				objAnchor.appendChild(document.createTextNode(strPhrase));
+				objListItem.appendChild(objAnchor);
+			}
+			else {
+				objListItem.appendChild(document.createTextNode(strPhrase));
+			}
 			objList.appendChild(objListItem);
 		}
 	}
@@ -1350,14 +1371,55 @@ function displaySummary(objValidWAIAria) {
 	objSummary.appendChild(objList);
 }
 
-function logResult(strMessage, strElement, strError, strRole, objCode, strMissing) {
-	var objResultsWindow = objWin.document.getElementById("__ARIA_validator_resultsWindow__");
+function addHeading(objGroup, strTargetContainer) {
+	var objHeading = document.createElement("h3");
+
+	objHeading.setAttribute("id", strTargetContainer + "Head");
+	switch (strTargetContainer) {
+		case "invalid":
+			objHeading.appendChild(document.createTextNode("Invalid roles"));
+			break;
+		case "unnecessary":
+			objHeading.appendChild(document.createTextNode("Unnecessary roles"));
+			break;
+		case "unknown":
+			objHeading.appendChild(document.createTextNode("Unknown elements"));
+			break;
+		case "nonexistent":
+			objHeading.appendChild(document.createTextNode("Non-existent roles"));
+			break;
+		case "missingparent":
+			objHeading.appendChild(document.createTextNode("Missing parent roles"));
+			break;
+		case "missingchild":
+			objHeading.appendChild(document.createTextNode("Missing child roles"));
+			break;
+		case "missingstate":
+			objHeading.appendChild(document.createTextNode("Missing required state"));
+			break;
+		case "invalidproperty":
+			objHeading.appendChild(document.createTextNode("Invalid properties"));
+			break;
+		case "invaliddesc":
+			objHeading.appendChild(document.createTextNode("Invalid descendants"));
+			break;
+		case "invalidref":
+			objHeading.appendChild(document.createTextNode("Invalid references"));
+	}
+	objGroup.appendChild(objHeading);
+}
+
+function logResult(strMessage, strElement, strError, strRole, objCode, strMissing, strTargetContainer) {
+	var objGroup = objWin.document.getElementById(strTargetContainer + "Container");
 	var objMessage = document.createElement("p");
 	var objElement = document.createElement("code");
 	var objRole = document.createElement("code");
 	var objPre = document.createElement("pre");
 	var objMarkup = document.createElement("code");
 
+	if (objGroup.childNodes.length === 0) {
+		addHeading(objGroup, strTargetContainer);
+	}
 	objElement.appendChild(document.createTextNode(strElement));
 	objRole.appendChild(document.createTextNode(strRole));
 
@@ -1375,14 +1437,42 @@ function logResult(strMessage, strElement, strError, strRole, objCode, strMissin
 		objMessage.appendChild(document.createTextNode(strMissing));
 	}
 
-	objResultsWindow.appendChild(objMessage);
+	objGroup.appendChild(objMessage);
 
 	if (objCode) {
 		objMarkup.appendChild(document.createTextNode(objCode.outerHTML));
 		objPre.appendChild(objMarkup);
-		objResultsWindow.appendChild(objPre);
+		objGroup.appendChild(objPre);
 	}
 	bDetails = true;
+}
+
+function checkConditionalInteractive(strElement, objElement) {
+	switch (strElement) {
+		case "a":
+			if (objElement.hasAttribute("href")) {
+				return false;
+			}
+			return true;
+		case "audio":
+		case "video":
+			if (objElement.hasAttribute("controls")) {
+				return false;
+			}
+			return true;
+		case "img":
+		case "object":
+			if (objElement.hasAttribute("usemap")) {
+				return false;
+			}
+			return true;
+		case "input":
+			if (objElement.getAttribute("type") !== "hidden") {
+				return false;
+			}
+			return true;
+	}
+	return false;
 }
 
 function checkValidDescendant(objElement, strRole) {
@@ -1391,7 +1481,7 @@ function checkValidDescendant(objElement, strRole) {
 	var strParentRole = objElement.getAttribute("role");
 	var strElement;
 	var strChildRole;
-	var bValid;
+	var objParent = objElement;
 	var i;
 
 	if (strParentRole !== "") {
@@ -1405,60 +1495,46 @@ function checkValidDescendant(objElement, strRole) {
 					if (objElement.childNodes[i].nodeType === 1) {
 						strElement = objElement.childNodes[i].tagName.toLowerCase();
 						if (arPhrasing.indexOf(strElement) === -1) {
-							logResult("Invalid descendant: ", strParentElement, " with role " + strParentRole + " has child ", strElement, objElement, ".");
+							logResult("Invalid descendant: ", strParentElement, " with role " + strParentRole + " has child ", strElement, objElement, ".", "invaliddesc");
 							return false;
 						}
 					}
 				}
 				return true;
 			case "interactive":
+				// Some interactive elements have conditional requirements
 				for (i=0; i<objElement.childNodes.length; i++) {
 					if (objElement.childNodes[i].nodeType === 1) {
 						strElement = objElement.childNodes[i].tagName.toLowerCase();
 						strChildRole = objElement.childNodes[i].getAttribute("role");
 						if (arInteractive.indexOf(strElement) !== -1) {
-							// Some interactive elements have conditional requirements
-							bValid = true;
-							switch (strElement) {
-								case "a":
-									if (objElement.childNodes[i].hasAttribute("href")) {
-										bValid = false;
-									}
-									break;
-								case "audio":
-								case "video":
-									if (objElement.childNodes[i].hasAttribute("controls")) {
-										bValid = false;
-									}
-									break;
-								case "img":
-								case "object":
-									if (objElement.childNodes[i].hasAttribute("usemap")) {
-										bValid = false;
-									}
-									break;
-								case "input":
-									if (objElement.childNodes[i].getAttribute("type") !== "hidden") {
-										bValid = false;
-									}
-									break;
-								default: 
-									bValid = false;
-							}
-							if (!bValid) {
-								logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".");
+							if (!checkConditionalInteractive(strElement, objElement.childNodes[i])) {
+								logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".", "invaliddesc");
 								return false;
 							}
 						}
 						else if (strChildRole !== "") {
 							if (arInteractive.indexOf(strChildRole) !== -1) {
 								strElement = strElement + " role=" + strChildRole;
-								logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".");
+								logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".", "invaliddesc");
 								return false;
 							}
 						}
 					}
 				}
+				do {
+					// Check interactive element isn't within a native interactive element
+					objParent = objParent.parentNode;
+					if (objParent.nodeType === 1) {
+						strElement = objParent.tagName.toLowerCase();
+						if (arInteractive.indexOf(strElement) !== -1) {
+							if (!checkConditionalInteractive(strElement, objParent)) {
+								logResult("Invalid descendant: ", strParentElement, " has parent ", strElement, objParent, ".", "invaliddesc");
+								return false;
+							}
+						}
+					}
+				} while (objParent.tagName.toLowerCase() !== "body");
 				return true;
 			default:
 				// Specific children not allowed
@@ -1467,11 +1543,11 @@ function checkValidDescendant(objElement, strRole) {
 						strElement = objElement.childNodes[i].tagName.toLowerCase();
 						strChildRole = objElement.childNodes[i].getAttribute("role");
 						if (arCheckDescendant.indexOf(strElement) !== -1) {
-							logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".");
+							logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".", "invaliddesc");
 							return false;
 						}
 						else if (arCheckDescendant.indexOf(strChildRole) !== -1) {
-							logResult("Invalid descendant: ", strParentElement, " has child ", strChildRole, objElement, ".");
+							logResult("Invalid descendant: ", strParentElement, " has child ", strChildRole, objElement, ".", "invaliddesc");
 							return false;
 						}
 					}
@@ -1502,7 +1578,7 @@ function checkRequiredParent(objElement, strRole) {
 				return true;
 			}
 		}
-		logResult("Role ", strRole, " missing required parent role ", "", objOriginal, " (" + arParent + ").");
+		logResult("Role ", strRole, " missing required parent role ", "", objOriginal, " (" + arParent + ").", "missingparent");
 		return false;
 	}
 	return true;
@@ -1522,7 +1598,7 @@ function checkRequiredChildren(objElement, strRole) {
 				}
 			}
 		}
-		logResult("Role ", strRole, " missing required child role ", "", objElement, " (" + arChild + ").");
+		logResult("Role ", strRole, " missing required child role ", "", objElement, " (" + arChild + ").", "missingchild");
 		return false;
 	}
 	return true;
@@ -1544,7 +1620,7 @@ function checkRequiredState(objElement, strRole) {
 	if (arState) {
 		for (i=0; i<arState.length; i++) {
 			if (!objElement.hasAttribute(arState[i])) {
-				logResult("Role ", strRole, " missing required state ", "", objElement, " (" + arState[i] + ").");
+				logResult("Role ", strRole, " missing required state ", "", objElement, " (" + arState[i] + ").", "missingstate");
 				return false;
 			}
 		}
@@ -1582,7 +1658,7 @@ function checkValidProperties(objElement, strRole) {
 			bGlobal = arGlobal.indexOf(strAttribute);
 			if (!strRole && bGlobal === -1) {
 				// No role without a global attribute
-				logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").");
+				logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 				return false;
 			}
 			else if (bGlobal === -1) {
@@ -1594,7 +1670,7 @@ function checkValidProperties(objElement, strRole) {
 					bFound = true;
 				}
 				if (!bFound) {
-					logResult("Role ", strRole, " has invalid attribute ", "", objElement, "(" + strAttribute + ").");
+					logResult("Role ", strRole, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 					return false;
 				}
 			}
@@ -1621,7 +1697,7 @@ function checkValidReferences(objElement) {
 		strAttributeValue = arAttributes[i].value;
 		if (arRefattributes.indexOf(strAttribute) >= 0) {
 			if (strAttributeValue === "") {
-				logResult("Attribute ", strAttribute, " has an empty string.", "", objElement, "");
+				logResult("Attribute ", strAttribute, " has an empty string.", "", objElement, "", "invalidref");
 				bValid = false;
 			}
 			else {
@@ -1629,7 +1705,7 @@ function checkValidReferences(objElement) {
 				for (j in arRefs) {
 					objTarget = document.getElementById(arRefs[j]);
 					if (!objTarget) {
-						logResult("Attribute ", strAttribute, " does not reference a corresponding element.", "", objElement, "");
+						logResult("Attribute ", strAttribute, " does not reference a corresponding element.", "", objElement, "", "invalidref");
 						bValid = false;
 						break;
 					}
@@ -1664,7 +1740,7 @@ function checkWAIAria() {
 	var iRoleIndex;
 	var i;
 
-	createResultsWindow();
+	createResultsWindow(objValidWAIAria);
 
  	// Iterate through all elements in the DOM
 	for (i=0; i < objElements.length; i++) {
@@ -1681,7 +1757,7 @@ function checkWAIAria() {
 				if (!objRoleRules.hasOwnProperty(strRole)) {
 					// The specified role doesn"t exist
 					objValidWAIAria.nonexistent++;
-					logResult("Element ", strElement, " has non-existent role ", strRole, objElements[i], ".");
+					logResult("Element ", strElement, " has non-existent role ", strRole, objElements[i], ".", "nonexistent");
 				}
 				else if (arAllowed.indexOf(strRole) !== -1) {
 					// A specific role is valid for the element
@@ -1708,12 +1784,12 @@ function checkWAIAria() {
 				else if (strRole === objElementRules[strCheckElement].nativeRole) {
 					// The role is unecessary for the element
 					objValidWAIAria.unnecessary++;
-					logResult("", strElement, "", strRole, objElements[i], ".");
+					logResult("", strElement, "", strRole, objElements[i], ".", "unnecessary");
 				}
 				else {
 					// The role is invalid for the element
 					objValidWAIAria.invalid++;
-					logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".");
+					logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
 				}
 			}
 			else {
@@ -1721,10 +1797,10 @@ function checkWAIAria() {
 				if (!objRoleRules.hasOwnProperty(strRole)) {
 					// The specified role doesn"t exist
 					objValidWAIAria.nonexistent++;
-					logResult("Unknown element ", strElement, " has non-existent role ", strRole, objElements[i], ".");
+					logResult("Unknown element ", strElement, " has non-existent role ", strRole, objElements[i], ".", "unknown");
 				}
 				else {
-					logResult("Unknown element ", strElement, " has role ", strRole, objElements[i], ".");
+					logResult("Unknown element ", strElement, " has role ", strRole, objElements[i], ".", "unknown");
 				}
 			}
 			if (bValid) {
