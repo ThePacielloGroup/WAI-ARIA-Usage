@@ -1586,13 +1586,14 @@ function checkRequiredParent(objElement, strRole) {
 
 function checkRequiredChildren(objElement, strRole) {
 	var arChild = objRoleRules[strRole].requiredChild;
+	var objChildren = objElement.getElementsByTagName("*");
 	var strChildRole;
 	var i;
 
 	if (arChild) {
-		for (i=0; i<objElement.childNodes.length; i++) {
-			if (objElement.childNodes[i].nodeType === 1) {
-				strChildRole = objElement.childNodes[i].getAttribute("role");
+		for (i=0; i<objChildren.length; i++) {
+			if (objChildren[i].nodeType === 1) {
+				strChildRole = objChildren[i].getAttribute("role");
 				if (arChild.indexOf(strChildRole) !== -1) {
 					return true;
 				}
