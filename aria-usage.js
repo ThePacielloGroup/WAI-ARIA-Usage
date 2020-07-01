@@ -1592,11 +1592,9 @@ function checkRequiredChildren(objElement, strRole) {
 
 	if (arChild) {
 		for (i=0; i<objChildren.length; i++) {
-			if (objChildren[i].nodeType === 1) {
-				strChildRole = objChildren[i].getAttribute("role");
-				if (arChild.indexOf(strChildRole) !== -1) {
-					return true;
-				}
+			strChildRole = objChildren[i].getAttribute("role");
+			if (arChild.indexOf(strChildRole) !== -1) {
+				return true;
 			}
 		}
 		logResult("Role ", strRole, " missing required child role ", "", objElement, " (" + arChild + ").", "missingchild");
