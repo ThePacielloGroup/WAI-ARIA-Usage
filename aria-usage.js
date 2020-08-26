@@ -1354,7 +1354,7 @@ function displaySummary(objValidWAIAria) {
 				strPhrase = objValidWAIAria[i] + " attribute values without corresponding targets.";
 				break;
 			default:
-				strPhrase = objValidWAIAria[i] + objValidWAIAria[i] + " " + i + " roles.";
+				strPhrase = objValidWAIAria[i] + " " + i + " roles.";
 		}
 		if (bAppend) {
 			if (objValidWAIAria[i] > 0) {
@@ -1781,9 +1781,15 @@ function checkWAIAria() {
 					bValid = true;
 				}
 				else if (strRole === objElementRules[strCheckElement].nativeRole) {
-					// The role is unecessary for the element
-					objValidWAIAria.unnecessary++;
-					logResult("", strElement, "", strRole, objElements[i], ".", "unnecessary");
+					// Check exceptions
+					if (strRole === "link" && !objElements[i].getAttribute("href")){
+						// Exception
+					}
+					else {
+						// The role is unecessary for the element
+						objValidWAIAria.unnecessary++;
+						logResult("", strElement, "", strRole, objElements[i], ".", "unnecessary");
+					}
 				}
 				else {
 					// The role is invalid for the element
