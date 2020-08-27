@@ -1272,16 +1272,18 @@ function getDetails() {
 		objCode = document.createElement("code");
 
 		iInstances = arValidRoles[i][1];
-		if (iInstances === 1) {
-			objListItem.appendChild(document.createTextNode("1 instance of "));
-		}
-		else {
-			objListItem.appendChild(document.createTextNode(iInstances + " instances of "));
-		}
+		if (iInstances) {
+			if (iInstances === 1) {
+				objListItem.appendChild(document.createTextNode("1 instance of "));
+			}
+			else {
+				objListItem.appendChild(document.createTextNode(iInstances + " instances of "));
+			}
 
-		objCode.appendChild(document.createTextNode(arValidRoles[i][0]));
-		objListItem.appendChild(objCode);
-		objList.appendChild(objListItem);
+			objCode.appendChild(document.createTextNode(arValidRoles[i][0]));
+			objListItem.appendChild(objCode);
+			objList.appendChild(objListItem);
+		}
 	}
 	return objList;
 }
