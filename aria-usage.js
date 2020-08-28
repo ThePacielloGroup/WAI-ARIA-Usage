@@ -1375,8 +1375,13 @@ function displaySummary(objValidWAIAria) {
 
 function addHeading(objGroup, strTargetContainer) {
 	var objHeading = document.createElement("h3");
+	var objBTT = document.createElement("a");
+
+	objBTT.setAttribute("href", "#__ARIA_validator_summary__");
+	objBTT.appendChild(document.createTextNode("Back to the top"));
 
 	objHeading.setAttribute("id", strTargetContainer + "Head");
+
 	switch (strTargetContainer) {
 		case "invalid":
 			objHeading.appendChild(document.createTextNode("Invalid roles"));
@@ -1409,6 +1414,7 @@ function addHeading(objGroup, strTargetContainer) {
 			objHeading.appendChild(document.createTextNode("Invalid references"));
 	}
 	objGroup.appendChild(objHeading);
+	objGroup.appendChild(objBTT)
 }
 
 function logResult(strMessage, strElement, strError, strRole, objCode, strMissing, strTargetContainer) {
@@ -1733,6 +1739,7 @@ function checkWAIAria() {
 		invalidref: 0
 	};
 	var objElements = document.getElementsByTagName("*");
+	var objBTT = document.createElement("a");
 	var bValid;
 	var strElement;
 	var strRole;
@@ -1785,7 +1792,10 @@ function checkWAIAria() {
 				else if (strRole === objElementRules[strCheckElement].nativeRole) {
 					// Check exceptions
 					if (strRole === "link" && !objElements[i].getAttribute("href")){
-						// Exception
+						// Exception for a and area elements
+					}
+					else if ((strRole === "textbox" || strRole === "searchbox") && objElements[i].tagName === "INPUT" && objElements[i].getAttribute("list")){
+						// Exception for input element with a list attribute
 					}
 					else {
 						// The role is unecessary for the element
@@ -1841,6 +1851,11 @@ function checkWAIAria() {
 	displaySummary(objValidWAIAria);
 	if (!bDetails) {
 		addMessage("No details to display.");
+	}
+	else {
+		objBTT.setAttribute("href", "#__ARIA_validator_summary__");
+		objBTT.appendChild(document.createTextNode("Back to the top"));
+		objWin.document.body.appendChild(objBTT);
 	}
 }
 checkWAIAria();
