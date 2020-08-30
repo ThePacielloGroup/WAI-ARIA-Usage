@@ -1573,6 +1573,23 @@ function addMessage(strMessage) {
 	objResultsWindow.appendChild(objMessage);
 }
 
+function checkParentOwns(objElement, arParent) {
+	var objRoles = document.querySelectorAll("[role='tablist']");
+	var iID = objElement.getAttribute("id");
+	var arOwns = [];
+	var i;
+
+	for (i=0; i<objRoles.length; i++) {
+		arOwns = objRoles[i].getAttribute("aria-owns").split(" ");
+		if (arOwns.indexOf(iID) !== -1) {
+			return true;
+		}
+		console.log(arOwns);
+	}
+
+	return false;
+}
+
 function checkRequiredParent(objElement, strRole) {
 	var strParentRole;
 	var objOriginal = objElement;
@@ -1586,6 +1603,12 @@ function checkRequiredParent(objElement, strRole) {
 				return true;
 			}
 		}
+		// Not found - check for aria-owns relationship
+		if (objOriginal.getAttribute("id")) {
+			if (checkParentOwns(objOriginal, arParent)) {
+				return true;
+			}
+		}
 		logResult("Role ", strRole, " missing required parent role ", "", objOriginal, " (" + arParent + ").", "missingparent");
 		return false;
 	}
@@ -1595,6 +1618,8 @@ function checkRequiredParent(objElement, strRole) {
 function checkRequiredChildren(objElement, strRole) {
 	var arChild = objRoleRules[strRole].requiredChild;
 	var objChildren = objElement.getElementsByTagName("*");
+	var arOwns = [];
+	var objChild;
 	var strChildRole;
 	var i;
 
@@ -1603,6 +1628,18 @@ function checkRequiredChildren(objElement, strRole) {
 			strChildRole = objChildren[i].getAttribute("role");
 			if (arChild.indexOf(strChildRole) !== -1) {
 				return true;
+			}
+		}
+		// Not found - check for aria-owns relationship
+		if (arOwns = objElement.getAttribute("aria-owns")) {
+			arOwns = arOwns.split(" ");
+
+			for (i=0; i<arOwns.length; i++) {
+				if (objChild = document.getElementById(arOwns[i])) {
+					if (arChild.indexOf(objChild.getAttribute("role")) !== -1) {
+						return true;
+					}
+				}
 			}
 		}
 		logResult("Role ", strRole, " missing required child role ", "", objElement, " (" + arChild + ").", "missingchild");
