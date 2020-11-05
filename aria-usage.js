@@ -1535,7 +1535,7 @@ function checkValidDescendant(objElement, strRole) {
 					objParent = objParent.parentNode;
 					if (objParent.nodeType === 1) {
 						strElement = objParent.tagName.toLowerCase();
-						if (arInteractive.indexOf(strElement) !== -1) {
+						if (arInteractive.indexOf(strElement) !== -1 && strElement !== 'label') {
 							if (!checkConditionalInteractive(strElement, objParent)) {
 								logResult("Invalid descendant: ", strParentElement, " has parent ", strElement, objParent, ".", "invaliddesc");
 								return false;
