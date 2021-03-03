@@ -1076,7 +1076,7 @@ var objElementRules = {
 	"svg": {
 		"nodeName": "svg",
 		"nativeRole": null,
-		"allowedRoles": ["application", "document", "img"]
+		"allowedRoles": "all"
 	},
 	"sub": {
 		"nodeName": "sub",
