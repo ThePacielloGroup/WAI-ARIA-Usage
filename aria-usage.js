@@ -566,7 +566,7 @@ var objElementRules = {
 	"br": {
 		"nodeName": "br",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": ["none", "presentation"]
 	},
 	"button": {
 		"nodeName": "button",
