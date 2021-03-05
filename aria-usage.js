@@ -390,7 +390,7 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": ["aria-valuemax", "aria-valuemin", "aria-valuenow"],
 		"descendantRestrictions": null,
-		"supported": ["aria-readonly", "aria-required", "aria-valuetext"]
+		"supported": ["aria-readonly", "aria-required", "aria-valuetext", "aria-placeholder"]
 	}, 
 	"status": {
 		"requiredParent": null,
@@ -775,12 +775,12 @@ var objElementRules = {
 	},
 	"input-date": {
 		"nodeName": "input",
-		"nativeRole": null,
+		"nativeRole": "textbox",
 		"allowedRoles": []
 	},
 	"input-datetime-local": {
 		"nodeName": "input",
-		"nativeRole": null,
+		"nativeRole": "textbox",
 		"allowedRoles": []
 	},
 	"input-email": {
@@ -805,7 +805,7 @@ var objElementRules = {
 	},
 	"input-month": {
 		"nodeName": "input",
-		"nativeRole": null,
+		"nativeRole": "textbox",
 		"allowedRoles": []
 	},
 	"input-number": {
@@ -855,7 +855,7 @@ var objElementRules = {
 	},
 	"input-time": {
 		"nodeName": "input",
-		"nativeRole": null,
+		"nativeRole": "textbox",
 		"allowedRoles": []
 	},
 	"input-url": {
@@ -865,7 +865,7 @@ var objElementRules = {
 	},
 	"input-week": {
 		"nodeName": "input",
-		"nativeRole": null,
+		"nativeRole": "textbox",
 		"allowedRoles": []
 	},
 	"ins": {
@@ -1580,11 +1580,13 @@ function checkParentOwns(objElement, arParent) {
 	var i;
 
 	for (i=0; i<objRoles.length; i++) {
-		arOwns = objRoles[i].getAttribute("aria-owns").split(" ");
-		if (arOwns.indexOf(iID) !== -1) {
-			return true;
+		if (objRoles[i].hasAttribute("aria-owns")) {
+			arOwns = objRoles[i].getAttribute("aria-owns").split(" ");
+			if (arOwns.indexOf(iID) !== -1) {
+				return true;
+			}
+			console.log(arOwns);
 		}
-		console.log(arOwns);
 	}
 
 	return false;
@@ -1704,6 +1706,40 @@ function checkValidProperties(objElement, strRole) {
 				// No role without a global attribute
 				logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 				return false;
+			}
+			if (objElement.hasAttribute("placeholder") && objElement.hasAttribute("aria-placeholder")) {
+				logResult("Element ", strTagName, " has a native placeholder attribute along with ", "", objElement, strAttribute + ".", "invalidproperty");
+				return false;
+			}
+			if (objElement.hasAttribute("readonly") && objElement.getAttribute("aria-readonly")) {
+				if (objElement.getAttribute("aria-readonly") === "false") {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+				}
+				else {
+					logResult("Warning: Element ", strTagName, " has a native readonly attribute along with ", "", objElement, strAttribute + ".", "invalidproperty");
+					return false;
+				}
+			}
+			if (objElement.hasAttribute("colspan") && objElement.hasAttribute("aria-colspan")) {
+				if (objElement.getAttribute("colspan") !== objElement.getAttribute("aria-colspan")) {
+					logResult("Element ", strTagName, " has colspan and aria-colspan attribute values that do not match ", "", objElement, ".", "invalidproperty");
+					return false;
+				}
+				else {
+					logResult("Warning: Element ", strTagName, " has a native colspan attribute along with ", "", objElement, strAttribute + ".", "invalidproperty");
+					return false;
+				}
+			}
+			if (objElement.hasAttribute("rowspan") && objElement.hasAttribute("aria-rowspan")) {
+				if (objElement.getAttribute("rowspan") !== objElement.getAttribute("aria-rowspan")) {
+					logResult("Element ", strTagName, " has rowspan and aria-rowspan attribute values that do not match ", "", objElement, ".", "invalidproperty");
+					return false;
+				}
+				else {
+					logResult("Warning: Element ", strTagName, " has a native rowspan attribute along with ", "", objElement, strAttribute + ".", "invalidproperty");
+					return false;
+				}
 			}
 			else if (bGlobal === -1) {
 				// Check if the attribute is supported or a required state for the role
