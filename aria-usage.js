@@ -676,7 +676,12 @@ var objElementRules = {
 	"figure": {
 		"nodeName": "figure",
 		"nativeRole": "figure",
-		"allowedRoles": ["group", "none", "presentation"]
+		"allowedRoles": []
+	},
+	"figure-nofigcap": {
+		"nodeName": "figure",
+		"nativeRole": "figure",
+		"allowedRoles": "all"
 	},
 	"footer": {
 		"nodeName": "footer",
@@ -1195,7 +1200,7 @@ function conditionalElement(objElement, strElement) {
 				return "ahref";
 			}
 			else {
-				return "ahref";
+				return "anohref";
 			}
 		case "area" : 
 			if (!objElement.getAttribute("href")) {
@@ -1207,10 +1212,15 @@ function conditionalElement(objElement, strElement) {
 				return "img-noalt";
 			}
 			break;
+		case "figure" : 
+			if (objElement.getElementsByTagName("figcaption").length === 0) {
+				return "figure-nofigcap";
+			}
+			break;
 		case "input" : 
 			strType = objElement.getAttribute("type");
 			if (!strType || strType === "password") {
-				strType = "text";
+				strType = "password";
 			}
 			return strElement + "-" + strType;
 	}
@@ -1585,7 +1595,6 @@ function checkParentOwns(objElement, arParent) {
 			if (arOwns.indexOf(iID) !== -1) {
 				return true;
 			}
-			console.log(arOwns);
 		}
 	}
 
@@ -1697,11 +1706,20 @@ function checkValidProperties(objElement, strRole) {
 		arValid = objRoleRules[strRole].supported;
 		arState = objRoleRules[strRole].requiredState;
   	}
-
 	for (i=0; i<arAttributes.length; i++) {
 		strAttribute = arAttributes[i].nodeName;
 		if (strAttribute.substring(0, 5) === "aria-") {
 			bGlobal = arGlobal.indexOf(strAttribute);
+			if (objElement.tagName === "INPUT" && objElement.hasAttribute("type")) {
+				if (objElement.getAttribute("type").toLowerCase() === "hidden") {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+				}
+			}
+			if (objElement.hasAttribute("contenteditable") && objElement.getAttribute("aria-readonly")) {
+				logResult("Element ", strTagName, " has a contenteditable attribute along with aria-readonly", "", objElement, ".", "invalidproperty");
+				return false;
+			}
 			if (!strRole && bGlobal === -1) {
 				// No role without a global attribute
 				logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
@@ -1718,6 +1736,16 @@ function checkValidProperties(objElement, strRole) {
 				}
 				else {
 					logResult("Warning: Element ", strTagName, " has a native readonly attribute along with ", "", objElement, strAttribute + ".", "invalidproperty");
+					return false;
+				}
+			}
+			if (objElement.hasAttribute("disabled") && objElement.getAttribute("aria-disabled")) {
+				if (objElement.getAttribute("aria-disabled") === "false") {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+				}
+				else {
+					logResult("Warning: Element ", strTagName, " has a native disabled attribute along with ", "", objElement, strAttribute + ".", "invalidproperty");
 					return false;
 				}
 			}
