@@ -51,6 +51,7 @@ var objRoleRules = {
 	}, 
 	"cell": {
 		"requiredParent": "row",
+		"requiredParentNative": "tr",
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
@@ -65,6 +66,7 @@ var objRoleRules = {
 	}, 
 	"columnheader": {
 		"requiredParent": "row",
+		"requiredParentNative": "tr",
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
@@ -143,12 +145,14 @@ var objRoleRules = {
 	"grid": {
 		"requiredParent": null,
 		"requiredChild": ["row", "rowgroup"],
+		"requiredChildNative": ["tr"],
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-colcount", "aria-expanded", "aria-level", "aria-multiselectable", "aria-readonly", "aria-rowcount"]
 	}, 
 	"gridcell": {
 		"requiredParent": ["row"],
+		"requiredParentNative": ["tr"],
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
@@ -331,20 +335,25 @@ var objRoleRules = {
 	}, 
 	"row": {
 		"requiredParent": ["grid", "rowgroup", "table", "treegrid"],
+		"requiredParentNative": ["table", "thead", "tbody", "tfoot"],
 		"requiredChild": ["cell", "columnheader", "gridcell", "rowheader"],
+		"requiredChildNative": ["td", "th"],
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-colindex", "aria-rowindex", "aria-selected", "aria-expanded", "aria-level","aria-posinset", "aria-setsize"]
 	}, 
 	"rowgroup": {
 		"requiredParent": ["grid", "table", "treegrid"],
+		"requiredParentNative": "table",
 		"requiredChild": ["row"],
+		"requiredChildNative": "tr",
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null
 	}, 
 	"rowheader": {
 		"requiredParent": ["row"],
+		"requiredParentNative": ["tr"],
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
@@ -416,6 +425,7 @@ var objRoleRules = {
 	"table": {
 		"requiredParent": null,
 		"requiredChild": ["row", "rowgroup"],
+		"requiredChild": ["tr", "thead", "tbody", "tfoot"],
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-colcount", "aria-rowcount"]
@@ -941,7 +951,7 @@ var objElementRules = {
 	"nav": {
 		"nodeName": "nav",
 		"nativeRole": "navigation",
-		"allowedRoles": ["doc-index", "doc-pagelist", "doc-toc"]
+		"allowedRoles": ["menu", "menubar", "tablist", "doc-index", "doc-pagelist", "doc-toc"]
 	},
 	"noscript": {
 		"nodeName": "noscript",
@@ -1222,7 +1232,7 @@ function conditionalElement(objElement, strElement) {
 			if (!strType || strType === "password") {
 				strType = "password";
 			}
-			return strElement + "-" + strType;
+			return strElement + "-" + strType.toLowerCase();
 	}
 	return strElement;
 }
@@ -1545,7 +1555,7 @@ function checkValidDescendant(objElement, strRole) {
 					objParent = objParent.parentNode;
 					if (objParent.nodeType === 1) {
 						strElement = objParent.tagName.toLowerCase();
-						if (arInteractive.indexOf(strElement) !== -1 && strElement !== 'label') {
+						if (arInteractive.indexOf(strElement) !== -1 && strElement !== "label") {
 							if (!checkConditionalInteractive(strElement, objParent)) {
 								logResult("Invalid descendant: ", strParentElement, " has parent ", strElement, objParent, ".", "invaliddesc");
 								return false;
@@ -1605,6 +1615,7 @@ function checkRequiredParent(objElement, strRole) {
 	var strParentRole;
 	var objOriginal = objElement;
 	var arParent = objRoleRules[strRole].requiredParent;
+	var arParentNative = objRoleRules[strRole].requiredParentNative;
 
 	if (arParent) {
 		while (objElement.tagName.toLowerCase() !== "body") {
@@ -1612,6 +1623,11 @@ function checkRequiredParent(objElement, strRole) {
 			strParentRole = objElement.getAttribute("role");
 			if (arParent.indexOf(strParentRole) !== -1) {
 				return true;
+			}
+			else if (arParentNative) {
+				if (arParentNative.indexOf(objElement.tagName.toLowerCase()) !== -1) {
+					return true;
+				}
 			}
 		}
 		// Not found - check for aria-owns relationship
@@ -1628,6 +1644,7 @@ function checkRequiredParent(objElement, strRole) {
 
 function checkRequiredChildren(objElement, strRole) {
 	var arChild = objRoleRules[strRole].requiredChild;
+	var arChildNative = objRoleRules[strRole].requiredChildNative;
 	var objChildren = objElement.getElementsByTagName("*");
 	var arOwns = [];
 	var objChild;
@@ -1639,6 +1656,11 @@ function checkRequiredChildren(objElement, strRole) {
 			strChildRole = objChildren[i].getAttribute("role");
 			if (arChild.indexOf(strChildRole) !== -1) {
 				return true;
+			}
+			else if (arChildNative) {
+				if (arChildNative.indexOf(objChildren[i].tagName.toLowerCase()) !== -1) {
+					return true;
+				}
 			}
 		}
 		// Not found - check for aria-owns relationship
@@ -1661,6 +1683,7 @@ function checkRequiredChildren(objElement, strRole) {
 
 function checkRequiredState(objElement, strRole) {
 	var arState = objRoleRules[strRole].requiredState;
+	var strType;
 	var i;
 
 	// Special condition for separator that isn"t focusable
@@ -1671,6 +1694,21 @@ function checkRequiredState(objElement, strRole) {
 		 if (!(i && i >= 0)) {
 			return true;
 		 }
+	}
+	// Exceptions for roles on native elements
+	if (objElement.tagName.toLowerCase() === "input" && objElement.hasAttribute("type")) {
+		// Native radio and checkbox exceptions
+		strType = objElement.getAttribute("type").toLowerCase();
+		if (((strRole === "menuitemcheckbox" || strRole === "switch") && strType === "checkbox") || (strRole === "menuitemradio" && strType === "radio")) {
+			return true;
+		}
+		// aria-pressed requirement for button used on type="checkbox"
+		if (strRole === "button" && strType === "checkbox") {
+			if (!objElement.hasAttribute("aria-pressed")) {
+				logResult("Role ", strRole, " missing required state ", "", objElement, " (aria-pressed).", "missingstate");
+				return false;
+			}
+		}
 	}
 	if (arState) {
 		for (i=0; i<arState.length; i++) {
@@ -1691,12 +1729,23 @@ function checkValidProperties(objElement, strRole) {
 	var strAttribute;
 	var strTagName = objElement.tagName.toLowerCase();
 	var strElement;
+	var strType;
 	var bGlobal = false;
 	var bFound = false;
 	var i;
 
+	if (strTagName === "input" && objElement.hasAttribute("type")) {
+		strType = objElement.getAttribute("type").toLowerCase();
+	}
+
 	// If a role has not been specified, see if the element has a native role
 	if (!strRole) {
+		// Check for aria-checked on native checkbox
+		if (strTagName === "input" && strType === "checkbox" && objElement.hasAttribute("aria-checked")) {
+			logResult("Warning ", strTagName, " aria-checked is used on a native checkbox ", "", objElement, ".", "invalidproperty");
+			return false;
+		}
+		// Find native role
 		strElement = conditionalElement(objElement, strTagName);
 		if (objElementRules[strElement]) {
 			strRole = objElementRules[strElement].nativeRole;
@@ -1706,12 +1755,13 @@ function checkValidProperties(objElement, strRole) {
 		arValid = objRoleRules[strRole].supported;
 		arState = objRoleRules[strRole].requiredState;
   	}
+
 	for (i=0; i<arAttributes.length; i++) {
 		strAttribute = arAttributes[i].nodeName;
 		if (strAttribute.substring(0, 5) === "aria-") {
 			bGlobal = arGlobal.indexOf(strAttribute);
-			if (objElement.tagName === "INPUT" && objElement.hasAttribute("type")) {
-				if (objElement.getAttribute("type").toLowerCase() === "hidden") {
+			if (strTagName === "input" && objElement.hasAttribute("type")) {
+				if (strType === "hidden") {
 					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 					return false;
 				}
@@ -1723,6 +1773,14 @@ function checkValidProperties(objElement, strRole) {
 			if (!strRole && bGlobal === -1) {
 				// No role without a global attribute
 				logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+				return false;
+			}
+			if (strTagName === "option" && objElement.hasAttribute("aria-selected")) {
+				logResult("Warning: ", strTagName, " should not use the aria-selected attribute ", "", objElement, ".", "invalidproperty");
+				return false;
+			}
+			if (strTagName === "a" && objElement.hasAttribute("aria-disabled") && objElement.hasAttribute("href")) {
+				logResult("Warning: ", strTagName, " with an href attribute should not use the aria-disabled attribute ", "", objElement, ".", "invalidproperty");
 				return false;
 			}
 			if (objElement.hasAttribute("placeholder") && objElement.hasAttribute("aria-placeholder")) {
