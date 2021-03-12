@@ -1740,10 +1740,16 @@ function checkValidProperties(objElement, strRole) {
 
 	// If a role has not been specified, see if the element has a native role
 	if (!strRole) {
-		// Check for aria-checked on native checkbox
-		if (strTagName === "input" && strType === "checkbox" && objElement.hasAttribute("aria-checked")) {
-			logResult("Warning ", strTagName, " aria-checked is used on a native checkbox ", "", objElement, ".", "invalidproperty");
-			return false;
+		// Check for aria-checked on native checkbox or radio buttons
+		if (strTagName === "input" && objElement.hasAttribute("aria-checked")) {
+			if (strType === "checkbox") {
+				logResult("Warning ", strTagName, " aria-checked is used on a native checkbox", "", objElement, ".", "invalidproperty");
+				return false;
+			}
+			else if (strType === "radio") {
+				logResult("Warning ", strTagName, " aria-checked is used on a native radio button", "", objElement, ".", "invalidproperty");
+				return false;
+			}
 		}
 		// Find native role
 		strElement = conditionalElement(objElement, strTagName);
