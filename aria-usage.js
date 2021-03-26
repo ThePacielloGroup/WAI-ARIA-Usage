@@ -573,6 +573,11 @@ var objElementRules = {
 		"nativeRole": null,
 		"allowedRoles": "all"
 	},
+	"body": {
+		"nodeName": "body",
+		"nativeRole": "document",
+		"allowedRoles": []
+	},
 	"br": {
 		"nodeName": "br",
 		"nativeRole": null,
@@ -752,6 +757,11 @@ var objElementRules = {
 		"nodeName": "hr",
 		"nativeRole": "separator",
 		"allowedRoles": ["none", "presentation", "doc-pagebreak"]
+	},
+	"html": {
+		"nodeName": "html",
+		"nativeRole": "document",
+		"allowedRoles": []
 	},
 	"i": {
 		"nodeName": "i",
@@ -1053,6 +1063,11 @@ var objElementRules = {
 		"nativeRole": "combobox",
 		"allowedRoles": ["menu"]
 	},
+	"select-nomenu": {
+		"nodeName": "select",
+		"nativeRole": "combobox",
+		"allowedRoles": []
+	},
 	"select-2": {
 		"nodeName": "select",
 		"nativeRole": "listbox",
@@ -1105,8 +1120,8 @@ var objElementRules = {
 	},
 	"summary": {
 		"nodeName": "summary",
-		"nativeRole": "button",
-		"allowedRoles": ["button"]
+		"nativeRole": null,
+		"allowedRoles": []
 	},
 	"table": {
 		"nodeName": "table",
@@ -1233,6 +1248,10 @@ function conditionalElement(objElement, strElement) {
 				strType = "password";
 			}
 			return strElement + "-" + strType.toLowerCase();
+		case "select" : 
+			if (objElement.hasAttribute("multiple") || objElement.hasAttribute("size")) {
+				return "select-nomenu";
+			}
 	}
 	return strElement;
 }
