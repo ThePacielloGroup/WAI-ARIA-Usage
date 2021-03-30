@@ -499,6 +499,282 @@ var objRoleRules = {
 		"requiredState": ["aria-selected"],
 		"descendantRestrictions": null,
 		"supported": ["aria-checked", "aria-expanded", "aria-level", "aria-posinset", "aria-selected", "aria-setsize"]
+	},
+	// DPub roles
+	"doc-abstract": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-acknowledgments": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-afterword": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-appendix": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-backlink": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-biblioentry": {
+		"requiredParent": "list",
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-bibliography": {
+		"requiredParent": null,
+		"requiredChild": "doc-biblioentry",
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-biblioref": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-chapter": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-colophon": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-conclusion": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-cover": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-credit": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-credits": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-dedication": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-endnote": {
+		"requiredParent": ["doc-endnotes", "list"],
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-endnotes": {
+		"requiredParent": null,
+		"requiredChild": "doc-endnote",
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-epigraph": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-epilogue": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-errata": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-example": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-footnote": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-foreword": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-glossary": {
+		"requiredParent": null,
+		"requiredChild": ["term", "definition"],
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-glossref": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-index": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-introduction": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-noteref": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-notice": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+
+	"doc-pagebreak": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-pagelist": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-part": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-preface": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-prologue": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+
+	"doc-pullquote": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-qna": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-subtitle": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-tip": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
+	},
+	"doc-toc": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null
 	}
  };
 
@@ -777,6 +1053,11 @@ var objElementRules = {
 		"nodeName": "imgEmptyAlt",
 		"nativeRole": null,
 		"allowedRoles": ["none", "presentation"]
+	},
+	"img-emptyalt": {
+		"nodeName": "imgEmptyAlt",
+		"nativeRole": null,
+		"allowedRoles": []
 	},
 	"img": {
 		"nodeName": "imgWithAlt",
@@ -1161,7 +1442,7 @@ var objElementRules = {
 	"td": {
 		"nodeName": "td",
 		"nativeRole": "cell",
-		"allowedRoles": "all"
+		"allowedRoles": ["cell", "gridcell"]
 	},
 	"th": {
 		"nodeName": "th",
@@ -1221,20 +1502,23 @@ function conditionalElement(objElement, strElement) {
 
 	switch (strElement) {
 		case "a" : 
-			if (objElement.getAttribute("href")) {
+			if (objElement.hasAttribute("href")) {
 				return "ahref";
 			}
 			else {
 				return "anohref";
 			}
 		case "area" : 
-			if (!objElement.getAttribute("href")) {
+			if (!objElement.hasAttribute("href")) {
 				return "areanohref";
 			}
 			break;
 		case "img" : 
-			if (!objElement.getAttribute("alt")) {
+			if (!objElement.hasAttribute("alt")) {
 				return "img-noalt";
+			}
+			else if (!objElement.getAttribute("alt")) {
+				return "img-emptyalt";
 			}
 			break;
 		case "figure" : 
@@ -1393,6 +1677,14 @@ function displaySummary(objValidWAIAria) {
 				break;
 			case "invalidref":
 				strPhrase = objValidWAIAria[i] + " attribute values without corresponding targets.";
+				break;
+			case "dpub":
+				if (objValidWAIAria[i] > 0) {
+					strPhrase = objValidWAIAria[i] + " valid DPub roles. Note: although valid, DPUB roles are likely not recognized on the web.";
+					objListItem.appendChild(document.createTextNode(strPhrase));
+					objList.appendChild(objListItem);
+				}
+				bAppend = false;
 				break;
 			default:
 				strPhrase = objValidWAIAria[i] + " " + i + " roles.";
@@ -1661,6 +1953,25 @@ function checkRequiredParent(objElement, strRole) {
 	return true;
 }
 
+function checkAncestor(objElement, arRole) {
+	var strParentRole;
+
+	while (objElement.tagName.toLowerCase() !== "body") {
+		objElement = objElement.parentNode;
+		strParentRole = objElement.getAttribute("role");
+		if (strParentRole) {
+			if (arRole.indexOf(strParentRole) !== -1) {
+				return true;
+			}
+			return false;
+		}
+		else if (arRole.indexOf(objElement.tagName.toLowerCase()) !== -1) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function checkRequiredChildren(objElement, strRole) {
 	var arChild = objRoleRules[strRole].requiredChild;
 	var arChildNative = objRoleRules[strRole].requiredChildNative;
@@ -1673,6 +1984,9 @@ function checkRequiredChildren(objElement, strRole) {
 	if (arChild) {
 		for (i=0; i<objChildren.length; i++) {
 			strChildRole = objChildren[i].getAttribute("role");
+			if (!strChildRole) {
+				strChildRole = objChildren[i].tagName.toLowerCase();
+			}
 			if (arChild.indexOf(strChildRole) !== -1) {
 				return true;
 			}
@@ -1784,9 +2098,18 @@ function checkValidProperties(objElement, strRole) {
 	for (i=0; i<arAttributes.length; i++) {
 		strAttribute = arAttributes[i].nodeName;
 		if (strAttribute.substring(0, 5) === "aria-") {
+		console.log(strTagName);
 			bGlobal = arGlobal.indexOf(strAttribute);
 			if (strTagName === "input" && objElement.hasAttribute("type")) {
 				if (strType === "hidden") {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+				}
+				if ((strType === "number" || strType === "range") && objElement.hasAttribute("aria-valuemin")) {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+				}
+				if ((strType === "number" || strType === "range") && objElement.hasAttribute("aria-valuemax")) {
 					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 					return false;
 				}
@@ -1920,7 +2243,8 @@ function checkWAIAria() {
 		missingstate: 0,
 		invalidproperty: 0,
 		invaliddesc: 0,
-		invalidref: 0
+		invalidref: 0,
+		dpub: 0
 	};
 	var objElements = document.getElementsByTagName("*");
 	var objBTT = document.createElement("a");
@@ -1988,9 +2312,25 @@ function checkWAIAria() {
 					}
 				}
 				else {
-					// The role is invalid for the element
-					objValidWAIAria.invalid++;
-					logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
+					// Conditional ancestor checks
+					switch (strElement) {
+						case "td" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+										bValid = true;
+									}
+									break;
+						case "th" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+										bValid = true;
+									}
+									break;
+						case "tr" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+										bValid = true;
+									}
+					}
+					if (!bValid) {
+						// The role is invalid for the element
+						objValidWAIAria.invalid++;
+						logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
+					}
 				}
 			}
 			else {
@@ -2019,6 +2359,9 @@ function checkWAIAria() {
 				}
 				if (!checkValidDescendant(objElements[i], strRole)) {
 					objValidWAIAria.invaliddesc++;
+				}
+				if (strRole.substring(0, 4) === "doc-") {
+					objValidWAIAria.dpub++;
 				}
 			}
 		}
