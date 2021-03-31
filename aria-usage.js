@@ -2056,6 +2056,7 @@ function checkRequiredState(objElement, strRole) {
 
 function checkValidProperties(objElement, strRole) {
 	var arGlobal = ["aria-atomic", "aria-busy", "aria-controls", "aria-current", "aria-describedby", "aria-details", "aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-flowto", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-keyshortcuts", "aria-label", "aria-labelledby", "aria-live", "aria-owns", "aria-relevant", "aria-roledescription"];
+	var arHiddenExceptions=["base", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "picture", "script", "slot", "source", "style", "template", "title", "track"];
 	var arValid=[];
 	var arState=[];
 	var arAttributes = objElement.attributes;
@@ -2098,7 +2099,6 @@ function checkValidProperties(objElement, strRole) {
 	for (i=0; i<arAttributes.length; i++) {
 		strAttribute = arAttributes[i].nodeName;
 		if (strAttribute.substring(0, 5) === "aria-") {
-		console.log(strTagName);
 			bGlobal = arGlobal.indexOf(strAttribute);
 			if (strTagName === "input" && objElement.hasAttribute("type")) {
 				if (strType === "hidden") {
@@ -2114,14 +2114,26 @@ function checkValidProperties(objElement, strRole) {
 					return false;
 				}
 			}
+			if (strAttribute === "aria-hidden") {
+				if (arHiddenExceptions.indexOf(strTagName) > 0 || objElement.hasAttribute("hidden")) {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+				}
+			}
+			if (strAttribute === "aria-required" && objElement.hasAttribute("required")) {
+				logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+				return false;
+			}
 			if (objElement.hasAttribute("contenteditable") && objElement.getAttribute("aria-readonly")) {
 				logResult("Element ", strTagName, " has a contenteditable attribute along with aria-readonly", "", objElement, ".", "invalidproperty");
 				return false;
 			}
 			if (!strRole && bGlobal === -1) {
 				// No role without a global attribute
-				logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
-				return false;
+				if (!(strAttribute === "aria-required" && strTagName === "input")) {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+				}
 			}
 			if (strTagName === "option" && objElement.hasAttribute("aria-selected")) {
 				logResult("Warning: ", strTagName, " should not use the aria-selected attribute ", "", objElement, ".", "invalidproperty");
@@ -2184,8 +2196,10 @@ function checkValidProperties(objElement, strRole) {
 					bFound = true;
 				}
 				if (!bFound) {
-					logResult("Role ", strRole, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
-					return false;
+					if (!(strAttribute === "aria-required" && strTagName === "input")) {
+						logResult("Role ", strRole, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+						return false;
+					}
 				}
 			}
 		}
