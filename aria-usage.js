@@ -1442,7 +1442,7 @@ var objElementRules = {
 	"td": {
 		"nodeName": "td",
 		"nativeRole": "cell",
-		"allowedRoles": ["cell", "gridcell"]
+		"allowedRoles": "all"
 	},
 	"th": {
 		"nodeName": "th",
@@ -2310,15 +2310,36 @@ function checkWAIAria() {
 					bValid = true;
 				}
 				else if (arAllowed === "all") {
-					// Any role is valid for the element
-					objValidWAIAria.valid++;
-					if (iRoleIndex === -1) {
-						arValidRoles.push([strRole, 1]);
+					// Any role is valid for the element, unless there are conditional ancestors
+					switch (strElement) {
+						case "td" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+										bValid = true;
+									}
+									break;
+						case "th" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+										bValid = true;
+									}
+									break;
+						case "tr" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+										bValid = true;
+									}
+									break;
+						default: bValid = true;
+					}
+					if (!bValid) {
+						// The role is invalid for the element
+						objValidWAIAria.invalid++;
+						logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
 					}
 					else {
-						arValidRoles[iRoleIndex][1]++;
+						objValidWAIAria.valid++;
+						if (iRoleIndex === -1) {
+							arValidRoles.push([strRole, 1]);
+						}
+						else {
+							arValidRoles[iRoleIndex][1]++;
+						}
 					}
-					bValid = true;
 				}
 				else if (strRole === objElementRules[strCheckElement].nativeRole) {
 					// Check exceptions
@@ -2332,27 +2353,6 @@ function checkWAIAria() {
 						// The role is unecessary for the element
 						objValidWAIAria.unnecessary++;
 						logResult("", strElement, "", strRole, objElements[i], ".", "unnecessary");
-					}
-				}
-				else {
-					// Conditional ancestor checks
-					switch (strElement) {
-						case "td" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
-										bValid = true;
-									}
-									break;
-						case "th" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
-										bValid = true;
-									}
-									break;
-						case "tr" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
-										bValid = true;
-									}
-					}
-					if (!bValid) {
-						// The role is invalid for the element
-						objValidWAIAria.invalid++;
-						logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
 					}
 				}
 			}
