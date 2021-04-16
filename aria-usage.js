@@ -2098,6 +2098,7 @@ function checkValidProperties(objElement, strRole) {
 
 	for (i=0; i<arAttributes.length; i++) {
 		strAttribute = arAttributes[i].nodeName;
+
 		if (strAttribute.substring(0, 5) === "aria-") {
 			bGlobal = arGlobal.indexOf(strAttribute);
 			if (strTagName === "input" && objElement.hasAttribute("type")) {
@@ -2112,6 +2113,14 @@ function checkValidProperties(objElement, strRole) {
 				if ((strType === "number" || strType === "range") && objElement.hasAttribute("aria-valuemax")) {
 					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 					return false;
+				}
+			}
+			if (strTagName === "progress") {
+				if (objElement.hasAttribute("aria-valuemax")) {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(aria-valuemax).", "invalidproperty");
+				}
+				if (objElement.hasAttribute("aria-valuemin")) {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(aria-valuemin).", "invalidproperty");
 				}
 			}
 			if (strAttribute === "aria-hidden") {
