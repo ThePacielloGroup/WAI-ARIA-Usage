@@ -1052,7 +1052,7 @@ var objElementRules = {
 	"img-noalt": {
 		"nodeName": "imgEmptyAlt",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": []
 	},
 	"img-emptyalt": {
 		"nodeName": "imgEmptyAlt",
