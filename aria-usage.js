@@ -2124,7 +2124,7 @@ function checkValidProperties(objElement, strRole) {
 				}
 			}
 			if (strAttribute === "aria-hidden") {
-				if (arHiddenExceptions.indexOf(strTagName) > 0 || objElement.hasAttribute("hidden")) {
+				if (arHiddenExceptions.indexOf(strTagName) >= 0 || objElement.hasAttribute("hidden")) {
 					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 					return false;
 				}
