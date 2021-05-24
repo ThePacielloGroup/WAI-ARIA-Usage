@@ -2056,7 +2056,9 @@ function checkRequiredState(objElement, strRole) {
 
 function checkValidProperties(objElement, strRole) {
 	var arGlobal = ["aria-atomic", "aria-busy", "aria-controls", "aria-current", "aria-describedby", "aria-details", "aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-flowto", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-keyshortcuts", "aria-label", "aria-labelledby", "aria-live", "aria-owns", "aria-relevant", "aria-roledescription"];
-	var arHiddenExceptions=["base", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "picture", "script", "slot", "source", "style", "template", "title", "track"];
+	var arHiddenExceptions = ["base", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "picture", "script", "slot", "source", "style", "template", "title", "track"];
+	var arValidType = ["button", "checkbox", "color", "date", "datetime-local", "email", "file", "hidden", "image", "month", "number", "password", "radio", "range", "reset", "search", "submit", "tel", "text", "time", "url", "week"];
+	var arListExceptions = ["email", "search", "tel", "text", "url"];
 	var arValid=[];
 	var arState=[];
 	var arAttributes = objElement.attributes;
@@ -2068,8 +2070,20 @@ function checkValidProperties(objElement, strRole) {
 	var bFound = false;
 	var i;
 
-	if (strTagName === "input" && objElement.hasAttribute("type")) {
-		strType = objElement.getAttribute("type").toLowerCase();
+	if (strTagName === "input") {
+		if (objElement.hasAttribute("type")) {
+			strType = objElement.getAttribute("type").toLowerCase();
+		}
+		if (objElement.hasAttribute("list") && objElement.hasAttribute("aria-haspopup")) {
+			if (!strType) {
+				logResult("Warning: ", strTagName, " with a missing type attribute has aria-haspopup along with a native list attribute", "", objElement, ".", "invalidproperty");
+				return false;
+			}
+			else if ((arValidType.indexOf(strType) === -1) || (arListExceptions.indexOf(strType) >= 0)) {
+				logResult("Warning: ", strTagName + " type=" + strType, " has aria-haspopup along with a native list attribute", "", objElement, ".", "invalidproperty");
+				return false;
+			}
+		}
 	}
 
 	// If a role has not been specified, see if the element has a native role
@@ -2077,11 +2091,11 @@ function checkValidProperties(objElement, strRole) {
 		// Check for aria-checked on native checkbox or radio buttons
 		if (strTagName === "input" && objElement.hasAttribute("aria-checked")) {
 			if (strType === "checkbox") {
-				logResult("Warning ", strTagName, " aria-checked is used on a native checkbox", "", objElement, ".", "invalidproperty");
+				logResult("Warning: ", strTagName, " aria-checked is used on a native checkbox", "", objElement, ".", "invalidproperty");
 				return false;
 			}
 			else if (strType === "radio") {
-				logResult("Warning ", strTagName, " aria-checked is used on a native radio button", "", objElement, ".", "invalidproperty");
+				logResult("Warning: ", strTagName, " aria-checked is used on a native radio button", "", objElement, ".", "invalidproperty");
 				return false;
 			}
 		}
