@@ -2326,7 +2326,7 @@ function checkWAIAria() {
 					}
 					bValid = true;
 				}
-				if (arAllowed === "all") {
+				if (arAllowed === "all" && !bLogged) {
 					// Any role is valid for the element, unless there are conditional ancestors
 					switch (strElement) {
 						case "td" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
