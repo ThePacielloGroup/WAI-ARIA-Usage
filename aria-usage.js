@@ -425,7 +425,7 @@ var objRoleRules = {
 	"table": {
 		"requiredParent": null,
 		"requiredChild": ["row", "rowgroup"],
-		"requiredChild": ["tr", "thead", "tbody", "tfoot"],
+		"requiredChildNative": ["tr", "thead", "tbody", "tfoot"],
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-colcount", "aria-rowcount"]
@@ -1981,11 +1981,16 @@ function checkRequiredChildren(objElement, strRole) {
 	var strChildRole;
 	var i;
 
-	if (arChild) {
+	if (arChild) { 
+		// Check for required children
 		for (i=0; i<objChildren.length; i++) {
 			strChildRole = objChildren[i].getAttribute("role");
-			if (!strChildRole) {
+			if (!strChildRole) { 
+				// Role not found, so check for native role
 				strChildRole = objChildren[i].tagName.toLowerCase();
+				if (strChildRole === "input" && objChildren[i].hasAttribute("type")) { 
+					strChildRole = objChildren[i].getAttribute("type").toLowerCase();
+				}
 			}
 			if (arChild.indexOf(strChildRole) !== -1) {
 				return true;
