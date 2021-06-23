@@ -2291,6 +2291,7 @@ function checkWAIAria() {
 	var objElements = document.getElementsByTagName("*");
 	var objBTT = document.createElement("a");
 	var bValid;
+	var bNative;
 	var bLogged;
 	var strElement;
 	var strRole;
@@ -2304,6 +2305,7 @@ function checkWAIAria() {
  	// Iterate through all elements in the DOM
 	for (i=0; i < objElements.length; i++) {
 		bValid = false;
+		bNative = false;
 		bLogged = false;
 		// If a role has been set, check it is valid for the element
 		if (objElements[i].getAttribute("role") && objElements[i].getAttribute("id") !== "__ARIA_validator_resultsWindow__") {
@@ -2331,6 +2333,10 @@ function checkWAIAria() {
 					}
 					bValid = true;
 				}
+				bNative = strRole === objElementRules[strCheckElement].nativeRole;
+				if (strRole === "rowheader" && strElement === "th") {
+					bNative = true;
+				}
 				if (arAllowed === "all" && !bLogged) {
 					// Any role is valid for the element, unless there are conditional ancestors
 					switch (strElement) {
@@ -2348,7 +2354,7 @@ function checkWAIAria() {
 									break;
 						default: bValid = true;
 					}
-					if (!bValid) {
+					if (!bValid && !bNative) {
 						// The role is invalid for the element
 						objValidWAIAria.invalid++;
 						logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
@@ -2364,12 +2370,12 @@ function checkWAIAria() {
 						}
 					}
 				}
-				if (!bValid && !bLogged) {
+				if (!bValid && !bLogged && !bNative) {
 					// The role is invalid for the element
 					objValidWAIAria.invalid++;
 					logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
 				}
-				if (strRole === objElementRules[strCheckElement].nativeRole) {
+				if (bNative) {
 					// Check exceptions
 					if (strRole === "link" && !objElements[i].getAttribute("href")){
 						// Exception for a and area elements
