@@ -2293,6 +2293,7 @@ function checkWAIAria() {
 	var bValid;
 	var bNative;
 	var bLogged;
+	var bCaseChange;
 	var strElement;
 	var strRole;
 	var strCheckElement;
@@ -2307,12 +2308,17 @@ function checkWAIAria() {
 		bValid = false;
 		bNative = false;
 		bLogged = false;
+		bCaseChange = false;
 		// If a role has been set, check it is valid for the element
 		if (objElements[i].getAttribute("role") && objElements[i].getAttribute("id") !== "__ARIA_validator_resultsWindow__") {
 			strElement = objElements[i].tagName.toLowerCase();
 			// Check if the element is conditional (e.g., input with a type that affects valid roles)
 			strCheckElement = conditionalElement(objElements[i], strElement);
 			strRole = objElements[i].getAttribute("role");
+			if (strRole !== strRole.toLowerCase()) {
+				strRole = strRole.toLowerCase();
+				bCaseChange = true;
+			}
 			iRoleIndex = getIndex(strRole);
 			if (objElementRules[strCheckElement]) {
 				arAllowed = objElementRules[strCheckElement].allowedRoles;
@@ -2330,6 +2336,9 @@ function checkWAIAria() {
 					}
 					else {
 						arValidRoles[iRoleIndex][1]++;
+					}
+					if (bCaseChange) {
+							logResult("Warning: ", strElement, " not all browsers / assistive technology combinations expose roles that are not written in lowercase", "", objElements[i], ".", "invalidproperty");
 					}
 					bValid = true;
 				}
@@ -2367,6 +2376,9 @@ function checkWAIAria() {
 						}
 						else {
 							arValidRoles[iRoleIndex][1]++;
+						}
+						if (bCaseChange) {
+							logResult("Warning: ", strElement, " not all browsers / assistive technology combinations expose roles that are not written in lowercase", "", objElements[i], ".", "invalidproperty");
 						}
 					}
 				}
@@ -2412,6 +2424,9 @@ function checkWAIAria() {
 					objValidWAIAria.missingstate++;
 				}
 				if (!checkValidProperties(objElements[i], strRole)) {
+					objValidWAIAria.invalidproperty++;
+				}
+				if (bCaseChange) {
 					objValidWAIAria.invalidproperty++;
 				}
 				if (!checkValidDescendant(objElements[i], strRole)) {
