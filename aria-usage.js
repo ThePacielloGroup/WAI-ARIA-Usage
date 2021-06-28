@@ -2230,6 +2230,10 @@ function checkValidProperties(objElement, strRole) {
 					}
 				}
 			}
+			if (objElement.getAttribute(strAttribute) !== objElement.getAttribute(strAttribute).toLowerCase()) {
+				logResult("Warning: Attribute vale for ", strAttribute, " not all browsers / assistive technology combinations expose attribute values that are not written in lowercase ", "", objElement, ".", "invalidproperty");
+				return false;
+			}
 		}
 	}
 
