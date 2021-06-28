@@ -2064,6 +2064,7 @@ function checkValidProperties(objElement, strRole) {
 	var arHiddenExceptions = ["base", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "picture", "script", "slot", "source", "style", "template", "title", "track"];
 	var arValidType = ["button", "checkbox", "color", "date", "datetime-local", "email", "file", "hidden", "image", "month", "number", "password", "radio", "range", "reset", "search", "submit", "tel", "text", "time", "url", "week"];
 	var arListExceptions = ["email", "search", "tel", "text", "url"];
+	var arCaseSensitive = ["aria-atomic", "aria-autocomplete", "aria-busy", "aria-checked", "aria-current", "aria-disabled", "aria-dropeffect", "aria-expanded", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-live", "aria-modal", "aria-multiline", "aria-multiselectable", "aria-orientation", "aria-pressed", "aria-readonly", "aria-relevant", "aria-required", "aria-selected", "aria-sort"];
 	var arValid=[];
 	var arState=[];
 	var arAttributes = objElement.attributes;
@@ -2231,8 +2232,10 @@ function checkValidProperties(objElement, strRole) {
 				}
 			}
 			if (objElement.getAttribute(strAttribute) !== objElement.getAttribute(strAttribute).toLowerCase()) {
-				logResult("Warning: Attribute vale for ", strAttribute, " not all browsers / assistive technology combinations expose attribute values that are not written in lowercase ", "", objElement, ".", "invalidproperty");
-				return false;
+				if (arCaseSensitive.indexOf(strAttribute) >=0) {
+					logResult("Warning: Attribute vale for ", strAttribute, " not all browsers / assistive technology combinations expose attribute values that are not written in lowercase ", "", objElement, ".", "invalidproperty");
+					return false;
+				}
 			}
 		}
 	}
