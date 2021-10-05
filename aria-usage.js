@@ -1487,7 +1487,7 @@ var objElementRules = {
 	"wbr": {
 		"nodeName": "wbr",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": ["none", "presentation"]
 	}
 };
 
@@ -2131,6 +2131,12 @@ function checkValidProperties(objElement, strRole) {
 					return false;
 				}
 				if ((strType === "number" || strType === "range") && objElement.hasAttribute("aria-valuemax")) {
+					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+				}
+			}
+			if (strTagName === "br" || strTagName === "wbr") {
+				if (strAttribute !== "aria-hidden") {
 					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 					return false;
 				}
