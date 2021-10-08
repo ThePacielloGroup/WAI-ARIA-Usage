@@ -807,7 +807,7 @@ var objElementRules = {
 	"areanohref": {
 		"nodeName": "area",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": ["button", "link"]
 	},
 	"article": {
 		"nodeName": "article",
