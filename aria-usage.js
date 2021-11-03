@@ -545,7 +545,7 @@ var objRoleRules = {
 	},
 	"doc-bibliography": {
 		"requiredParent": null,
-		"requiredChild": "doc-biblioentry",
+		"requiredChild": "list",
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null
@@ -615,7 +615,7 @@ var objRoleRules = {
 	},
 	"doc-endnotes": {
 		"requiredParent": null,
-		"requiredChild": "doc-endnote",
+		"requiredChild": "list",
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null
@@ -1197,7 +1197,7 @@ var objElementRules = {
 	"li": {
 		"nodeName": "li",
 		"nativeRole": "listitem",
-		"allowedRoles": ["menuitem", "menuitemcheckbox", "menuitemradio", "option", "none", "presentation", "radio", "separator", "tab", "treeitem", "doc-biblioentry", "doc-endnote"]
+		"allowedRoles": ["menuitem", "menuitemcheckbox", "menuitemradio", "option", "none", "presentation", "radio", "separator", "tab", "treeitem"]
 	},
 	"link": {
 		"nodeName": "link",
