@@ -952,7 +952,7 @@ var objElementRules = {
 	"embed": {
 		"nodeName": "embed",
 		"nativeRole": null,
-		"allowedRoles": ["application", "document", "presentation", "none", "img"]
+		"allowedRoles": []
 	},
 	"figcaption": {
 		"nodeName": "figcaption",
@@ -1047,7 +1047,7 @@ var objElementRules = {
 	"iframe": {
 		"nodeName": "iframe",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation", "application", "document", "img"]
+		"allowedRoles": []
 	},
 	"img-noalt": {
 		"nodeName": "imgEmptyAlt",
@@ -1252,7 +1252,7 @@ var objElementRules = {
 	"object": {
 		"nodeName": "object",
 		"nativeRole": null,
-		"allowedRoles": ["application", "document", "img"]
+		"allowedRoles": []
 	},
 	"ol": {
 		"nodeName": "ol",
