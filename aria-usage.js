@@ -2097,11 +2097,17 @@ function checkValidProperties(objElement, strRole) {
 		// Check for aria-checked on native checkbox or radio buttons
 		if (strTagName === "input" && objElement.hasAttribute("aria-checked")) {
 			if (strType === "checkbox") {
-				logResult("Warning: ", strTagName, " aria-checked is used on a native checkbox", "", objElement, ".", "invalidproperty");
-				return false;
+				if ( objElement.getAttribute("aria-checked") === "mixed" ) {
+					logResult("Error: ", strTagName, " aria-checked=mixed is used on a native checkbox. Use the element's indeterminate IDL attribute instead.", "", objElement, ".", "invalidproperty");
+					return false;
+				}
+				else {
+					logResult("Error: ", strTagName, " aria-checked is used on a native checkbox. Use the element's native checked semantics instead.", "", objElement, ".", "invalidproperty");
+					return false;
+				}
 			}
 			else if (strType === "radio") {
-				logResult("Warning: ", strTagName, " aria-checked is used on a native radio button", "", objElement, ".", "invalidproperty");
+				logResult("Error: ", strTagName, " aria-checked is used on a native radio button. Use the element's native checked semantics instead.", "", objElement, ".", "invalidproperty");
 				return false;
 			}
 		}
