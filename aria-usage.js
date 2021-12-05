@@ -2126,6 +2126,10 @@ function checkValidProperties(objElement, strRole) {
 
 		if (strAttribute.substring(0, 5) === "aria-") {
 			bGlobal = arGlobal.indexOf(strAttribute);
+			if (strTagName === 'datalist' && (bGlobal || ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-required", "aria-orientation"].indexOf(strAttribute))) {
+				logResult("Warning ", strTagName, " has an attribute that serves no benefit ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+				return false;
+			}
 			if (strTagName === "input" && objElement.hasAttribute("type")) {
 				if (strType === "hidden") {
 					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
@@ -2330,6 +2334,10 @@ function checkWAIAria() {
 		// If a role has been set, check it is valid for the element
 		if (objElements[i].getAttribute("role") && objElements[i].getAttribute("id") !== "__ARIA_validator_resultsWindow__") {
 			strElement = objElements[i].tagName.toLowerCase();
+			// If the element is an input without a type, set the default type of text
+			if (strElement === 'input' && !objElements[i].getAttribute("type")) {
+				objElements[i].setAttribute("type", "text");
+			}
 			// Check if the element is conditional (e.g., input with a type that affects valid roles)
 			strCheckElement = conditionalElement(objElements[i], strElement);
 			strRole = objElements[i].getAttribute("role");
