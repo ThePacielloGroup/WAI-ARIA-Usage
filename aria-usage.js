@@ -1062,7 +1062,7 @@ var objElementRules = {
 	"img": {
 		"nodeName": "imgWithAlt",
 		"nativeRole": "img",
-		"allowedRoles": ["button", "checkbox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "progressbar", "scrollbar", "separator", "slider", "switch", "tab", "treeitem"]
+		"allowedRoles": ["button", "checkbox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "progressbar", "radio", "scrollbar", "separator", "slider", "switch", "tab", "treeitem"]
 	},
 	"input-button": {
 		"nodeName": "input",
