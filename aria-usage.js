@@ -1774,6 +1774,7 @@ function logResult(strMessage, strElement, strError, strRole, objCode, strMissin
 		objMessage.appendChild(document.createTextNode(strError));
 		objMessage.appendChild(objRole);
 		objMessage.appendChild(document.createTextNode(strMissing));
+		objMessage.appendChild(document.createTextNode(' There may be additional issues with this element.'));
 	}
 
 	objGroup.appendChild(objMessage);
