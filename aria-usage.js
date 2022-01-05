@@ -541,7 +541,8 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": null
+		"supported": null,
+		"deprecated": true
 	},
 	"doc-bibliography": {
 		"requiredParent": null,
@@ -611,7 +612,8 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": null
+		"supported": null,
+		"deprecated": true
 	},
 	"doc-endnotes": {
 		"requiredParent": null,
@@ -1743,6 +1745,8 @@ function addHeading(objGroup, strTargetContainer) {
 			break;
 		case "invalidref":
 			objHeading.appendChild(document.createTextNode("Invalid references"));
+		case "deprecated":
+			objHeading.appendChild(document.createTextNode("Deprecated roles"));
 	}
 	objGroup.appendChild(objHeading);
 	objGroup.appendChild(objBTT)
@@ -2309,7 +2313,8 @@ function checkWAIAria() {
 		invalidproperty: 0,
 		invaliddesc: 0,
 		invalidref: 0,
-		dpub: 0
+		dpub: 0,
+		deprecated: 0
 	};
 	var objElements = document.getElementsByTagName("*");
 	var objBTT = document.createElement("a");
@@ -2461,6 +2466,10 @@ function checkWAIAria() {
 				}
 				if (strRole.substring(0, 4) === "doc-") {
 					objValidWAIAria.dpub++;
+				}
+				if (objRoleRules[strRole].deprecated) {
+					objValidWAIAria.deprecated++;
+					logResult("Warning: ", strElement, " has deprecated role ", strRole, objElements[i], ".", "deprecated");
 				}
 			}
 		}
