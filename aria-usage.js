@@ -607,7 +607,7 @@ var objRoleRules = {
 		"supported": null
 	},
 	"doc-endnote": {
-		"requiredParent": ["doc-endnotes", "list"],
+		"requiredParent": ["list"],
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
