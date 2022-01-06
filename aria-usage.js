@@ -1197,7 +1197,7 @@ var objElementRules = {
 	"li": {
 		"nodeName": "li",
 		"nativeRole": "listitem",
-		"allowedRoles": ["menuitem", "menuitemcheckbox", "menuitemradio", "option", "none", "presentation", "radio", "separator", "tab", "treeitem"]
+		"allowedRoles": ["menuitem", "menuitemcheckbox", "menuitemradio", "option", "none", "presentation", "radio", "separator", "tab", "treeitem", "doc-biblioentry", "doc-endnote"]
 	},
 	"link": {
 		"nodeName": "link",
