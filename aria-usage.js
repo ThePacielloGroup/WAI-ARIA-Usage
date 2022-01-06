@@ -2070,6 +2070,7 @@ function checkValidProperties(objElement, strRole) {
 	var arValidType = ["button", "checkbox", "color", "date", "datetime-local", "email", "file", "hidden", "image", "month", "number", "password", "radio", "range", "reset", "search", "submit", "tel", "text", "time", "url", "week"];
 	var arListExceptions = ["email", "search", "tel", "text", "url"];
 	var arCaseSensitive = ["aria-atomic", "aria-autocomplete", "aria-busy", "aria-checked", "aria-current", "aria-disabled", "aria-dropeffect", "aria-expanded", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-live", "aria-modal", "aria-multiline", "aria-multiselectable", "aria-orientation", "aria-pressed", "aria-readonly", "aria-relevant", "aria-required", "aria-selected", "aria-sort"];
+	var arOptionalValue = ["aria-keyshortcuts", "aria-label", "aria-roledescription", "aria-placeholder", "aria-valuetext"];
 	var arValid=[];
 	var arState=[];
 	var arAttributes = objElement.attributes;
@@ -2130,6 +2131,10 @@ function checkValidProperties(objElement, strRole) {
 		strAttribute = arAttributes[i].nodeName;
 
 		if (strAttribute.substring(0, 5) === "aria-") {
+			if (arOptionalValue.indexOf(strAttribute) < 0 && arAttributes[i].value === "") {
+					logResult("Element ", strTagName, " has an aria-* attribute without a value ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
+			}
 			bGlobal = arGlobal.indexOf(strAttribute);
 			if (strTagName === 'datalist' && (bGlobal || ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-required", "aria-orientation"].indexOf(strAttribute))) {
 				logResult("Warning ", strTagName, " has an attribute that serves no benefit ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
