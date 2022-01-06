@@ -546,7 +546,7 @@ var objRoleRules = {
 	},
 	"doc-bibliography": {
 		"requiredParent": null,
-		"requiredChild": "doc-biblioentry",
+		"requiredChild": "list",
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null
@@ -608,7 +608,7 @@ var objRoleRules = {
 		"supported": null
 	},
 	"doc-endnote": {
-		"requiredParent": ["doc-endnotes", "list"],
+		"requiredParent": ["list"],
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
@@ -617,7 +617,7 @@ var objRoleRules = {
 	},
 	"doc-endnotes": {
 		"requiredParent": null,
-		"requiredChild": "doc-endnote",
+		"requiredChild": "list",
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null
