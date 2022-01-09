@@ -112,7 +112,8 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": ["aria-expanded"],
+		"deprecated": true
 	},
 	"document": {
 		"requiredParent": null,
