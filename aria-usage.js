@@ -5,14 +5,14 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	},
 	"alertdialog": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded", "aria-modal"]
+		"supported": ["aria-modal"]
 	}, 
 	"application": {
 		"requiredParent": null,
@@ -26,21 +26,21 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["main"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"aside": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded", "aria-pressed"]
+		"supported": ["aria-pressed"]
 	}, 
 	"banner": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["main", "header", "footer"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"button": {
 		"requiredParent": null,
@@ -62,7 +62,7 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": ["aria-checked"],
 		"descendantRestrictions": ["interactive"],
-		"supported": ["aria-readonly"]
+		"supported": ["aria-expanded", "aria-readonly"]
 	}, 
 	"columnheader": {
 		"requiredParent": "row",
@@ -84,63 +84,63 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["main"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"contentinfo": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["main", "header", "footer"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"definition": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["phrasing"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"dialog": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded", "aria-modal"]
+		"supported": ["aria-modal"]
 	}, 
 	"directory": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	},
 	"document": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"feed": {
 		"requiredParent": null,
 		"requiredChild": ["article"],
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"figure": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"form": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"grid": {
 		"requiredParent": null,
@@ -148,7 +148,7 @@ var objRoleRules = {
 		"requiredChildNative": ["tr"],
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-colcount", "aria-expanded", "aria-level", "aria-multiselectable", "aria-readonly", "aria-rowcount"]
+		"supported": ["aria-activedescendant", "aria-colcount", "aria-level", "aria-multiselectable", "aria-readonly", "aria-rowcount"]
 	}, 
 	"gridcell": {
 		"requiredParent": ["row"],
@@ -163,21 +163,21 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-expanded"]
+		"supported": ["aria-activedescendant"]
 	}, 
 	"heading": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-level"],
 		"descendantRestrictions": ["article", "aside", "blockquote", "body", "details", "dialog", "fieldset", "figure", "section", "h1", "h2", "h3", "h4", "h5", "h6", "hgroup", "nav", "td"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"img": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"link": {
 		"requiredParent": null,
@@ -191,70 +191,70 @@ var objRoleRules = {
 		"requiredChild": ["group", "listitem"],
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"listbox": {
 		"requiredParent": null,
 		"requiredChild": ["option"],
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-required", "aria-orientation"]
+		"supported": ["aria-activedescendant", "aria-multiselectable", "aria-required", "aria-orientation"]
 	}, 
 	"listitem": {
 		"requiredParent": ["group", "list"],
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded", "aria-level", "aria-posinset", "aria-setsize"]
+		"supported": ["aria-level", "aria-posinset", "aria-setsize"]
 	}, 
 	"log": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"main": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["main"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"marquee": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"math": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"menu": {
 		"requiredParent": null,
 		"requiredChild": ["group", "menuitem", "menuitemcheckbox", "menuitemradio"],
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-expanded", "aria-orientation"]
+		"supported": ["aria-activedescendant", "aria-orientation"]
 	}, 
 	"menubar": {
 		"requiredParent": null,
 		"requiredChild": ["group", "menuitem", "menuitemcheckbox", "menuitemradio"],
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-expanded", "aria-orientation"]
+		"supported": ["aria-activedescendant", "aria-orientation"]
 	}, 
 	"menuitem": {
 		"requiredParent": ["group", "menu", "menubar"],
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["interactive"],
-		"supported": ["aria-posinset", "aria-setsize"]
+		"supported": ["aria-expanded", "aria-posinset", "aria-setsize"]
 	}, 
 	"menuitemcheckbox": {
 		"requiredParent": ["menu", "menubar"],
@@ -275,7 +275,7 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["main"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"none": {
 		"requiredParent": null,
@@ -289,7 +289,7 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"option": {
 		"requiredParent": ["listbox"],
@@ -324,14 +324,14 @@ var objRoleRules = {
 		"requiredChild": "radio",
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-expanded", "aria-orientation", "aria-required"]
+		"supported": ["aria-activedescendant", "aria-orientation", "aria-required"]
 	}, 
 	"region": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"row": {
 		"requiredParent": ["grid", "rowgroup", "table", "treegrid"],
@@ -364,14 +364,14 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": ["aria-controls", "aria-orientation", "aria-valuemax", "aria-valuemin", "aria-valuenow"],
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded", "aria-valuetext"]
+		"supported": ["aria-valuetext"]
 	}, 
 	"search": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"searchbox": {
 		"requiredParent": null,
@@ -406,14 +406,14 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"switch": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": ["aria-checked"],
 		"descendantRestrictions": ["interactive"],
-		"supported": ["aria-readonly"]
+		"supported": ["aria-expanded", "aria-readonly"]
 	}, 
 	"tab": {
 		"requiredParent": ["tablist"],
@@ -442,14 +442,14 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"term": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": ["phrasing"],
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"textbox": {
 		"requiredParent": null,
@@ -463,35 +463,35 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"toolbar": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-expanded", "aria-orientation"]
+		"supported": ["aria-activedescendant", "aria-orientation"]
 	}, 
 	"tooltip": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-expanded"]
+		"supported": null
 	}, 
 	"tree": {
 		"requiredParent": null,
 		"requiredChild": ["group", "treeitem"],
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-orientation", "aria-required"]
+		"supported": ["aria-activedescendant", "aria-multiselectable", "aria-orientation", "aria-required"]
 	}, 
 	"treegrid": {
 		"requiredParent": null,
 		"requiredChild": ["row", "rowgroup"],
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": ["aria-activedescendant", "aria-colcount", "aria-expanded", "aria-level", "aria-multiselectable", "aria-orientation", "aria-readonly", "aria-required", "aria-rowcount"]
+		"supported": ["aria-activedescendant", "aria-colcount", "aria-level", "aria-multiselectable", "aria-orientation", "aria-readonly", "aria-required", "aria-rowcount"]
 	}, 
 	"treeitem": {
 		"requiredParent": ["group", "tree"],
