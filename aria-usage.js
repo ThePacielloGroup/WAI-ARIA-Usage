@@ -864,7 +864,7 @@ var objElementRules = {
 	"button": {
 		"nodeName": "button",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"]
+		"allowedRoles": ["checkbox", "combobox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"]
 	},
 	"canvas": {
 		"nodeName": "canvas",
@@ -1069,7 +1069,7 @@ var objElementRules = {
 	"input-button": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"]
+		"allowedRoles": ["checkbox", "combobox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"]
 	},
 	"input-checkbox": {
 		"nodeName": "input",
