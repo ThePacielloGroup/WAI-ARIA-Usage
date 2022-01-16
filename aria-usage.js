@@ -112,7 +112,8 @@ var objRoleRules = {
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": null
+		"supported": null,
+		"deprecated": true
 	},
 	"document": {
 		"requiredParent": null,
@@ -2029,8 +2030,8 @@ function checkRequiredState(objElement, strRole) {
 	var strType;
 	var i;
 
-	// Special condition for separator that isn"t focusable
-	// The role isn"t valid on native elements that receive keyboard focus, 
+	// Special condition for separator that isn't focusable
+	// The role isn't valid on native elements that receive keyboard focus, 
 	// so just check tabindex
 	if (strRole === "separator") {
 		i = objElement.getAttribute("tabindex");
