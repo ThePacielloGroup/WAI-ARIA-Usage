@@ -74,7 +74,7 @@ var objRoleRules = {
 	},
 	"combobox": {
 		"requiredParent": null,
-		"requiredChild": ["textbox", "listbox", "tree", "grid", "dialog"],
+		"requiredChild": null,
 		"requiredState": ["aria-expanded", "aria-controls"],
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-autocomplete", "aria-required", "aria-orientation"]
@@ -1746,6 +1746,7 @@ function addHeading(objGroup, strTargetContainer) {
 			break;
 		case "invalidref":
 			objHeading.appendChild(document.createTextNode("Invalid references"));
+			break;
 		case "deprecated":
 			objHeading.appendChild(document.createTextNode("Deprecated roles"));
 	}
@@ -2076,6 +2077,7 @@ function checkValidProperties(objElement, strRole) {
 	var arState=[];
 	var arAttributes = objElement.attributes;
 	var strAttribute;
+	var strConditionalAttribute;
 	var strTagName = objElement.tagName.toLowerCase();
 	var strElement;
 	var strType;
@@ -2133,8 +2135,11 @@ function checkValidProperties(objElement, strRole) {
 
 		if (strAttribute.substring(0, 5) === "aria-") {
 			if (arOptionalValue.indexOf(strAttribute) < 0 && arAttributes[i].value === "") {
+				strConditionalAttribute = objElement.getAttribute("aria-expanded");
+				if (strConditionalAttribute !== "false") {
 					logResult("Element ", strTagName, " has an aria-* attribute without a value ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 					return false;
+				}
 			}
 			bGlobal = arGlobal.indexOf(strAttribute);
 			if (strTagName === 'datalist' && (bGlobal || ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-required", "aria-orientation"].indexOf(strAttribute))) {
@@ -2273,6 +2278,7 @@ function checkValidReferences(objElement) {
 	var arRefattributes = ["aria-activedescendant", "aria-controls", "aria-describedby", "aria-details", "aria-errormessage", "aria-flowto", "aria-labelledby", "aria-owns"];
 	var arAttributes = objElement.attributes;
 	var strAttribute;
+	var strConditionalAttribute;
 	var strAttributeValue;
 	var arRefs = [];
 	var objTarget;
@@ -2286,8 +2292,11 @@ function checkValidReferences(objElement) {
 		strAttributeValue = arAttributes[i].value;
 		if (arRefattributes.indexOf(strAttribute) >= 0) {
 			if (strAttributeValue === "") {
-				logResult("Attribute ", strAttribute, " has an empty string.", "", objElement, "", "invalidref");
-				bValid = false;
+				strConditionalAttribute = objElement.getAttribute("aria-expanded");
+				if (strConditionalAttribute !== "false") {
+					logResult("Attribute ", strAttribute, " has an empty string.", "", objElement, "", "invalidref");
+					bValid = false;
+				}
 			}
 			else {
 				arRefs = strAttributeValue.split(" ");
