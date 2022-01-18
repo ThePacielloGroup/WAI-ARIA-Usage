@@ -2187,6 +2187,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var arListExceptions = ["email", "search", "tel", "text", "url"];
 	var arCaseSensitive = ["aria-atomic", "aria-autocomplete", "aria-busy", "aria-checked", "aria-current", "aria-disabled", "aria-dropeffect", "aria-expanded", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-live", "aria-modal", "aria-multiline", "aria-multiselectable", "aria-orientation", "aria-pressed", "aria-readonly", "aria-relevant", "aria-required", "aria-selected", "aria-sort"];
 	var arOptionalValue = ["aria-keyshortcuts", "aria-label", "aria-roledescription", "aria-placeholder", "aria-valuetext"];
+	var arDeprecatedAttributes = ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
 	var arDeprecatedValues = ["spelling", "grammar", "false"];
 	var strAttributeValue;
 	var arValid=[];
@@ -2271,6 +2272,17 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 					}
 					objValidWAIAria.deprecatedattribute++;
 				}
+			}
+			else if (bGlobal && arDeprecatedAttributes.indexOf(strAttribute) >= 0) {
+				strAttributeValue = objElement.getAttribute(strAttribute);
+				// Exception for aria-invalid
+				if (strAttribute === "aria-invalid" && strAttributeValue && arDeprecatedValues.indexOf(strAttributeValue) >= 0) {
+					logResult("Warning ", strTagName, " has a deprecated attribute ", "", objElement, "(" + strAttribute + "). Although deprecated, the \"" + strAttributeValue + "\" value may be used until a replacement attribute is created to convey this information.", "deprecatedattribute");
+				}
+				else {
+					logResult("Warning ", strTagName, " has a deprecated attribute ", "", objElement, "(" + strAttribute + ").", "deprecatedattribute");
+				}
+				objValidWAIAria.deprecatedattribute++;
 			}
 			if (strTagName === 'datalist' && (bGlobal || ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-required", "aria-orientation"].indexOf(strAttribute))) {
 				logResult("Warning ", strTagName, " has an attribute that serves no benefit ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
@@ -2621,7 +2633,7 @@ function checkWAIAria() {
 		}
 		else {
 			// Element has no role, so check for global aria values
-			if (!checkValidProperties(objElements[i], null)) {
+			if (!checkValidProperties(objElements[i], null, objValidWAIAria)) {
 				objValidWAIAria.invalidproperty++;
 			}
 		}
