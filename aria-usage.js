@@ -1599,6 +1599,57 @@ var objElementRules = {
 		"nodeName": "wbr",
 		"nativeRole": null,
 		"allowedRoles": ["none", "presentation"]
+	},
+	// Common SVG elements
+	"circle": {
+		"nodeName": "circle",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"defs": {
+		"nodeName": "defs",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"ellipse": {
+		"nodeName": "ellipse",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"g": {
+		"nodeName": "g",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"line": {
+		"nodeName": "line",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"path": {
+		"nodeName": "path",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"polygon": {
+		"nodeName": "polygon",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"polyline": {
+		"nodeName": "polyline",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"rect": {
+		"nodeName": "rect",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
+	},
+	"text": {
+		"nodeName": "text",
+		"nativeRole": null,
+		"allowedRoles": ["none", "presentation"]
 	}
 };
 
