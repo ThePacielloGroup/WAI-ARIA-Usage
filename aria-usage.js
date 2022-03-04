@@ -1353,7 +1353,7 @@ var objElementRules = {
 	"nav": {
 		"nodeName": "nav",
 		"nativeRole": "navigation",
-		"allowedRoles": ["menu", "menubar", "tablist", "doc-index", "doc-pagelist", "doc-toc"]
+		"allowedRoles": ["menu", "menubar", "none", "presentation", "tablist", "doc-index", "doc-pagelist", "doc-toc"]
 	},
 	"noscript": {
 		"nodeName": "noscript",
