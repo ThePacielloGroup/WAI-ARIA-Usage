@@ -2602,6 +2602,15 @@ function checkWAIAria() {
 										bValid = true;
 									}
 									break;
+						case "div" : if (objElements[i].parentNode.tagName.toLowerCase() == "dl") {
+										if (strRole === "presentation" || strRole==="none") {
+											bValid = true;
+										}
+									}
+									else {
+										bValid = true;
+									}
+									break; 
 						default: bValid = true;
 					}
 					if (!bValid && !bNative) {
