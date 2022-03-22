@@ -6,7 +6,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"alertdialog": {
 		"requiredParent": null,
@@ -14,7 +15,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-modal"],
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"application": {
 		"requiredParent": null,
@@ -22,7 +24,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-expanded"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	}, 
 	"article": {
 		"requiredParent": null,
@@ -30,7 +33,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["main"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"aside": {
 		"requiredParent": null,
@@ -38,7 +42,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-pressed"],
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"banner": {
 		"requiredParent": null,
@@ -46,7 +51,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["main", "header", "footer"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"button": {
 		"requiredParent": null,
@@ -54,7 +60,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded", "aria-pressed"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"cell": {
 		"requiredParent": "row",
@@ -63,7 +70,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-colspan", "aria-colindex", "aria-rowindex", "aria-rowspan"],
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"checkbox": {
 		"requiredParent": null,
@@ -71,7 +79,8 @@ var objRoleRules = {
 		"requiredState": ["aria-checked"],
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded", "aria-readonly"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"],
+		"nameable": "yes"
 	}, 
 	"columnheader": {
 		"requiredParent": "row",
@@ -80,7 +89,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-colspan", "aria-colindex", "aria-expanded", "aria-readonly", "aria-required", "aria-rowindex", "aria-rowspan", "aria-selected", "aria-sort"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	},
 	"combobox": {
 		"requiredParent": null,
@@ -88,7 +98,8 @@ var objRoleRules = {
 		"requiredState": ["aria-expanded", "aria-controls"],
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-autocomplete", "aria-required", "aria-orientation"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	}, 
 	"complementary": {
 		"requiredParent": null,
@@ -96,7 +107,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["main"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"contentinfo": {
 		"requiredParent": null,
@@ -104,7 +116,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["main", "header", "footer"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"definition": {
 		"requiredParent": null,
@@ -112,7 +125,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["phrasing"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"dialog": {
 		"requiredParent": null,
@@ -120,7 +134,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-modal"],
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"directory": {
 		"requiredParent": null,
@@ -129,14 +144,16 @@ var objRoleRules = {
 		"descendantRestrictions": null,
 		"supported": null,
 		"deprecated": true,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"document": {
 		"requiredParent": null,
 		"requiredChild": null,
 		"requiredState": null,
 		"descendantRestrictions": null,
-		"supported": null
+		"supported": null,
+		"nameable": "yes"
 	}, 
 	"feed": {
 		"requiredParent": null,
@@ -144,7 +161,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"figure": {
 		"requiredParent": null,
@@ -152,7 +170,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"form": {
 		"requiredParent": null,
@@ -160,7 +179,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"grid": {
 		"requiredParent": null,
@@ -169,7 +189,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-colcount", "aria-level", "aria-multiselectable", "aria-readonly", "aria-rowcount"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"gridcell": {
 		"requiredParent": ["row"],
@@ -178,7 +199,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-colspan", "aria-colindex", "aria-expanded", "aria-readonly", "aria-required", "aria-rowindex", "aria-rowspan", "aria-selected"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	}, 
 	"group": {
 		"requiredParent": null,
@@ -186,7 +208,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"heading": {
 		"requiredParent": null,
@@ -194,7 +217,8 @@ var objRoleRules = {
 		"requiredState": ["aria-level"],
 		"descendantRestrictions": ["article", "aside", "blockquote", "body", "details", "dialog", "fieldset", "figure", "section", "h1", "h2", "h3", "h4", "h5", "h6", "hgroup", "nav", "td"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"img": {
 		"requiredParent": null,
@@ -202,7 +226,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"link": {
 		"requiredParent": null,
@@ -210,7 +235,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"list": {
 		"requiredParent": null,
@@ -218,7 +244,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"listbox": {
 		"requiredParent": null,
@@ -226,7 +253,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-multiselectable", "aria-required", "aria-orientation"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"],
+		"nameable": "yes"
 	}, 
 	"listitem": {
 		"requiredParent": ["group", "list"],
@@ -234,7 +262,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-level", "aria-posinset", "aria-setsize"],
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"log": {
 		"requiredParent": null,
@@ -242,7 +271,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"main": {
 		"requiredParent": null,
@@ -250,7 +280,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["main"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"marquee": {
 		"requiredParent": null,
@@ -258,7 +289,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"math": {
 		"requiredParent": null,
@@ -266,7 +298,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"menu": {
 		"requiredParent": null,
@@ -274,7 +307,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-orientation"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"menubar": {
 		"requiredParent": null,
@@ -282,7 +316,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-orientation"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"menuitem": {
 		"requiredParent": ["group", "menu", "menubar"],
@@ -290,7 +325,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded", "aria-posinset", "aria-setsize"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"menuitemcheckbox": {
 		"requiredParent": ["menu", "menubar"],
@@ -298,7 +334,8 @@ var objRoleRules = {
 		"requiredState": ["aria-checked"],
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-posinset", "aria-setsize"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"menuitemradio": {
 		"requiredParent": ["group", "menu", "menubar"],
@@ -306,7 +343,8 @@ var objRoleRules = {
 		"requiredState": ["aria-checked"],
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-posinset", "aria-setsize"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"navigation": {
 		"requiredParent": null,
@@ -314,7 +352,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["main"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"none": {
 		"requiredParent": null,
@@ -322,7 +361,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "no"
 	}, 
 	"note": {
 		"requiredParent": null,
@@ -330,7 +370,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"option": {
 		"requiredParent": ["listbox"],
@@ -338,7 +379,8 @@ var objRoleRules = {
 		"requiredState": ["aria-selected"],
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-checked", "aria-posinset", "aria-selected", "aria-setsize"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"presentation": {
 		"requiredParent": null,
@@ -346,7 +388,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "no"
 	}, 
 	"progressbar": {
 		"requiredParent": null,
@@ -354,7 +397,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-valuemax", "aria-valuemin", "aria-valuenow", "aria-valuetext"],
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"radio": {
 		"requiredParent": null,
@@ -362,7 +406,8 @@ var objRoleRules = {
 		"requiredState": ["aria-checked"],
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-posinset", "aria-selected", "aria-setsize"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"radiogroup": {
 		"requiredParent": null,
@@ -370,7 +415,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-orientation", "aria-required"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"],
+		"nameable": "yes"
 	}, 
 	"region": {
 		"requiredParent": null,
@@ -378,7 +424,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"row": {
 		"requiredParent": ["grid", "rowgroup", "table", "treegrid"],
@@ -388,7 +435,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-colindex", "aria-rowindex", "aria-selected", "aria-expanded", "aria-level","aria-posinset", "aria-setsize"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"rowgroup": {
 		"requiredParent": ["grid", "table", "treegrid"],
@@ -398,7 +446,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"rowheader": {
 		"requiredParent": ["row"],
@@ -407,7 +456,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-colindex", "aria-colspan", "aria-expanded", "aria-readonly", "aria-required", "aria-rowindex", "aria-rowspan", "aria-selected", "aria-expanded"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	}, 
 	"scrollbar": {
 		"requiredParent": null,
@@ -415,7 +465,8 @@ var objRoleRules = {
 		"requiredState": ["aria-controls", "aria-orientation", "aria-valuemax", "aria-valuemin", "aria-valuenow"],
 		"descendantRestrictions": null,
 		"supported": ["aria-valuetext"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"search": {
 		"requiredParent": null,
@@ -423,7 +474,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"searchbox": {
 		"requiredParent": null,
@@ -431,7 +483,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-activedescendant", "aria-autocomplete", "aria-multiline", "aria-placeholder", "aria-readonly", "aria-required"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	}, 
 	"separator": {
 		"requiredParent": null,
@@ -439,7 +492,8 @@ var objRoleRules = {
 		"requiredState": ["aria-valuemax", "aria-valuemin", "aria-valuenow"],
 		"descendantRestrictions": null,
 		"supported": ["aria-orientation", "aria-valuetext"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"slider": {
 		"requiredParent": null,
@@ -447,7 +501,8 @@ var objRoleRules = {
 		"requiredState": ["aria-valuemax", "aria-valuemin", "aria-valuenow"],
 		"descendantRestrictions": null,
 		"supported": ["aria-orientation", "aria-valuetext"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	}, 
 	"spinbutton": {
 		"requiredParent": null,
@@ -455,7 +510,8 @@ var objRoleRules = {
 		"requiredState": ["aria-valuemax", "aria-valuemin", "aria-valuenow"],
 		"descendantRestrictions": null,
 		"supported": ["aria-readonly", "aria-required", "aria-valuetext", "aria-placeholder"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	}, 
 	"status": {
 		"requiredParent": null,
@@ -463,7 +519,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"switch": {
 		"requiredParent": null,
@@ -471,7 +528,8 @@ var objRoleRules = {
 		"requiredState": ["aria-checked"],
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded", "aria-readonly"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"],
+		"nameable": "yes"
 	}, 
 	"tab": {
 		"requiredParent": ["tablist"],
@@ -479,7 +537,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-expanded", "aria-posinset", "aria-selected", "aria-setsize"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"table": {
 		"requiredParent": null,
@@ -488,7 +547,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-colcount", "aria-rowcount"],
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"tablist": {
 		"requiredParent": null,
@@ -496,7 +556,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-level", "aria-multiselectable", "aria-orientation"],
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"tabpanel": {
 		"requiredParent": null,
@@ -504,7 +565,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"term": {
 		"requiredParent": null,
@@ -512,7 +574,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["phrasing"],
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"textbox": {
 		"requiredParent": null,
@@ -520,7 +583,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-activedescendant", "aria-autocomplete", "aria-multiline", "aria-placeholder", "aria-readonly", "aria-required"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
+		"nameable": "yes"
 	}, 
 	"timer": {
 		"requiredParent": null,
@@ -528,7 +592,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"toolbar": {
 		"requiredParent": null,
@@ -544,7 +609,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}, 
 	"tree": {
 		"requiredParent": null,
@@ -552,7 +618,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-multiselectable", "aria-orientation", "aria-required"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"],
+		"nameable": "yes"
 	}, 
 	"treegrid": {
 		"requiredParent": null,
@@ -560,7 +627,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": ["aria-activedescendant", "aria-colcount", "aria-level", "aria-multiselectable", "aria-orientation", "aria-readonly", "aria-required", "aria-rowcount"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"],
+		"nameable": "yes"
 	}, 
 	"treeitem": {
 		"requiredParent": ["group", "tree"],
@@ -568,7 +636,8 @@ var objRoleRules = {
 		"requiredState": ["aria-selected"],
 		"descendantRestrictions": null,
 		"supported": ["aria-checked", "aria-expanded", "aria-level", "aria-posinset", "aria-selected", "aria-setsize"],
-		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"]
+		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"],
+		"nameable": "yes"
 	},
 	// DPub roles
 	"doc-abstract": {
@@ -577,7 +646,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-acknowledgments": {
 		"requiredParent": null,
@@ -585,7 +655,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-afterword": {
 		"requiredParent": null,
@@ -593,7 +664,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-appendix": {
 		"requiredParent": null,
@@ -601,7 +673,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-backlink": {
 		"requiredParent": null,
@@ -609,7 +682,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-biblioentry": {
 		"requiredParent": "list",
@@ -618,7 +692,8 @@ var objRoleRules = {
 		"descendantRestrictions": null,
 		"supported": null,
 		"deprecated": true,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-bibliography": {
 		"requiredParent": null,
@@ -626,7 +701,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-biblioref": {
 		"requiredParent": null,
@@ -634,7 +710,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-chapter": {
 		"requiredParent": null,
@@ -642,7 +719,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-colophon": {
 		"requiredParent": null,
@@ -650,7 +728,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-conclusion": {
 		"requiredParent": null,
@@ -658,7 +737,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-cover": {
 		"requiredParent": null,
@@ -674,7 +754,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-credits": {
 		"requiredParent": null,
@@ -682,7 +763,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-dedication": {
 		"requiredParent": null,
@@ -690,7 +772,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-endnote": {
 		"requiredParent": ["list"],
@@ -699,7 +782,8 @@ var objRoleRules = {
 		"descendantRestrictions": null,
 		"supported": null,
 		"deprecated": true,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-endnotes": {
 		"requiredParent": null,
@@ -707,7 +791,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-epigraph": {
 		"requiredParent": null,
@@ -715,7 +800,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-epilogue": {
 		"requiredParent": null,
@@ -723,7 +809,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-errata": {
 		"requiredParent": null,
@@ -731,7 +818,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-example": {
 		"requiredParent": null,
@@ -739,7 +827,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-footnote": {
 		"requiredParent": null,
@@ -747,7 +836,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-foreword": {
 		"requiredParent": null,
@@ -755,7 +845,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-glossary": {
 		"requiredParent": null,
@@ -763,7 +854,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-glossref": {
 		"requiredParent": null,
@@ -771,7 +863,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-index": {
 		"requiredParent": null,
@@ -779,7 +872,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-introduction": {
 		"requiredParent": null,
@@ -787,7 +881,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-noteref": {
 		"requiredParent": null,
@@ -795,7 +890,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-notice": {
 		"requiredParent": null,
@@ -803,7 +899,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 
 	"doc-pagebreak": {
@@ -812,7 +909,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-pagelist": {
 		"requiredParent": null,
@@ -820,7 +918,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-part": {
 		"requiredParent": null,
@@ -828,7 +927,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-preface": {
 		"requiredParent": null,
@@ -836,7 +936,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-prologue": {
 		"requiredParent": null,
@@ -844,7 +945,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 
 	"doc-pullquote": {
@@ -853,7 +955,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-qna": {
 		"requiredParent": null,
@@ -869,7 +972,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-tip": {
 		"requiredParent": null,
@@ -877,7 +981,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	},
 	"doc-toc": {
 		"requiredParent": null,
@@ -885,7 +990,8 @@ var objRoleRules = {
 		"requiredState": null,
 		"descendantRestrictions": null,
 		"supported": null,
-		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"]
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
 	}
  };
 
@@ -893,212 +999,255 @@ var objElementRules = {
 	"ahref": {
 		"nodeName": "a",
 		"nativeRole": "link",
-		"allowedRoles": ["button", "checkbox", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab", "treeitem",  "doc-backlink", "doc-biblioref", "doc-glossref", "doc-noteref"]
+		"allowedRoles": ["button", "checkbox", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab", "treeitem",  "doc-backlink", "doc-biblioref", "doc-glossref", "doc-noteref"],
+		"nameable": "yes"
 	},
 	"anohref": {
 		"nodeName": "a",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"abbr": {
 		"nodeName": "abbr",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes",
+		"nameable": "no"
 	},
 	"address": {
 		"nodeName": "address",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"area": {
 		"nodeName": "area",
 		"nativeRole": "link",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"areanohref": {
 		"nodeName": "area",
 		"nativeRole": null,
-		"allowedRoles": ["button", "link"]
+		"allowedRoles": ["button", "link"],
+		"nameable": "no"
 	},
 	"article": {
 		"nodeName": "article",
 		"nativeRole": "article",
-		"allowedRoles": ["feed", "presentation", "none", "document", "application", "main", "region"]
+		"allowedRoles": ["feed", "presentation", "none", "document", "application", "main", "region"],
+		"nameable": "yes"
 	},
 	"aside": {
 		"nodeName": "aside",
 		"nativeRole": "complementary",
-		"allowedRoles": ["feed", "note", "presentation", "none", "region", "search", "doc-dedication", "doc-example", "doc-footnote", "doc-pullquote", "doc-tip"]
+		"allowedRoles": ["feed", "note", "presentation", "none", "region", "search", "doc-dedication", "doc-example", "doc-footnote", "doc-pullquote", "doc-tip"],
+		"nameable": "yes"
 	},
 	"audio": {
 		"nodeName": "audio",
 		"nativeRole": null,
-		"allowedRoles": ["application"]
+		"allowedRoles": ["application"],
+		"nameable": "yes"
 	},
 	"b": {
 		"nodeName": "b",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"base": {
 		"nodeName": "base",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"bdi": {
 		"nodeName": "bdi",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"bdo": {
 		"nodeName": "bdo",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"blockquote": {
 		"nodeName": "blockquote",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"body": {
 		"nodeName": "body",
 		"nativeRole": "document",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "no"
 	},
 	"br": {
 		"nodeName": "br",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"button": {
 		"nodeName": "button",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"]
+		"allowedRoles": ["checkbox", "combobox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"],
+		"nameable": "yes"
 	},
 	"canvas": {
 		"nodeName": "canvas",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"caption": {
 		"nodeName": "caption",
 		"nativeRole": null,
-		"allowedRoles": []
-	},
-	"code": {
-		"nodeName": "code",
-		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": [],
+		"nameable": "no"
 	},
 	"cite": {
 		"nodeName": "cite",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
+	},
+	"code": {
+		"nodeName": "code",
+		"nativeRole": null,
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"col": {
 		"nodeName": "col",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"colgroup": {
 		"nodeName": "colgroup",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"data": {
 		"nodeName": "data",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"datalist": {
 		"nodeName": "datalist",
 		"nativeRole": "listbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"dd": {
 		"nodeName": "dd",
 		"nativeRole": "definition",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"del": {
 		"nodeName": "del",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"details": {
 		"nodeName": "details",
 		"nativeRole": "group",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"dfn": {
 		"nodeName": "dfn",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"dialog": {
 		"nodeName": "dialog",
 		"nativeRole": "dialog",
-		"allowedRoles": ["alertdialog"]
+		"allowedRoles": ["alertdialog"],
+		"nameable": "yes"
 	},
 	"div": {
 		"nodeName": "div",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"dl": {
 		"nodeName": "dl",
 		"nativeRole": null,
-		"allowedRoles": ["group", "list", "presentation", "none"]
+		"allowedRoles": ["group", "list", "presentation", "none"],
+		"nameable": "yes"
 	},
 	"dt": {
 		"nodeName": "dt",
 		"nativeRole": "term",
-		"allowedRoles": ["listitem"]
+		"allowedRoles": ["listitem"],
+		"nameable": "yes"
 	},
 	"em": {
 		"nodeName": "em",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"embed": {
 		"nodeName": "embed",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"figcaption": {
 		"nodeName": "figcaption",
 		"nativeRole": null,
-		"allowedRoles": ["group", "presentation", "none"]
+		"allowedRoles": ["group", "presentation", "none"],
+		"nameable": "no"
 	},
 	"fieldset": {
 		"nodeName": "fieldset",
 		"nativeRole": "group",
-		"allowedRoles": ["radiogroup", "none", "presentation"]
+		"allowedRoles": ["radiogroup", "none", "presentation"],
+		"nameable": "yes"
 	},
 	"figure": {
 		"nodeName": "figure",
 		"nativeRole": "figure",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"figure-nofigcap": {
 		"nodeName": "figure",
 		"nativeRole": "figure",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"footer": {
 		"nodeName": "footer",
 		"nativeRole": "contentinfo",
-		"allowedRoles": ["group", "none", "presentation", "doc-footnote"]
+		"allowedRoles": ["group", "none", "presentation", "doc-footnote"],
+		"nameable": "no"
 	},
 	"form": {
 		"nodeName": "form",
 		"nativeRole": "form",
-		"allowedRoles": ["search", "none", "presentation"]
+		"allowedRoles": ["search", "none", "presentation"],
+		"nameable": "yes"
 	},
 	"h1": {
 		"nodeName": "h1",
 		"nativeRole": "heading",
-		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"]
+		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"],
+		"nameable": "yes"
 	},
 	"h2": {
 		"nodeName": "h2",
@@ -1108,548 +1257,657 @@ var objElementRules = {
 	"h3": {
 		"nodeName": "h3",
 		"nativeRole": "heading",
-		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"]
+		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"],
+		"nameable": "yes"
 	},
 	"h4": {
 		"nodeName": "h4",
 		"nativeRole": "heading",
-		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"]
+		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"],
+		"nameable": "yes"
 	},
 	"h5": {
 		"nodeName": "h5",
 		"nativeRole": "heading",
-		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"]
+		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"],
+		"nameable": "yes"
 	},
 	"h6": {
 		"nodeName": "h6",
 		"nativeRole": "heading",
-		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"]
+		"allowedRoles": ["tab", "none", "presentation", "doc-subtitle"],
+		"nameable": "yes"
 	},
 	"head": {
 		"nodeName": "head",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"header": {
 		"nodeName": "header",
 		"nativeRole": "banner",
-		"allowedRoles": ["group", "none", "presentation"]
+		"allowedRoles": ["group", "none", "presentation"],
+		"nameable": "no"
 	},
 	"hgroup": {
 		"nodeName": "hgroup",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"hr": {
 		"nodeName": "hr",
 		"nativeRole": "separator",
-		"allowedRoles": ["none", "presentation", "doc-pagebreak"]
+		"allowedRoles": ["none", "presentation", "doc-pagebreak"],
+		"nameable": "yes"
 	},
 	"html": {
 		"nodeName": "html",
 		"nativeRole": "document",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"i": {
 		"nodeName": "i",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"iframe": {
 		"nodeName": "iframe",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"img-noalt": {
 		"nodeName": "imgEmptyAlt",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"img-emptyalt": {
 		"nodeName": "imgEmptyAlt",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"img": {
 		"nodeName": "imgWithAlt",
 		"nativeRole": "img",
-		"allowedRoles": ["button", "checkbox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "progressbar", "radio", "scrollbar", "separator", "slider", "switch", "tab", "treeitem"]
+		"allowedRoles": ["button", "checkbox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "progressbar", "radio", "scrollbar", "separator", "slider", "switch", "tab", "treeitem"],
+		"nameable": "yes"
 	},
 	"input-button": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"]
+		"allowedRoles": ["checkbox", "combobox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"],
+		"nameable": "yes"
 	},
 	"input-checkbox": {
 		"nodeName": "input",
 		"nativeRole": "checkbox",
-		"allowedRoles": ["button", "menuitemcheckbox", "option", "switch"]
+		"allowedRoles": ["button", "menuitemcheckbox", "option", "switch"],
+		"nameable": "yes"
 	},
 	"input-color": {
 		"nodeName": "input",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-date": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-datetime-local": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-email": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-file": {
 		"nodeName": "input",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-hidden": {
 		"nodeName": "input",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-image": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["link", "menuitem", "menuitemcheckbox", "menuitemradio", "radio", "switch"]
+		"allowedRoles": ["link", "menuitem", "menuitemcheckbox", "menuitemradio", "radio", "switch"],
+		"nameable": "yes"
 	},
 	"input-month": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-number": {
 		"nodeName": "input",
 		"nativeRole": "spinbutton",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-password": {
 		"nodeName": "input",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-radio": {
 		"nodeName": "input",
 		"nativeRole": "radio",
-		"allowedRoles": ["menuitemradio"]
+		"allowedRoles": ["menuitemradio"],
+		"nameable": "yes"
 	},
 	"input-range": {
 		"nodeName": "input",
 		"nativeRole": "slider",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-reset": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-search": {
 		"nodeName": "input",
 		"nativeRole": "searchbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-submit": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-tel": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-text": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": ["combobox", "searchbox", "spinbutton"]
+		"allowedRoles": ["combobox", "searchbox", "spinbutton"],
+		"nameable": "yes"
 	},
 	"input-time": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-url": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"input-week": {
 		"nodeName": "input",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"ins": {
 		"nodeName": "ins",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"kbd": {
 		"nodeName": "kbd",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"label": {
 		"nodeName": "label",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "no"
 	},
 	"legend": {
 		"nodeName": "legend",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"li": {
 		"nodeName": "li",
 		"nativeRole": "listitem",
-		"allowedRoles": ["menuitem", "menuitemcheckbox", "menuitemradio", "option", "none", "presentation", "radio", "separator", "tab", "treeitem", "doc-biblioentry", "doc-endnote"]
+		"allowedRoles": ["menuitem", "menuitemcheckbox", "menuitemradio", "option", "none", "presentation", "radio", "separator", "tab", "treeitem", "doc-biblioentry", "doc-endnote"],
+		"nameable": "yes"
 	},
 	"link": {
 		"nodeName": "link",
 		"nativeRole": "link",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"main": {
 		"nodeName": "main",
 		"nativeRole": "main",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"map": {
 		"nodeName": "map",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"mark": {
 		"nodeName": "mark",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"math": {
 		"nodeName": "math",
 		"nativeRole": "math",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"menu": {
 		"nodeName": "menu",
 		"nativeRole": "list",
-		"allowedRoles": [ "directory", "group", "listbox", "menu", "menubar", "radiogroup", "tablist", "toolbar", "tree", "presentation", "none"]
+		"allowedRoles": [ "directory", "group", "listbox", "menu", "menubar", "radiogroup", "tablist", "toolbar", "tree", "presentation", "none"],
+		"nameable": "yes"
 	},
 	"meta": {
 		"nodeName": "meta",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"meter": {
 		"nodeName": "meter",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"nav": {
 		"nodeName": "nav",
 		"nativeRole": "navigation",
-		"allowedRoles": ["menu", "menubar", "none", "presentation", "tablist", "doc-index", "doc-pagelist", "doc-toc"]
+		"allowedRoles": ["menu", "menubar", "none", "presentation", "tablist", "doc-index", "doc-pagelist", "doc-toc"],
+		"nameable": "yes"
 	},
 	"noscript": {
 		"nodeName": "noscript",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"object": {
 		"nodeName": "object",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"ol": {
 		"nodeName": "ol",
 		"nativeRole": "list",
-		"allowedRoles": ["directory", "group", "listbox", "menu", "menubar", "none", "presentation", "radiogroup", "tablist", "toolbar", "tree"]
+		"allowedRoles": ["directory", "group", "listbox", "menu", "menubar", "none", "presentation", "radiogroup", "tablist", "toolbar", "tree"],
+		"nameable": "yes"
 	},
 	"optgroup": {
 		"nodeName": "optgroup",
 		"nativeRole": "group",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"option": {
 		"nodeName": "option",
 		"nativeRole": "option",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"output": {
 		"nodeName": "output",
 		"nativeRole": "status",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"p": {
 		"nodeName": "p",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"param": {
 		"nodeName": "param",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"picture": {
 		"nodeName": "picture",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"pre": {
 		"nodeName": "pre",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"progress": {
 		"nodeName": "progress",
 		"nativeRole": "progressbar",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"q": {
 		"nodeName": "q",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"rp": {
 		"nodeName": "rp",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"rt": {
 		"nodeName": "rt",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"ruby": {
 		"nodeName": "ruby",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"s": {
 		"nodeName": "s",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"samp": {
 		"nodeName": "samp",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"script": {
 		"nodeName": "script",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"section": {
 		"nodeName": "section",
 		"nativeRole": "region",
-		"allowedRoles": ["alert", "alertdialog", "application", "banner", "complementary", "contentinfo", "dialog", "document", "feed", "group", "log", "main", "marquee", "navigation", "none", "note", "presentation", "search", "status", "tabpanel",  "doc-abstract", "doc-acknowledgments", "doc-afterword", "doc-appendix", "doc-bibliography", "doc-chapter", "doc-colophon", "doc-conclusion", "doc-credit", "doc-credits", "doc-dedication", "doc-endnotes", "doc-epigraph", "doc-epilogue", "doc-errata", "doc-example", "doc-foreword", "doc-glossary", "doc-index", "doc-introduction", "doc-notice", "doc-pagelist", "doc-part", "doc-preface", "doc-prologue", "doc-pullquote", "doc-qna", "doc-toc"]
+		"allowedRoles": ["alert", "alertdialog", "application", "banner", "complementary", "contentinfo", "dialog", "document", "feed", "group", "log", "main", "marquee", "navigation", "none", "note", "presentation", "search", "status", "tabpanel",  "doc-abstract", "doc-acknowledgments", "doc-afterword", "doc-appendix", "doc-bibliography", "doc-chapter", "doc-colophon", "doc-conclusion", "doc-credit", "doc-credits", "doc-dedication", "doc-endnotes", "doc-epigraph", "doc-epilogue", "doc-errata", "doc-example", "doc-foreword", "doc-glossary", "doc-index", "doc-introduction", "doc-notice", "doc-pagelist", "doc-part", "doc-preface", "doc-prologue", "doc-pullquote", "doc-qna", "doc-toc"],
+		"nameable": "yes"
 	},
 	"select": {
 		"nodeName": "select",
 		"nativeRole": "combobox",
-		"allowedRoles": ["menu"]
+		"allowedRoles": ["menu"],
+		"nameable": "yes"
 	},
 	"select-nomenu": {
 		"nodeName": "select",
 		"nativeRole": "combobox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"select-2": {
 		"nodeName": "select",
 		"nativeRole": "listbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"slot": {
 		"nodeName": "slot",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"small": {
 		"nodeName": "small",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"source": {
 		"nodeName": "source",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"span": {
 		"nodeName": "span",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"strong": {
 		"nodeName": "strong",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"style": {
 		"nodeName": "style",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"svg": {
 		"nodeName": "svg",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"sub": {
 		"nodeName": "sub",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"sup": {
 		"nodeName": "sup",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"summary": {
 		"nodeName": "summary",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"table": {
 		"nodeName": "table",
 		"nativeRole": "table",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"template": {
 		"nodeName": "template",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"textarea": {
 		"nodeName": "textarea",
 		"nativeRole": "textbox",
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"tbody": {
 		"nodeName": "tbody",
 		"nativeRole": "rowgroup",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"tfoot": {
 		"nodeName": "tfoot",
 		"nativeRole": "rowgroup",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"thead": {
 		"nodeName": "thead",
 		"nativeRole": "rowgroup",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"title": {
 		"nodeName": "title",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"td": {
 		"nodeName": "td",
 		"nativeRole": "cell",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"th": {
 		"nodeName": "th",
 		"nativeRole": "columnheader",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"time": {
 		"nodeName": "time",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"tr": {
 		"nodeName": "tr",
 		"nativeRole": "row",
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "yes"
 	},
 	"track": {
 		"nodeName": "track",
 		"nativeRole": null,
-		"allowedRoles": []
+		"allowedRoles": [],
+		"nameable": "yes"
 	},
 	"u": {
 		"nodeName": "u",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"ul": {
 		"nodeName": "ul",
 		"nativeRole": "list",
-		"allowedRoles": ["directory", "group", "listbox", "menu", "menubar", "radiogroup", "tablist", "toolbar", "tree", "presentation", "none"]
+		"allowedRoles": ["directory", "group", "listbox", "menu", "menubar", "radiogroup", "tablist", "toolbar", "tree", "presentation", "none"],
+		"nameable": "yes"
 	},
 	"var": {
 		"nodeName": "var",
 		"nativeRole": null,
-		"allowedRoles": "all"
+		"allowedRoles": "all",
+		"nameable": "no"
 	},
 	"video": {
 		"nodeName": "video",
 		"nativeRole": null,
-		"allowedRoles": ["application"]
+		"allowedRoles": ["application"],
+		"nameable": "yes"
 	},
 	"wbr": {
 		"nodeName": "wbr",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	// Common SVG elements
 	"circle": {
 		"nodeName": "circle",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"defs": {
 		"nodeName": "defs",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"ellipse": {
 		"nodeName": "ellipse",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"g": {
 		"nodeName": "g",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"line": {
 		"nodeName": "line",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"path": {
 		"nodeName": "path",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"polygon": {
 		"nodeName": "polygon",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"polyline": {
 		"nodeName": "polyline",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"rect": {
 		"nodeName": "rect",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	},
 	"text": {
 		"nodeName": "text",
 		"nativeRole": null,
-		"allowedRoles": ["none", "presentation"]
+		"allowedRoles": ["none", "presentation"],
+		"nameable": "yes"
 	}
 };
 
@@ -2231,6 +2489,25 @@ function checkRequiredState(objElement, strRole) {
 	return true;
 }
 
+function checkScope(objElement) {
+	var objParent = objElement.parentNode;
+	var objScope = ["article", "aside", "nav", "section"];
+	var strCheck;
+
+	do {
+		strCheck = objParent.tagName.toLowerCase();
+
+		if (strCheck === "body") {
+			return true;
+		}
+		else if (objScope.indexOf(strCheck) >= 0) {
+			return false;
+		}
+	} while (objParent = objParent.parentNode);
+
+	return false;
+}
+
 function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var arGlobal = ["aria-atomic", "aria-busy", "aria-controls", "aria-current", "aria-describedby", "aria-details", "aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-flowto", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-keyshortcuts", "aria-label", "aria-labelledby", "aria-live", "aria-owns", "aria-relevant", "aria-roledescription"];
 	var arHiddenExceptions = ["base", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "script", "slot", "source", "style", "template", "title", "track"];
@@ -2245,6 +2522,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var arState=[];
 	var arAttributes = objElement.attributes;
 	var strAttribute;
+	var strNameElement;
 	var strConditionalAttribute;
 	var strTagName = objElement.tagName.toLowerCase();
 	var strElement;
@@ -2302,6 +2580,40 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 		strAttribute = arAttributes[i].nodeName;
 
 		if (strAttribute.substring(0, 5) === "aria-") {
+			// Check for aria-label and aria-label restrictions
+			if (strAttribute === "aria-label" || strAttribute === "aria-labelledby") {
+				// Exception for header and footer
+				if (strElement === "header" || strElement === "footer") {
+					if (!checkScope(objElement)) {
+						logResult("Element ", strTagName, " is prohibited from being named by authors unless scoped to body ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+						return false;
+					}
+				}
+				else {
+					if (strElement) {
+						strNameElement = strElement;
+					}
+					else {
+						strNameElement = objElement.tagName.toLowerCase();
+					}
+					if (objRoleRules[strRole]) {
+						if (objRoleRules[strRole].nameable === "no") {
+							logResult("Element ", strTagName, " is prohibited from being named by authors ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+							return false;
+						}
+					}
+					else if (objElementRules[strNameElement]) {
+						if (objElementRules[strNameElement].nameable === "no") {
+							logResult("Element ", strTagName, " is prohibited from being named by authors ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+							return false;
+						}
+					}
+					else {
+						logResult("Custom element ", strTagName, " is prohibited from being named by authors ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+						return false;
+					}
+				}
+			}
 			if (arOptionalValue.indexOf(strAttribute) < 0 && arAttributes[i].value === "") {
 				strConditionalAttribute = objElement.getAttribute("aria-expanded");
 				if (strConditionalAttribute !== "false") {
@@ -2602,8 +2914,8 @@ function checkWAIAria() {
 										bValid = true;
 									}
 									break;
-						case "div" : if (objElements[i].parentNode.tagName.toLowerCase() == "dl") {
-										if (strRole === "presentation" || strRole==="none") {
+						case "div" : if (objElements[i].parentNode.tagName.toLowerCase() === "dl") {
+										if (strRole === "presentation" || strRole === "none") {
 											bValid = true;
 										}
 									}
