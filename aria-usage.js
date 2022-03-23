@@ -2582,12 +2582,16 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 		if (strAttribute.substring(0, 5) === "aria-") {
 			// Check for aria-label and aria-label restrictions
 			if (strAttribute === "aria-label" || strAttribute === "aria-labelledby") {
-				// Exception for header and footer
+				// Use conditional statements where appropriate
 				if (strElement === "header" || strElement === "footer") {
 					if (!checkScope(objElement)) {
 						logResult("Element ", strTagName, " is prohibited from being named by authors unless scoped to body ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 						return false;
 					}
+				}
+				else if (strElement === "anohref" || strElement === "areanohref") {
+					logResult("Element ", strTagName, " without an href is prohibited from being named by authors ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					return false;
 				}
 				else {
 					if (strElement) {
