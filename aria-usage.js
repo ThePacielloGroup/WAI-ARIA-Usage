@@ -54,6 +54,15 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
+	"blockquote": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	}, 
 	"button": {
 		"requiredParent": null,
 		"requiredChild": null,
@@ -61,6 +70,15 @@ var objRoleRules = {
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded", "aria-pressed"],
 		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-invalid"],
+		"nameable": "yes"
+	}, 
+	"caption": {
+		"requiredParent": ["figure", "grid", "table", "treegrid"],
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
 	"cell": {
@@ -80,6 +98,15 @@ var objRoleRules = {
 		"descendantRestrictions": ["interactive"],
 		"supported": ["aria-expanded", "aria-readonly"],
 		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed", "aria-haspopup"],
+		"nameable": "yes"
+	}, 
+	"code": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
 	"columnheader": {
@@ -128,6 +155,15 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
+	"deletion": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
 	"dialog": {
 		"requiredParent": null,
 		"requiredChild": null,
@@ -155,6 +191,15 @@ var objRoleRules = {
 		"supported": null,
 		"nameable": "yes"
 	}, 
+	"emphasis": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
 	"feed": {
 		"requiredParent": null,
 		"requiredChild": ["article"],
@@ -182,6 +227,15 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
+	"generic": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
 	"grid": {
 		"requiredParent": null,
 		"requiredChild": ["row", "rowgroup"],
@@ -220,6 +274,15 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
+	"insertion": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
 	"img": {
 		"requiredParent": null,
 		"requiredChild": null,
@@ -301,6 +364,15 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
+	"meter": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": ["aria-valuenow"],
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
 	"menu": {
 		"requiredParent": null,
 		"requiredChild": ["group", "menuitem", "menuitemcheckbox", "menuitemradio"],
@@ -382,6 +454,15 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
+	"paragraph": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
 	"presentation": {
 		"requiredParent": null,
 		"requiredChild": null,
@@ -522,6 +603,33 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	}, 
+	"strong": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
+	"subscript": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
+	"superscript": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
 	"switch": {
 		"requiredParent": null,
 		"requiredChild": null,
@@ -586,6 +694,15 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-dropeffect", "aria-grabbed"],
 		"nameable": "yes"
 	}, 
+	"time": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-errormessage", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	},
 	"timer": {
 		"requiredParent": null,
 		"requiredChild": null,
@@ -2847,10 +2964,14 @@ function checkWAIAria() {
 	var bNative;
 	var bLogged;
 	var bCaseChange;
+	var bException;
 	var strElement;
 	var strRole;
+	var strParentElement;
+	var strParentRole;
 	var strCheckElement;
 	var arAllowed = [];
+	var arListExceptions = ["ul", "ol", "menu"];
 	var iRoleIndex;
 	var i;
 
@@ -2949,9 +3070,28 @@ function checkWAIAria() {
 					}
 				}
 				if (!bValid && !bLogged && !bNative) {
-					// The role is invalid for the element
-					objValidWAIAria.invalid++;
-					logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
+					bException = false;
+					// Exceptions for lists
+					if (strElement === "li") {
+						strParentElement = objElements[i].parentNode.tagName.toLowerCase();
+						strParentRole = objElements[i].parentNode.getAttribute("role");
+						if (arListExceptions.indexOf(strParentElement) === -1) {
+							// Not a child of <ul>, <ol>, or <menu>
+							bException = true;
+							bValid = true;
+						}
+						else if (strParentRole) {
+							if (strParentRole.toLowerCase() === "none" || strParentRole.toLowerCase() === "presentation") {
+								bException = true;
+								bValid = true;
+							} 
+						}
+					}
+					if (!bException) {
+						// The role is invalid for the element
+						objValidWAIAria.invalid++;
+						logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
+					}
 				}
 				if (bNative) {
 					// Check exceptions
