@@ -1339,7 +1339,7 @@ var objElementRules = {
 	"figure": {
 		"nodeName": "figure",
 		"nativeRole": "figure",
-		"allowedRoles": [],
+		"allowedRoles": ["doc-example"],
 		"nameable": "yes"
 	},
 	"figure-nofigcap": {
