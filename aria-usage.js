@@ -2749,10 +2749,10 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 					strAttributeValue = objElement.getAttribute(strAttribute);
 					// Exception for aria-invalid
 					if (strAttribute === "aria-invalid" && strAttributeValue && arDeprecatedValues.indexOf(strAttributeValue) >= 0) {
-						logResult("Warning ", strTagName, " has a deprecated attribute for ", strRole, objElement, "(" + strAttribute + "). Although deprecated, the \"" + strAttributeValue + "\" value may be used until a replacement attribute is created to convey this information.", "deprecatedattribute");
+						logResult("Warning ", strTagName, " has a deprecated attribute for ", strRole, objElement, " (" + strAttribute + "). Although deprecated, the \"" + strAttributeValue + "\" value may be used until a replacement attribute is created to convey this information.", "deprecatedattribute");
 					}
 					else {
-						logResult("Warning ", strTagName, " has a deprecated attribute for ", strRole, objElement, "(" + strAttribute + ").", "deprecatedattribute");
+						logResult("Warning ", strTagName, " has a deprecated attribute for ", strRole, objElement, " (" + strAttribute + ").", "deprecatedattribute");
 					}
 					objValidWAIAria.deprecatedattribute++;
 				}
@@ -2764,7 +2764,12 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 					logResult("Warning ", strTagName, " has a deprecated attribute ", "", objElement, "(" + strAttribute + "). Although deprecated, the \"" + strAttributeValue + "\" value may be used until a replacement attribute is created to convey this information.", "deprecatedattribute");
 				}
 				else {
-					logResult("Warning ", strTagName, " has a deprecated attribute ", "", objElement, "(" + strAttribute + ").", "deprecatedattribute");
+					if (strAttribute === "aria-grabbed" || strAttribute === "aria-dropeffect") {
+						logResult("Warning ", strTagName, " has a deprecated attribute ", "", objElement, "(" + strAttribute + ").", "deprecatedattribute");
+					}
+					else {
+						logResult("Warning ", strTagName, " has a deprecated attribute in this context ", "", objElement, "(" + strAttribute + ").", "deprecatedattribute");
+					}
 				}
 				objValidWAIAria.deprecatedattribute++;
 			}
@@ -3094,6 +3099,7 @@ function checkWAIAria() {
 					}
 				}
 				if (bNative) {
+					bValid = true;
 					// Check exceptions
 					if (strRole === "link" && !objElements[i].getAttribute("href")){
 						// Exception for a and area elements
