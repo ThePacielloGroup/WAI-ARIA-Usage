@@ -2028,6 +2028,70 @@ var objElementRules = {
 	}
 };
 
+// Token for deprecated roles are not included, as a warning is provided for them
+var objTokens = {
+	"aria-atomic": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-autocomplete": {
+		"tokenlist": ["inline", "list", "both"]
+	},
+	"aria-busy": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-checked": {
+		"tokenlist": ["false", "true", "mixed"]
+	},
+	"aria-current": {
+		"tokenlist": ["page", "step", "location", "date", "time", "true"]
+	},
+	"aria-disabled": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-expanded": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-haspopup": {
+		"tokenlist": ["true", "false", "menu", "listbox", "tree", "grid", "dialog"]
+	},
+	"aria-hidden": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-invalid": {
+		"tokenlist": ["grammar", "false", "spelling", "true"]
+	},
+	"aria-live": {
+		"tokenlist": ["assertive", "off", "polite"]
+	},
+	"aria-modal": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-multiline": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-multiselectable": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-orientation": {
+		"tokenlist": ["horizontal", "vertical"]
+	},
+	"aria-pressed": {
+		"tokenlist": ["false", "true", "mixed"]
+	},
+	"aria-readonly": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-relevant": {
+		"tokenlist": ["additions", "additions text", "all", "removals", "text"]
+	},
+	"aria-required": {
+		"tokenlist": ["false", "true"]
+	},
+	"aria-selected": {
+		"tokenlist": ["false", "true"]
+	}
+};
+
 var arPhrasing = ["a", "abbr", "area", "audio", "b", "bdi", "bdo", "br", "button", "canvas", "cite", "code", "data", "datalist", "del", "dfn", "emembed", "i", "iframe", "img", "input", "ins", "kbd", "label", "link", "map", "mark", "math", "meta", "meter", "noscript", "object", "output", "picture", "progress", "q", "ruby", "s", "samp", "script", "select", "slot", "small", "span", "strong", "sub", "sup", "svg", "template", "text", "area", "time", "u", "var", "video", "wbr"];
 var arInteractive = ["a", "audio", "button", "details", "embed", "iframe", "img", "input", "label", "object", "select", "textarea", "video"];
 var arValidRoles=[];
@@ -2301,7 +2365,7 @@ function logResult(strMessage, strElement, strError, strRole, objCode, strMissin
 	var objRole = document.createElement("code");
 	var objPre = document.createElement("pre");
 	var objMarkup = document.createElement("code");
-
+	
 	if (objGroup.childNodes.length === 0) {
 		addHeading(objGroup, strTargetContainer);
 	}
@@ -2644,6 +2708,9 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var strTagName = objElement.tagName.toLowerCase();
 	var strElement;
 	var strType;
+	var strTokens;
+	var strException;
+	var bException;
 	var bGlobal = false;
 	var bFound = false;
 	var i;
@@ -2670,15 +2737,15 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 		if (strTagName === "input" && objElement.hasAttribute("aria-checked")) {
 			if (strType === "checkbox") {
 				if ( objElement.getAttribute("aria-checked") === "mixed" ) {
-					logResult("Error: ", strTagName, " aria-checked=mixed is used on a native checkbox. Use the element's indeterminate IDL attribute instead.", "", objElement, ".", "invalidproperty");
+					logResult("Error: ", strTagName, " aria-checked=mixed is used on a native checkbox. Use the element's indeterminate IDL attribute instead", "", objElement, ".", "invalidproperty");
 				}
 				else {
-					logResult("Error: ", strTagName, " aria-checked is used on a native checkbox. Use the element's native checked semantics instead.", "", objElement, ".", "invalidproperty");	
+					logResult("Error: ", strTagName, " aria-checked is used on a native checkbox. Use the element's native checked semantics instead", "", objElement, ".", "invalidproperty");	
 				}
 				return false;
 			}
 			else if (strType === "radio") {
-				logResult("Error: ", strTagName, " aria-checked is used on a native radio button. Use the element's native checked semantics instead.", "", objElement, ".", "invalidproperty");
+				logResult("Error: ", strTagName, " aria-checked is used on a native radio button. Use the element's native checked semantics instead", "", objElement, ".", "invalidproperty");
 				return false;
 			}
 		}
@@ -2895,8 +2962,26 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 			}
 			if (objElement.getAttribute(strAttribute) !== objElement.getAttribute(strAttribute).toLowerCase()) {
 				if (arCaseSensitive.indexOf(strAttribute) >=0) {
-					logResult("Warning: Attribute vale for ", strAttribute, " not all browsers / assistive technology combinations expose attribute values that are not written in lowercase ", "", objElement, ".", "invalidproperty");
+					logResult("Warning: Attribute value for ", strAttribute, " not all browsers / assistive technology combinations expose attribute values that are not written in lowercase ", "", objElement, ".", "invalidproperty");
 					return false;
+				}
+			}
+			// Check valid tokens for attribute values
+			if (objTokens[strAttribute]) { 
+				if (objTokens[strAttribute].tokenlist.indexOf(arAttributes[i].value) === -1) {
+					// Exception for aria-relevant
+					bException = false;
+					if (strAttribute === "aria-relevant" && arAttributes[i].value.indexOf(" ") >= 0) {
+						strException = arAttributes[i].value.replace(/\s/g, "");
+						if (strException === "additionstext" || strException === "textadditions") {
+							bException = true;
+						}
+					}
+					if (!bException) {
+						strTokens = objTokens[strAttribute].tokenlist.toString().replaceAll(",", ", ");
+						logResult("Invalid attribute value for ", strAttribute, ". The value must be one of " + strTokens, "", objElement, ".", "invalidproperty");
+						return false;
+					}
 				}
 			}
 		}
