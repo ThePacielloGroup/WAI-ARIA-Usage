@@ -2092,6 +2092,41 @@ var objTokens = {
 	}
 };
 
+
+// 1 = must be 0 or higher; 
+// 2 = must be 1 or higher; 
+// 3 = must be 1 or higher, or -1; 
+// 4 = between 1 and 6
+var objIntegers = {
+	"aria-colcount": {
+		"type": 3
+	},
+	"aria-colindex": {
+		"type": 2
+	},
+	"aria-colspan": {
+		"type": 2
+	},
+	"aria-level": {
+		"type": 4
+	},
+	"aria-posinset": {
+		"type": 2
+	},
+	"aria-rowcount": {
+		"type": 3
+	},
+	"aria-rowindex": {
+		"type": 2
+	},
+	"aria-rowspan": {
+		"type": 1
+	},
+	"aria-setsize": {
+		"type": 3
+	}
+};
+
 var arPhrasing = ["a", "abbr", "area", "audio", "b", "bdi", "bdo", "br", "button", "canvas", "cite", "code", "data", "datalist", "del", "dfn", "emembed", "i", "iframe", "img", "input", "ins", "kbd", "label", "link", "map", "mark", "math", "meta", "meter", "noscript", "object", "output", "picture", "progress", "q", "ruby", "s", "samp", "script", "select", "slot", "small", "span", "strong", "sub", "sup", "svg", "template", "text", "area", "time", "u", "var", "video", "wbr"];
 var arInteractive = ["a", "audio", "button", "details", "embed", "iframe", "img", "input", "label", "object", "select", "textarea", "video"];
 var arValidRoles=[];
@@ -2713,6 +2748,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var bException;
 	var bGlobal = false;
 	var bFound = false;
+	var iInteger;
 	var i;
 
 	if (strTagName === "input") {
@@ -2982,6 +3018,40 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 						logResult("Invalid attribute value for ", strAttribute, ". The value must be one of " + strTokens, "", objElement, ".", "invalidproperty");
 						return false;
 					}
+				}
+			}
+
+			// Check integer values for attributes
+			if (objIntegers[strAttribute]) {
+				iInteger = parseInt(arAttributes[i].value);
+				if (isNaN(iInteger)) {
+					logResult("Invalid attribute value for ", strAttribute, ". The value must be an integer", "", objElement, ".", "invalidproperty");
+					return false;
+				}
+				// 1 = must be 0 or higher; 
+				// 2 = must be 1 or higher; 
+				// 3 = must be 1 or higher, or -1; 
+				// 4 = between 1 and 6
+				switch (objIntegers[strAttribute].type) {
+					case 1: if (iInteger < 0 ) {
+								logResult("Invalid attribute value for ", strAttribute, ". The value must be 0 or higher", "", objElement, ".", "invalidproperty");
+								return false;
+							}
+							break;
+					case 2: if (iInteger < 1 ) {
+								logResult("Invalid attribute value for ", strAttribute, ". The value must be 1 or higher", "", objElement, ".", "invalidproperty");
+								return false;
+							}
+							break;
+					case 3: if (iInteger < -1 || iInteger === 0) {
+								logResult("Invalid attribute value for ", strAttribute, ". The value must be 1 or higher, or -1", "", objElement, ".", "invalidproperty");
+								return false;
+							}
+							break;
+					case 4: if (iInteger < 1 || iInteger > 6) {
+								logResult("Invalid attribute value for ", strAttribute, ". The value must be between 1 and 6", "", objElement, ".", "invalidproperty");
+								return false;
+							}
 				}
 			}
 		}
