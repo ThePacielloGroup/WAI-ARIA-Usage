@@ -2043,7 +2043,7 @@ var objTokens = {
 		"tokenlist": ["false", "true", "mixed"]
 	},
 	"aria-current": {
-		"tokenlist": ["page", "step", "location", "date", "time", "true"]
+		"tokenlist": ["page", "step", "location", "date", "time", "true", "false"]
 	},
 	"aria-disabled": {
 		"tokenlist": ["false", "true"]
@@ -2096,7 +2096,7 @@ var objTokens = {
 // 1 = must be 0 or higher; 
 // 2 = must be 1 or higher; 
 // 3 = must be 1 or higher, or -1; 
-// 4 = between 1 and 6
+// 4 = between 1 and 6 on a heading
 var objIntegers = {
 	"aria-colcount": {
 		"type": 3
@@ -2724,6 +2724,17 @@ function checkScope(objElement) {
 	return false;
 }
 
+function isHeading(objElement) {
+	var arNativeHeading = ["h1", "h2", "h3", "h4", "h5", "h6"];
+	if (arNativeHeading.indexOf(objElement.tagName.toLowerCase()) >= 0) {
+		return true;
+	}
+	if (objElement.getAttribute("role") === "heading") {
+		return true;
+	}
+	return false;
+}
+
 function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var arGlobal = ["aria-atomic", "aria-busy", "aria-controls", "aria-current", "aria-describedby", "aria-details", "aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-flowto", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-keyshortcuts", "aria-label", "aria-labelledby", "aria-live", "aria-owns", "aria-relevant", "aria-roledescription"];
 	var arHiddenExceptions = ["base", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "script", "slot", "source", "style", "template", "title", "track"];
@@ -3031,7 +3042,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				// 1 = must be 0 or higher; 
 				// 2 = must be 1 or higher; 
 				// 3 = must be 1 or higher, or -1; 
-				// 4 = between 1 and 6
+				// 4 = between 1 and 6 on a heading element
 				switch (objIntegers[strAttribute].type) {
 					case 1: if (iInteger < 0 ) {
 								logResult("Invalid attribute value for ", strAttribute, ". The value must be 0 or higher", "", objElement, ".", "invalidproperty");
@@ -3048,8 +3059,14 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 								return false;
 							}
 							break;
-					case 4: if (iInteger < 1 || iInteger > 6) {
-								logResult("Invalid attribute value for ", strAttribute, ". The value must be between 1 and 6", "", objElement, ".", "invalidproperty");
+					case 4: if (isHeading(objElement)) { // Must be between 1 and 6 on a heading element
+								if (iInteger < 1 || iInteger > 6) {
+									logResult("Invalid attribute value for ", strAttribute, ". The value must be between 1 and 6 on a heading", "", objElement, ".", "invalidproperty");
+									return false;
+								}
+							}
+							else if (iInteger < 1 ) {
+								logResult("Invalid attribute value for ", strAttribute, ". The value must be 1 or higher", "", objElement, ".", "invalidproperty");
 								return false;
 							}
 				}
