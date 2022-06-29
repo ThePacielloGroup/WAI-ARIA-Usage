@@ -2127,6 +2127,8 @@ var objIntegers = {
 	}
 };
 
+var arValidARIAAttributes = ["aria-activedescendant", "aria-atomic", "aria-autocomplete", "aria-busy", "aria-checked", "aria-colcount", "aria-colindex", "aria-colspan", "aria-controls", "aria-current", "aria-describedby", "aria-details", "aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-expanded", "aria-flowto", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-keyshortcuts", "aria-label", "aria-labelledby", "aria-level", "aria-live", "aria-modal", "aria-multiline", "aria-multiselectable", "aria-orientation", "aria-owns", "aria-placeholder", "aria-posinset", "aria-pressed", "aria-readonly", "aria-relevant", "aria-required", "aria-roledescription", "aria-rowcount", "aria-rowindex", "aria-rowspan", "aria-selected", "aria-setsize", "aria-sort", "aria-valuemax", "aria-valuemin", "aria-valuenow", "aria-valuetext"];
+
 var arPhrasing = ["a", "abbr", "area", "audio", "b", "bdi", "bdo", "br", "button", "canvas", "cite", "code", "data", "datalist", "del", "dfn", "emembed", "i", "iframe", "img", "input", "ins", "kbd", "label", "link", "map", "mark", "math", "meta", "meter", "noscript", "object", "output", "picture", "progress", "q", "ruby", "s", "samp", "script", "select", "slot", "small", "span", "strong", "sub", "sup", "svg", "template", "text", "area", "time", "u", "var", "video", "wbr"];
 var arInteractive = ["a", "audio", "button", "details", "embed", "iframe", "img", "input", "label", "object", "select", "textarea", "video"];
 var arValidRoles=[];
@@ -3011,7 +3013,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				if (arCaseSensitive.indexOf(strAttribute) >=0) {
 					logResult("Warning: Attribute value for ", strAttribute, " not all browsers / assistive technology combinations expose attribute values that are not written in lowercase ", "", objElement, ".", "invalidproperty");
 					return false;
-				}
+				} 
 			}
 			// Check valid tokens for attribute values
 			if (objTokens[strAttribute]) { 
@@ -3070,6 +3072,11 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 								return false;
 							}
 				}
+			}
+			// Check the aria- attribute is a valid attribute
+			if (arValidARIAAttributes.indexOf(strAttribute) === -1) {
+				logResult("Attribute ", strAttribute, " is not a valid attribute", "", objElement, ".", "invalidproperty");
+				return false;
 			}
 		}
 	}
