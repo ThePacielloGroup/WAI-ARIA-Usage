@@ -1434,7 +1434,7 @@ var objElementRules = {
 	"iframe": {
 		"nodeName": "iframe",
 		"nativeRole": null,
-		"allowedRoles": [],
+		"allowedRoles": ["application", "document", "img", "none", "presentation"],
 		"nameable": "yes"
 	},
 	"img-noalt": {
@@ -3009,15 +3009,9 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 					}
 				}
 			}
-			if (objElement.getAttribute(strAttribute) !== objElement.getAttribute(strAttribute).toLowerCase()) {
-				if (arCaseSensitive.indexOf(strAttribute) >=0) {
-					logResult("Warning: Attribute value for ", strAttribute, " not all browsers / assistive technology combinations expose attribute values that are not written in lowercase ", "", objElement, ".", "invalidproperty");
-					return false;
-				} 
-			}
 			// Check valid tokens for attribute values
 			if (objTokens[strAttribute]) { 
-				if (objTokens[strAttribute].tokenlist.indexOf(arAttributes[i].value) === -1) {
+				if (objTokens[strAttribute].tokenlist.indexOf(arAttributes[i].value.toLowerCase()) === -1) {
 					// Exception for aria-relevant
 					bException = false;
 					if (strAttribute === "aria-relevant" && arAttributes[i].value.indexOf(" ") >= 0) {
@@ -3032,6 +3026,12 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 						return false;
 					}
 				}
+			}
+			if (objElement.getAttribute(strAttribute) !== objElement.getAttribute(strAttribute).toLowerCase()) {
+				if (arCaseSensitive.indexOf(strAttribute) >=0) {
+					logResult("Warning: Attribute value for ", strAttribute, " not all browsers / assistive technology combinations expose attribute values that are not written in lowercase", "", objElement, ".", "invalidproperty");
+					return false;
+				} 
 			}
 
 			// Check integer values for attributes
