@@ -2860,6 +2860,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				}
 			}
 			bGlobal = arGlobal.indexOf(strAttribute);
+		
 			// Check for deprecated attributes
 			if (strRole && bGlobal && objRoleRules[strRole].deprecatedAttributes) {
 				if (objRoleRules[strRole].deprecatedAttributes.indexOf(strAttribute) >= 0) {
@@ -2994,6 +2995,10 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 					logResult("Warning: Element ", strTagName, " has a native rowspan attribute along with ", "", objElement, strAttribute + ".", "invalidproperty");
 					return false;
 				}
+			}
+			if (strAttribute === "aria-required" && strRole === "slider") {
+				logResult("Role ", strRole, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+				return false;
 			}
 			else if (bGlobal === -1) {
 				// Check if the attribute is supported or a required state for the role
@@ -3264,12 +3269,6 @@ function checkWAIAria() {
 							// Not a child of <ul>, <ol>, or <menu>
 							bException = true;
 							bValid = true;
-						}
-						else if (strParentRole) {
-							if (strParentRole.toLowerCase() === "none" || strParentRole.toLowerCase() === "presentation") {
-								bException = true;
-								bValid = true;
-							} 
 						}
 					}
 					if (!bException) {
