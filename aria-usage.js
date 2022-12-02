@@ -2290,6 +2290,7 @@ function displaySummary(objValidWAIAria) {
 				}
 				else {
 					objListItem.appendChild(document.createTextNode("0 valid roles."));
+					bAppend = false;
 				}
 				break;
 			case "unknown":
