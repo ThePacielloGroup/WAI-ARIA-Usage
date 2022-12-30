@@ -3188,16 +3188,71 @@ function checkWAIAria() {
 				bCaseChange = true;
 			}
 			iRoleIndex = getIndex(strRole);
-			if (objElementRules[strCheckElement]) {
-				arAllowed = objElementRules[strCheckElement].allowedRoles;
-				if (!objRoleRules.hasOwnProperty(strRole)) {
-					// The specified role doesn't exist
-					objValidWAIAria.nonexistent++;
-					logResult("Element ", strElement, " has non-existent role ", strRole, objElements[i], ".", "nonexistent");
+			// If not a native element, assume a semantically neutral element.
+			if (!objElementRules[strCheckElement]) {
+				objValidWAIAria.unknown++;
+				logResult("Unknown element ", strElement, " has role ", strRole, objElements[i], ".", "unknown");
+				strCheckElement = "div";
+			}
+
+			arAllowed = objElementRules[strCheckElement].allowedRoles;
+			if (!objRoleRules.hasOwnProperty(strRole)) {
+				// The specified role doesn't exist
+				objValidWAIAria.nonexistent++;
+				logResult("Element ", strElement, " has non-existent role ", strRole, objElements[i], ".", "nonexistent");
+				bLogged = true;
+			}
+			else if (arAllowed.indexOf(strRole) !== -1) {
+				// A specific role is valid for the element
+				objValidWAIAria.valid++;
+				if (iRoleIndex === -1) {
+					arValidRoles.push([strRole, 1]);
+				}
+				else {
+					arValidRoles[iRoleIndex][1]++;
+				}
+				if (bCaseChange) {
+						logResult("Warning: ", strElement, " not all browsers / assistive technology combinations expose roles that are not written in lowercase", "", objElements[i], ".", "invalidproperty");
+				}
+				bValid = true;
+			}
+			bNative = strRole === objElementRules[strCheckElement].nativeRole;
+			if (strRole === "rowheader" && strElement === "th") {
+				bNative = true;
+			}
+			if (arAllowed === "all" && !bLogged) {
+				// Any role is valid for the element, unless there are conditional ancestors
+				switch (strElement) {
+					case "td" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+									bValid = true;
+								}
+								break;
+					case "th" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+									bValid = true;
+								}
+								break;
+					case "tr" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
+									bValid = true;
+								}
+								break;
+					case "div" : if (objElements[i].parentNode.tagName.toLowerCase() === "dl") {
+									if (strRole === "presentation" || strRole === "none") {
+										bValid = true;
+									}
+								}
+								else {
+									bValid = true;
+								}
+								break; 
+					default: bValid = true;
+				}
+				if (!bValid && !bNative) {
+					// The role is invalid for the element
+					objValidWAIAria.invalid++;
+					logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
 					bLogged = true;
 				}
-				else if (arAllowed.indexOf(strRole) !== -1) {
-					// A specific role is valid for the element
+				else {
 					objValidWAIAria.valid++;
 					if (iRoleIndex === -1) {
 						arValidRoles.push([strRole, 1]);
@@ -3206,102 +3261,41 @@ function checkWAIAria() {
 						arValidRoles[iRoleIndex][1]++;
 					}
 					if (bCaseChange) {
-							logResult("Warning: ", strElement, " not all browsers / assistive technology combinations expose roles that are not written in lowercase", "", objElements[i], ".", "invalidproperty");
-					}
-					bValid = true;
-				}
-				bNative = strRole === objElementRules[strCheckElement].nativeRole;
-				if (strRole === "rowheader" && strElement === "th") {
-					bNative = true;
-				}
-				if (arAllowed === "all" && !bLogged) {
-					// Any role is valid for the element, unless there are conditional ancestors
-					switch (strElement) {
-						case "td" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
-										bValid = true;
-									}
-									break;
-						case "th" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
-										bValid = true;
-									}
-									break;
-						case "tr" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
-										bValid = true;
-									}
-									break;
-						case "div" : if (objElements[i].parentNode.tagName.toLowerCase() === "dl") {
-										if (strRole === "presentation" || strRole === "none") {
-											bValid = true;
-										}
-									}
-									else {
-										bValid = true;
-									}
-									break; 
-						default: bValid = true;
-					}
-					if (!bValid && !bNative) {
-						// The role is invalid for the element
-						objValidWAIAria.invalid++;
-						logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
-						bLogged = true;
-					}
-					else {
-						objValidWAIAria.valid++;
-						if (iRoleIndex === -1) {
-							arValidRoles.push([strRole, 1]);
-						}
-						else {
-							arValidRoles[iRoleIndex][1]++;
-						}
-						if (bCaseChange) {
-							logResult("Warning: ", strElement, " not all browsers / assistive technology combinations expose roles that are not written in lowercase", "", objElements[i], ".", "invalidproperty");
-						}
-					}
-				}
-				if (!bValid && !bLogged && !bNative) {
-					bException = false;
-					// Exceptions for lists
-					if (strElement === "li") {
-						strParentElement = objElements[i].parentNode.tagName.toLowerCase();
-						strParentRole = objElements[i].parentNode.getAttribute("role");
-						if (arListExceptions.indexOf(strParentElement) === -1) {
-							// Not a child of <ul>, <ol>, or <menu>
-							bException = true;
-							bValid = true;
-						}
-					}
-					if (!bException) {
-						// The role is invalid for the element
-						objValidWAIAria.invalid++;
-						logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
-					}
-				}
-				if (bNative) {
-					bValid = true;
-					// Check exceptions
-					if (strRole === "link" && !objElements[i].getAttribute("href")){
-						// Exception for a and area elements
-					}
-					else if ((strRole === "textbox" || strRole === "searchbox") && objElements[i].tagName === "INPUT" && objElements[i].getAttribute("list")){
-						// Exception for input element with a list attribute
-					}
-					else {
-						// The role is unecessary for the element
-						objValidWAIAria.unnecessary++;
-						logResult("", strElement, "", strRole, objElements[i], ".", "unnecessary");
+						logResult("Warning: ", strElement, " not all browsers / assistive technology combinations expose roles that are not written in lowercase", "", objElements[i], ".", "invalidproperty");
 					}
 				}
 			}
-			else {
-				objValidWAIAria.unknown++;
-				if (!objRoleRules.hasOwnProperty(strRole)) {
-					// The specified role doesn"t exist
-					objValidWAIAria.nonexistent++;
-					logResult("Unknown element ", strElement, " has non-existent role ", strRole, objElements[i], ".", "unknown");
+			if (!bValid && !bLogged && !bNative) {
+				bException = false;
+				// Exceptions for lists
+				if (strElement === "li") {
+					strParentElement = objElements[i].parentNode.tagName.toLowerCase();
+					strParentRole = objElements[i].parentNode.getAttribute("role");
+					if (arListExceptions.indexOf(strParentElement) === -1) {
+						// Not a child of <ul>, <ol>, or <menu>
+						bException = true;
+						bValid = true;
+					}
+				}
+				if (!bException) {
+					// The role is invalid for the element
+					objValidWAIAria.invalid++;
+					logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
+				}
+			}
+			if (bNative) {
+				bValid = true;
+				// Check exceptions
+				if (strRole === "link" && !objElements[i].getAttribute("href")){
+					// Exception for a and area elements
+				}
+				else if ((strRole === "textbox" || strRole === "searchbox") && objElements[i].tagName === "INPUT" && objElements[i].getAttribute("list")){
+					// Exception for input element with a list attribute
 				}
 				else {
-					logResult("Unknown element ", strElement, " has role ", strRole, objElements[i], ".", "unknown");
+					// The role is unecessary for the element
+					objValidWAIAria.unnecessary++;
+					logResult("", strElement, "", strRole, objElements[i], ".", "unnecessary");
 				}
 			}
 			if (bValid) {
