@@ -1129,7 +1129,6 @@ var objElementRules = {
 		"nodeName": "abbr",
 		"nativeRole": null,
 		"allowedRoles": "all",
-		"nameable": "yes",
 		"nameable": "no"
 	},
 	"address": {
@@ -2155,7 +2154,7 @@ function conditionalElement(objElement, strElement) {
 			if (!objElement.hasAttribute("alt")) {
 				return "img-noalt";
 			}
-			else if (!objElement.getAttribute("alt")) {
+			if (!objElement.getAttribute("alt")) {
 				return "img-emptyalt";
 			}
 			break;
@@ -2422,7 +2421,7 @@ function logResult(strMessage, strElement, strError, strRole, objCode, strMissin
 		objMessage.appendChild(document.createTextNode(strError));
 		objMessage.appendChild(objRole);
 		objMessage.appendChild(document.createTextNode(strMissing));
-		objMessage.appendChild(document.createTextNode(' There may be additional issues with this element.'));
+		objMessage.appendChild(document.createTextNode(" There may be additional issues with this element."));
 	}
 
 	objGroup.appendChild(objMessage);
@@ -2534,7 +2533,7 @@ function checkValidDescendant(objElement, strRole) {
 							logResult("Invalid descendant: ", strParentElement, " has child ", strElement, objElement, ".", "invaliddesc");
 							return false;
 						}
-						else if (arCheckDescendant.indexOf(strChildRole) !== -1) {
+						if (arCheckDescendant.indexOf(strChildRole) !== -1) {
 							logResult("Invalid descendant: ", strParentElement, " has child ", strChildRole, objElement, ".", "invaliddesc");
 							return false;
 						}
@@ -2584,7 +2583,7 @@ function checkRequiredParent(objElement, strRole) {
 			if (arParent.indexOf(strParentRole) !== -1) {
 				return true;
 			}
-			else if (arParentNative) {
+			if (arParentNative) {
 				if (arParentNative.indexOf(objElement.tagName.toLowerCase()) !== -1) {
 					return true;
 				}
@@ -2614,7 +2613,7 @@ function checkAncestor(objElement, arRole) {
 			}
 			return false;
 		}
-		else if (arRole.indexOf(objElement.tagName.toLowerCase()) !== -1) {
+		if (arRole.indexOf(objElement.tagName.toLowerCase()) !== -1) {
 			return true;
 		}
 	}
@@ -2644,7 +2643,7 @@ function checkRequiredChildren(objElement, strRole) {
 			if (arChild.indexOf(strChildRole) !== -1) {
 				return true;
 			}
-			else if (arChildNative) {
+			if (arChildNative) {
 				if (arChildNative.indexOf(objChildren[i].tagName.toLowerCase()) !== -1) {
 					return true;
 				}
@@ -2668,9 +2667,35 @@ function checkRequiredChildren(objElement, strRole) {
 	return true;
 }
 
+function getParentRole(objElement, strRole) {
+	var objParent = objElement;
+
+	while (objParent = objElement.parentNode) {
+	if (objParent.getAttribute("role") === strRole) {
+			return objParent;
+		}
+	}
+	return false;
+}
+
+function checkMixed (objElement) {
+	var objChildren = objElement.getElementsByTagName("*");
+	var i;
+
+	for (i=0; i<objChildren.length; i++) {
+		if (objChildren[i].getAttribute("aria-selected")) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 function checkRequiredState(objElement, strRole) {
 	var arState = objRoleRules[strRole].requiredState;
+	var objParent;
 	var strType;
+	var bValid;
 	var i;
 
 	// Special condition for separator that isn't focusable
@@ -2700,8 +2725,20 @@ function checkRequiredState(objElement, strRole) {
 	if (arState) {
 		for (i=0; i<arState.length; i++) {
 			if (!objElement.hasAttribute(arState[i])) {
-				logResult("Role ", strRole, " missing required state ", "", objElement, " (" + arState[i] + ").", "missingstate");
-				return false;
+				bValid = false;
+				// An option can have aria-checked instead of aria-selected, providing all sibling options use aria-checked
+				if (strRole === "option" && objElement.hasAttribute("aria-checked")) {
+					if (objParent = getParentRole(objElement, "listbox")) {
+						if (checkMixed(objParent)) {
+							logResult("A listbox has", "", " option elements with mixed aria-checked and aria-selected states", "", objElement, ".", "missingstate");
+							return false;
+						}
+						bValid = true;
+					}
+				}
+				if (!bValid) {
+					logResult("Role ", strRole, " missing required state ", "", objElement, " (" + arState[i] + ").", "missingstate");
+				}
 			}
 		}
 	}
@@ -2719,7 +2756,7 @@ function checkScope(objElement) {
 		if (strCheck === "body") {
 			return true;
 		}
-		else if (objScope.indexOf(strCheck) >= 0) {
+		if (objScope.indexOf(strCheck) >= 0) {
 			return false;
 		}
 	} while (objParent = objParent.parentNode);
@@ -2774,7 +2811,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				logResult("Warning: ", strTagName, " with a missing type attribute has aria-haspopup along with a native list attribute", "", objElement, ".", "invalidproperty");
 				return false;
 			}
-			else if ((arValidType.indexOf(strType) === -1) || (arListExceptions.indexOf(strType) >= 0)) {
+			if ((arValidType.indexOf(strType) === -1) || (arListExceptions.indexOf(strType) >= 0)) {
 				logResult("Warning: ", strTagName + " type=" + strType, " has aria-haspopup along with a native list attribute", "", objElement, ".", "invalidproperty");
 				return false;
 			}
@@ -2794,7 +2831,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				}
 				return false;
 			}
-			else if (strType === "radio") {
+			if (strType === "radio") {
 				logResult("Error: ", strTagName, " aria-checked is used on a native radio button. Use the element's native checked semantics instead", "", objElement, ".", "invalidproperty");
 				return false;
 			}
@@ -2891,7 +2928,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				}
 				objValidWAIAria.deprecatedattribute++;
 			}
-			if (strTagName === 'datalist' && (bGlobal || ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-required", "aria-orientation"].indexOf(strAttribute))) {
+			if (strTagName === "datalist" && (bGlobal || ["aria-activedescendant", "aria-expanded", "aria-multiselectable", "aria-required", "aria-orientation"].indexOf(strAttribute))) {
 				logResult("Warning ", strTagName, " has an attribute that serves no benefit ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 				return false;
 			}
@@ -3000,7 +3037,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				logResult("Role ", strRole, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 				return false;
 			}
-			else if (bGlobal === -1) {
+			if (bGlobal === -1) {
 				// Check if the attribute is supported or a required state for the role
 				if (arValid && arValid.indexOf(strAttribute) >=0) {
 					bFound = true;
@@ -3177,7 +3214,7 @@ function checkWAIAria() {
 		if (objElements[i].getAttribute("role") && objElements[i].getAttribute("id") !== "__ARIA_validator_resultsWindow__") {
 			strElement = objElements[i].tagName.toLowerCase();
 			// If the element is an input without a type, set the default type of text
-			if (strElement === 'input' && !objElements[i].getAttribute("type")) {
+			if (strElement === "input" && !objElements[i].getAttribute("type")) {
 				objElements[i].setAttribute("type", "text");
 			}
 			// Check if the element is conditional (e.g., input with a type that affects valid roles)
