@@ -2738,6 +2738,7 @@ function checkRequiredState(objElement, strRole) {
 				}
 				if (!bValid) {
 					logResult("Role ", strRole, " missing required state ", "", objElement, " (" + arState[i] + ").", "missingstate");
+					return false;
 				}
 			}
 		}
