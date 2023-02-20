@@ -1212,7 +1212,7 @@ var objElementRules = {
 	"button": {
 		"nodeName": "button",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"canvas": {
@@ -1457,7 +1457,7 @@ var objElementRules = {
 	"input-button": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch", "tab"],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-checkbox": {
@@ -2516,6 +2516,10 @@ function checkValidDescendant(objElement, strRole) {
 						strElement = objParent.tagName.toLowerCase();
 						if (arInteractive.indexOf(strElement) !== -1 && strElement !== "label") {
 							if (!checkConditionalInteractive(strElement, objParent)) {
+								// Exception for summary if not the first child of details
+								if (objElement.nodeName.toLowerCase() === "summary" && checkPreviousSummary(objElement)) {
+									return true;
+								}
 								logResult("Invalid descendant: ", strParentElement, " has parent ", strElement, objParent, ".", "invaliddesc");
 								return false;
 							}
@@ -2776,6 +2780,16 @@ function isHeading(objElement) {
 	return false;
 }
 
+function checkPreviousSummary(objElement) {
+	while (objElement.previousElementSibling) {
+		if (objElement.previousElementSibling.tagName.toLowerCase() === "summary") {
+			return true;
+		}
+		objElement = objElement.previousElementSibling;
+	}
+	return false;
+}
+
 function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var arGlobal = ["aria-atomic", "aria-busy", "aria-controls", "aria-current", "aria-describedby", "aria-details", "aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-flowto", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-keyshortcuts", "aria-label", "aria-labelledby", "aria-live", "aria-owns", "aria-relevant", "aria-roledescription"];
 	var arHiddenExceptions = ["base", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "script", "slot", "source", "style", "template", "title", "track"];
@@ -2847,11 +2861,22 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 		arValid = objRoleRules[strRole].supported;
 		arState = objRoleRules[strRole].requiredState;
   	}
-
+  	
 	for (i=0; i<arAttributes.length; i++) {
 		strAttribute = arAttributes[i].nodeName;
 
 		if (strAttribute.substring(0, 5) === "aria-") {
+			// Exceptions for summary attributes 
+			if (objElement.nodeName.toLowerCase() === "summary") {
+				if (checkPreviousSummary(objElement) || objElement.parentNode.tagName.toLowerCase() !== "details") {
+					// Not treated as a summary
+					return true;
+				}
+				// Allowed on summary
+				if (strAttribute === "aria-disabled" || strAttribute === "aria-haspopup") {	
+					return true;
+				}
+			}
 			// Check for aria-label and aria-label restrictions
 			if (strAttribute === "aria-label" || strAttribute === "aria-labelledby") {
 				// Use conditional statements where appropriate
@@ -3316,9 +3341,31 @@ function checkWAIAria() {
 					}
 				}
 				if (!bException) {
-					// The role is invalid for the element
-					objValidWAIAria.invalid++;
-					logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
+					// Conditions for summary attribute
+					if (strElement === "summary") {
+						// If the summary element isn't the child of a details element, any role is allowed
+						if (objElements[i].parentNode.tagName.toLowerCase() !== "details") {
+							bValid = true;
+						}
+						// If there is a previous summary element in the same details element, any role is allowed
+						if (checkPreviousSummary(objElements[i])) {
+							bValid = true;
+						}
+					}
+					if (bValid) {
+						objValidWAIAria.valid++;
+						if (iRoleIndex === -1) {
+							arValidRoles.push([strRole, 1]);
+						}
+						else {
+							arValidRoles[iRoleIndex][1]++;
+						}
+					}
+					else {
+						// The role is invalid for the element
+						objValidWAIAria.invalid++;
+						logResult("Element ", strElement, " has invalid role ", strRole, objElements[i], ".", "invalid");
+					}
 				}
 			}
 			if (bNative) {
