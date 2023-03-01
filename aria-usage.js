@@ -1505,7 +1505,7 @@ var objElementRules = {
 	"input-image": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["link", "menuitem", "menuitemcheckbox", "menuitemradio", "radio", "switch"],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-month": {
@@ -1541,7 +1541,7 @@ var objElementRules = {
 	"input-reset": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": [],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-search": {
@@ -1553,7 +1553,7 @@ var objElementRules = {
 	"input-submit": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": [],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-tel": {
