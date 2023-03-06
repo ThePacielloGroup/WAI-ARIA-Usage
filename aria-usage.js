@@ -2792,7 +2792,7 @@ function checkPreviousSummary(objElement) {
 
 function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var arGlobal = ["aria-atomic", "aria-busy", "aria-controls", "aria-current", "aria-describedby", "aria-details", "aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-flowto", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-keyshortcuts", "aria-label", "aria-labelledby", "aria-live", "aria-owns", "aria-relevant", "aria-roledescription"];
-	var arHiddenExceptions = ["base", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "script", "slot", "source", "style", "template", "title", "track"];
+	var arHiddenExceptions = ["base", "body", "col", "colgroup", "head", "html", "link", "map", "meta", "noscript", "param", "script", "slot", "source", "style", "template", "title", "track"];
 	var arValidType = ["button", "checkbox", "color", "date", "datetime-local", "email", "file", "hidden", "image", "month", "number", "password", "radio", "range", "reset", "search", "submit", "tel", "text", "time", "url", "week"];
 	var arListExceptions = ["email", "search", "tel", "text", "url"];
 	var arCaseSensitive = ["aria-atomic", "aria-autocomplete", "aria-busy", "aria-checked", "aria-current", "aria-disabled", "aria-dropeffect", "aria-expanded", "aria-grabbed", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-live", "aria-modal", "aria-multiline", "aria-multiselectable", "aria-orientation", "aria-pressed", "aria-readonly", "aria-relevant", "aria-required", "aria-selected", "aria-sort"];
