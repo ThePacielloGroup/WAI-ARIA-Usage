@@ -1778,6 +1778,12 @@ var objElementRules = {
 		"allowedRoles": [],
 		"nameable": "yes"
 	},
+	"search": {
+		"nodeName": "search",
+		"nativeRole": "search",
+		"allowedRoles": ["form", "group", "none", "presentation", "region", "search"],
+		"nameable": "yes"
+	},
 	"section": {
 		"nodeName": "section",
 		"nativeRole": "region",
