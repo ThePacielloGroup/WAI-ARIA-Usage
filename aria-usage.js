@@ -2818,6 +2818,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var strTokens;
 	var strException;
 	var bException;
+	var bInputException;
 	var bGlobal = false;
 	var bFound = false;
 	var iInteger;
@@ -2870,6 +2871,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
   	
 	for (i=0; i<arAttributes.length; i++) {
 		strAttribute = arAttributes[i].nodeName;
+		bInputException = false;
 
 		if (strAttribute.substring(0, 5) === "aria-") {
 			// Exceptions for summary attributes 
@@ -2929,6 +2931,22 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				}
 			}
 			bGlobal = arGlobal.indexOf(strAttribute);
+			
+			// Exceptions for input elements
+			if (strTagName === "input") {
+				if (objElement.hasAttribute("type")) {
+					 if (objElement.getAttribute("type").toLowerCase() === "file") {
+						if (strAttribute === "aria-disabled" || strAttribute === "aria-invalid") {
+							bInputException = true;
+						}
+					}
+					else if (objElement.getAttribute("type").toLowerCase() === "color") {
+						if (strAttribute === "aria-disabled") {
+							bInputException = true;
+						}
+					}
+				}
+			}
 		
 			// Check for deprecated attributes
 			if (strRole && bGlobal && objRoleRules[strRole].deprecatedAttributes) {
@@ -2944,7 +2962,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 					objValidWAIAria.deprecatedattribute++;
 				}
 			}
-			else if (bGlobal && arDeprecatedAttributes.indexOf(strAttribute) >= 0) {
+			else if (!bInputException && bGlobal && arDeprecatedAttributes.indexOf(strAttribute) >= 0) {
 				strAttributeValue = objElement.getAttribute(strAttribute);
 				// Exception for aria-invalid
 				if (strAttribute === "aria-invalid" && strAttributeValue && arDeprecatedValues.indexOf(strAttributeValue) >= 0) {
