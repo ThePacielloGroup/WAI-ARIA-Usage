@@ -1438,20 +1438,20 @@ var objElementRules = {
 	},
 	"img-noalt": {
 		"nodeName": "imgEmptyAlt",
-		"nativeRole": null,
-		"allowedRoles": [],
+		"nativeRole": "img",
+		"allowedRoles": ["none", "presentation"],
 		"nameable": "yes"
 	},
 	"img-emptyalt": {
 		"nodeName": "imgEmptyAlt",
-		"nativeRole": null,
-		"allowedRoles": [],
+		"nativeRole": "img",
+		"allowedRoles": ["none", "presentation"],
 		"nameable": "yes"
 	},
 	"img": {
 		"nodeName": "imgWithAlt",
 		"nativeRole": "img",
-		"allowedRoles": ["button", "checkbox", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "progressbar", "radio", "scrollbar", "separator", "slider", "switch", "tab", "treeitem"],
+		"allowedRoles": ["button", "checkbox", "doc-cover", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "meter", "option", "progressbar", "radio", "scrollbar", "separator", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-button": {
@@ -2158,6 +2158,9 @@ function conditionalElement(objElement, strElement) {
 			break;
 		case "img" : 
 			if (!objElement.hasAttribute("alt")) {
+				if (objElement.hasAttribute("title") || objElement.hasAttribute("aria-label") || objElement.hasAttribute("aria-labelledby")) {
+					return strElement;
+				}
 				return "img-noalt";
 			}
 			if (!objElement.getAttribute("alt")) {
