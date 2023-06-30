@@ -1762,7 +1762,7 @@ var objElementRules = {
 	},
 	"s": {
 		"nodeName": "s",
-		"nativeRole": null,
+		"nativeRole": "deletion",
 		"allowedRoles": "all",
 		"nameable": "no"
 	},
