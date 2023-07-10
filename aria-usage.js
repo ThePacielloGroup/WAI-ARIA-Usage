@@ -1158,7 +1158,7 @@ var objElementRules = {
 	"aside": {
 		"nodeName": "aside",
 		"nativeRole": "complementary",
-		"allowedRoles": ["feed", "note", "presentation", "none", "region", "search", "doc-dedication", "doc-example", "doc-footnote", "doc-pullquote", "doc-tip"],
+		"allowedRoles": ["feed", "note", "presentation", "none", "region", "search", "doc-dedication", "doc-example", "doc-footnote", "doc-glossary", "doc-pullquote", "doc-tip"],
 		"nameable": "yes"
 	},
 	"audio": {
