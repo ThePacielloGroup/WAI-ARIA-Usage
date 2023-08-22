@@ -1135,7 +1135,7 @@ var objElementRules = {
 		"nodeName": "address",
 		"nativeRole": null,
 		"allowedRoles": "all",
-		"nameable": "no"
+		"nameable": "yes"
 	},
 	"area": {
 		"nodeName": "area",
@@ -1177,7 +1177,7 @@ var objElementRules = {
 		"nodeName": "base",
 		"nativeRole": null,
 		"allowedRoles": [],
-		"nameable": "yes"
+		"nameable": "no"
 	},
 	"bdi": {
 		"nodeName": "bdi",
@@ -1207,7 +1207,7 @@ var objElementRules = {
 		"nodeName": "br",
 		"nativeRole": null,
 		"allowedRoles": ["none", "presentation"],
-		"nameable": "yes"
+		"nameable": "no"
 	},
 	"button": {
 		"nodeName": "button",
@@ -1410,7 +1410,7 @@ var objElementRules = {
 		"nodeName": "hgroup",
 		"nativeRole": null,
 		"allowedRoles": "all",
-		"nameable": "no"
+		"nameable": "yes"
 	},
 	"hr": {
 		"nodeName": "hr",
@@ -1608,7 +1608,7 @@ var objElementRules = {
 		"nodeName": "legend",
 		"nativeRole": null,
 		"allowedRoles": [],
-		"nameable": "yes"
+		"nameable": "no"
 	},
 	"li": {
 		"nodeName": "li",
