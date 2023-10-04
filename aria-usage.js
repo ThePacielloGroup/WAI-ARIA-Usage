@@ -1212,7 +1212,7 @@ var objElementRules = {
 	"button": {
 		"nodeName": "button",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "separator", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"canvas": {
@@ -1457,7 +1457,7 @@ var objElementRules = {
 	"input-button": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "separator", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-checkbox": {
@@ -1505,7 +1505,7 @@ var objElementRules = {
 	"input-image": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "separator", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-month": {
@@ -1541,7 +1541,7 @@ var objElementRules = {
 	"input-reset": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "separator", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-search": {
@@ -1553,7 +1553,7 @@ var objElementRules = {
 	"input-submit": {
 		"nodeName": "input",
 		"nativeRole": "button",
-		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "slider", "switch", "tab", "treeitem"],
+		"allowedRoles": ["checkbox", "combobox", "gridcell", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio", "separator", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-tel": {
