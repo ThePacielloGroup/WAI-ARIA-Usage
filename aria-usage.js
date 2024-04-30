@@ -3013,6 +3013,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(aria-valuemin).", "invalidproperty");
 				}
 			}
+			// Distinguish between must not and should not
 			if (strAttribute === "aria-hidden") {
 				if (arHiddenExceptions.indexOf(strTagName) >= 0 || objElement.hasAttribute("hidden")) {
 					if (objElement.getAttribute("hidden") !== null ) {
