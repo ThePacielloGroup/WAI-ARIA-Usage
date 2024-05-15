@@ -3013,9 +3013,20 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(aria-valuemin).", "invalidproperty");
 				}
 			}
+			// Distinguish between must not and should not
 			if (strAttribute === "aria-hidden") {
 				if (arHiddenExceptions.indexOf(strTagName) >= 0 || objElement.hasAttribute("hidden")) {
-					logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					if (objElement.getAttribute("hidden") !== null ) {
+						if (objElement.getAttribute("hidden").toLowerCase() === "until-found") {
+							logResult("Element ", strTagName, " aria-hidden must not be used with hidden=until-found ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+						}
+						else {
+							logResult("Element ", strTagName, " aria-hidden should not be used with hidden ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+						}
+					}
+					else {
+						logResult("Element ", strTagName, " has invalid attribute ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+					} 
 					return false;
 				}
 			}
