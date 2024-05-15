@@ -3021,7 +3021,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 							logResult("Element ", strTagName, " aria-hidden must not be used with hidden=until-found ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 						}
 						else {
-							logResult("Element ", strTagName, " aria-hidden should not be used with hidden=until-found ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
+							logResult("Element ", strTagName, " aria-hidden should not be used with hidden ", "", objElement, "(" + strAttribute + ").", "invalidproperty");
 						}
 					}
 					else {
