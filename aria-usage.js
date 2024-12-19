@@ -283,6 +283,15 @@ var objRoleRules = {
 		"deprecatedAttributes": ["aria-errormessage", "aria-haspopup", "aria-invalid"],
 		"nameable": "yes"
 	},
+	"image": {
+		"requiredParent": null,
+		"requiredChild": null,
+		"requiredState": null,
+		"descendantRestrictions": null,
+		"supported": null,
+		"deprecatedAttributes": ["aria-disabled", "aria-dropeffect", "aria-errormessage", "aria-grabbed", "aria-haspopup", "aria-invalid"],
+		"nameable": "yes"
+	}, 
 	"img": {
 		"requiredParent": null,
 		"requiredChild": null,
