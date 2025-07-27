@@ -1460,7 +1460,7 @@ var objElementRules = {
 	"img": {
 		"nodeName": "imgWithAlt",
 		"nativeRole": "img",
-		"allowedRoles": ["button", "checkbox", "doc-cover", "link", "math", "menuitem", "menuitemcheckbox", "menuitemradio", "meter", "option", "progressbar", "radio", "scrollbar", "separator", "slider", "switch", "tab", "treeitem"],
+		"allowedRoles": ["button", "checkbox", "doc-cover", "link", "menuitem", "menuitemcheckbox", "menuitemradio", "meter", "option", "progressbar", "radio", "scrollbar", "separator", "slider", "switch", "tab", "treeitem"],
 		"nameable": "yes"
 	},
 	"input-button": {
@@ -1821,6 +1821,12 @@ var objElementRules = {
 		"nodeName": "slot",
 		"nativeRole": null,
 		"allowedRoles": [],
+		"nameable": "yes"
+	},
+	"selectedcontent": {
+		"nodeName": "selectedcontent",
+		"nativeRole": null,
+		"allowedRoles": "all",
 		"nameable": "yes"
 	},
 	"small": {
@@ -3241,6 +3247,35 @@ function checkValidReferences(objElement) {
 	return bValid;
 }
 
+function getParent(objElement, strName) {
+	var objParent = objElement;
+
+	while (objParent = objElement.parentNode) {
+		if (objParent.tagName.toLowerCase() === strName) {
+			return objParent;
+		}
+	}
+	return false;
+}
+
+function hasARIAAttribute(objElement) {
+	var arAttributes = objElement.attributes;
+	var strAttribute
+
+	for (i=0; i<arValidARIAAttributes.length; i++) {
+		if (arAttributes[i]) {
+			strAttribute = arAttributes[i].nodeName;
+		} 
+		else {
+			strAttribute = "";
+		}
+		if (arValidARIAAttributes.indexOf(strAttribute) >= 0) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function checkWAIAria() {
 	var objValidWAIAria = {
 		valid: 0,
@@ -3260,6 +3295,7 @@ function checkWAIAria() {
 	};
 	var objElements = document.getElementsByTagName("*");
 	var objBTT = document.createElement("a");
+	var objButton;
 	var bValid;
 	var bNative;
 	var bLogged;
@@ -3332,6 +3368,21 @@ function checkWAIAria() {
 			}
 			if (arAllowed === "all" && !bLogged) {
 				// Any role is valid for the element, unless there are conditional ancestors
+				if (checkAncestor(objElements[i], ["button"]) && checkAncestor(objElements[i], ["select"])) {	
+					objButton = getParent(objElements[i], "button");
+					if (hasARIAAttribute(objButton)) {
+						objValidWAIAria.invalidproperty++;
+						logResult("Element ", objButton.tagName.toLowerCase(), " has invalid aria-* attribute(s) ", "", objButton, ".", "invalid");
+					}
+					if (hasARIAAttribute(objElements[i])) {
+						objValidWAIAria.invalidproperty++;
+						logResult("Element ", strElement, " has invalid aria-* attribute(s) ", "", objElements[i], ".", "invalid");
+					}
+					if (objElements[i].hasAttribute("role")) {
+						objValidWAIAria.invalid++;
+						logResult("Element ", strElement, " has an invalid role attribute ", "", objElements[i], ".", "invalid");
+					}
+				}
 				switch (strElement) {
 					case "td" : if (!checkAncestor(objElements[i], ["table", "grid", "treegrid"])) {
 									bValid = true;
