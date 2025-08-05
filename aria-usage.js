@@ -1610,7 +1610,7 @@ var objElementRules = {
 	"label": {
 		"nodeName": "label",
 		"nativeRole": null,
-		"allowedRoles": [],
+		"allowedRoles": "all",
 		"nameable": "no"
 	},
 	"legend": {
@@ -2151,6 +2151,7 @@ var arValidARIAAttributes = ["aria-activedescendant", "aria-atomic", "aria-autoc
 
 var arPhrasing = ["a", "abbr", "area", "audio", "b", "bdi", "bdo", "br", "button", "canvas", "cite", "code", "data", "datalist", "del", "dfn", "emembed", "i", "iframe", "img", "input", "ins", "kbd", "label", "link", "map", "mark", "math", "meta", "meter", "noscript", "object", "output", "picture", "progress", "q", "ruby", "s", "samp", "script", "select", "slot", "small", "span", "strong", "sub", "sup", "svg", "template", "text", "area", "time", "u", "var", "video", "wbr"];
 var arInteractive = ["a", "audio", "button", "details", "embed", "iframe", "img", "input", "label", "object", "select", "textarea", "video"];
+var arLabelable = ["button", "input", "meter", "output", "progress", "select", "textarea"];
 var arValidRoles=[];
 var bDetails = false;
 var objWin;
@@ -2774,6 +2775,25 @@ function checkRequiredState(objElement, strRole) {
 	return true;
 }
 
+function isLabelling(objElement) {
+	var objChildren = objElement.getElementsByTagName("*");
+	var i;
+
+	// Check explicit labelling
+	if (objElement.hasAttribute("for")) {
+		return true;
+	}
+
+	// check for nested labelable elements
+	for (i=0; i<objChildren.length; i++) {
+		if (arLabelable.indexOf(objChildren[i].tagName.toLowerCase()) >= 0) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 function checkScope(objElement) {
 	var objParent = objElement.parentNode;
 	var objScope = ["article", "aside", "nav", "section"];
@@ -2839,6 +2859,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 	var bInputException;
 	var bGlobal = false;
 	var bFound = false;
+	var bLabel = false;
 	var iInteger;
 	var i;
 
@@ -2854,6 +2875,29 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 			if ((arValidType.indexOf(strType) === -1) || (arListExceptions.indexOf(strType) >= 0)) {
 				logResult("Warning: ", strTagName + " type=" + strType, " has aria-haspopup along with a native list attribute", "", objElement, ".", "invalidproperty");
 				return false;
+			}
+		}
+	}
+	
+	// If a label element, is it being used to label an element?
+	if (strTagName === "label") {
+		bLabel = isLabelling(objElement);
+
+		if (bLabel) {
+			if (strRole) {
+				logResult("Element ", strTagName, " has invalid role ", strRole, objElement, ".", "invalid");
+				objValidWAIAria.invalid++;
+				objValidWAIAria.invalidproperty--;
+				return false;
+			}
+			else {
+				for (i=0; i<arAttributes.length; i++) {
+					strAttribute = arAttributes[i].nodeName;
+					if (strAttribute.substring(0, 5) === "aria-") {
+						logResult("Error: ", strTagName, " has an invalid aria-* attribute", "", objElement, ".", "invalidproperty");
+						return false;
+					}
+				}
 			}
 		}
 	}
@@ -2874,6 +2918,16 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 			if (strType === "radio") {
 				logResult("Error: ", strTagName, " aria-checked is used on a native radio button. Use the element's native checked semantics instead", "", objElement, ".", "invalidproperty");
 				return false;
+			}
+		}
+		if (strTagName === "button" && objElement.hasAttribute("aria-expanded")) {
+			if (objElement.hasAttribute("popovertarget")) {
+				logResult("Error: ", strTagName, " with a popovertarget attribute also has an aria-expanded attribute", "", objElement, ".", "invalidproperty");
+				return false;	
+			}
+			else if (objElement.hasAttribute("command")) {
+				logResult("Error: ", strTagName, " with a command attribute also has an aria-expanded attribute", "", objElement, ".", "invalidproperty");
+				return false;	
 			}
 		}
 		// Find native role
@@ -2949,7 +3003,7 @@ function checkValidProperties(objElement, strRole, objValidWAIAria) {
 				}
 			}
 			bGlobal = arGlobal.indexOf(strAttribute);
-			
+
 			// Exceptions for input elements
 			if (strTagName === "input") {
 				if (objElement.hasAttribute("type")) {
